@@ -6,7 +6,7 @@ userAuth
 valign=top
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>0</x><y>190</y><w>320</w><h>230</h></coordinates><panel_attributes>Reminders
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>40</x><y>190</y><w>320</w><h>230</h></coordinates><panel_attributes>Reminders
 --
 full CRUD
 
@@ -42,11 +42,15 @@ health appointments
 bills
 loans
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>300</y><w>110</w><h>30</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>300</y><w>110</w><h>160</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;90;140</additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>150</y><w>110</w><h>180</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;160;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>160</x><y>110</y><w>70</w><h>100</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>50;10;10;80</additional_attributes></element><element><id>UMLState</id><coordinates><x>690</x><y>260</y><w>180</w><h>110</h></coordinates><panel_attributes>notifications
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>300</y><w>70</w><h>30</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;50;10</additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>300</y><w>70</w><h>160</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;50;140</additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>150</y><w>70</w><h>180</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;160;50;10</additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>110</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLState</id><coordinates><x>630</x><y>290</y><w>180</w><h>210</h></coordinates><panel_attributes>
+notifications
+
 --
+full CRUD
 
 date_of_notification
+email: [emails]
+text: [Phone #s]
 
 
-
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>180</y><w>140</w><h>120</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;120;100</additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>280</y><w>140</w><h>60</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;40;120;10</additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>290</y><w>140</w><h>180</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;160;120;10</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>180</y><w>80</w><h>150</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;60;130</additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>310</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;60;10</additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>320</y><w>80</w><h>150</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;130;60;10</additional_attributes></element></diagram>
