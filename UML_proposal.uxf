@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><element><id>UMLState</id><coordinates><x>130</x><y>10</y><w>200</w><h>110</h></coordinates><panel_attributes>Users
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLState</id><coordinates><x>110</x><y>80</y><w>200</w><h>110</h></coordinates><panel_attributes>Users
 --
 userAuth
 
@@ -6,18 +6,19 @@ userAuth
 valign=top
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>0</x><y>190</y><w>320</w><h>230</h></coordinates><panel_attributes>Reminders
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>40</x><y>260</y><w>320</w><h>230</h></coordinates><panel_attributes>Reminders
 --
 full CRUD
 
-
-
 title: string
-type: [products, personal, financial]
+type: [{products}, {personal}, {financial}]
 date_ of_reminder: date
-add_notification: 
-add_email:
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>400</x><y>130</y><w>180</w><h>120</h></coordinates><panel_attributes>
+add_notification: [notifications]
+add_email:[emails]
+add_phone:[phone#s]
+interval: {number:, string:}
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>440</x><y>200</y><w>180</w><h>120</h></coordinates><panel_attributes>
 Products
 --
 add_docs
@@ -31,22 +32,29 @@ list_maintainence_service
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>400</x><y>260</y><w>180</w><h>110</h></coordinates><panel_attributes>Personal
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>440</x><y>330</y><w>180</w><h>110</h></coordinates><panel_attributes>Personal
 --
 birthdays
 health appointments
+		(contacts)
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>400</x><y>390</y><w>180</w><h>110</h></coordinates><panel_attributes>financial
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>440</x><y>460</y><w>180</w><h>110</h></coordinates><panel_attributes>financial
 --
 bills
 loans
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>300</y><w>110</w><h>30</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>300</y><w>110</w><h>160</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;90;140</additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>150</y><w>110</w><h>180</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;160;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>160</x><y>110</y><w>70</w><h>100</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>50;10;10;80</additional_attributes></element><element><id>UMLState</id><coordinates><x>690</x><y>260</y><w>180</w><h>110</h></coordinates><panel_attributes>notifications
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>180</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLState</id><coordinates><x>120</x><y>560</y><w>180</w><h>160</h></coordinates><panel_attributes>notifications
 --
+type=state
+date_of_notification: date
+template/msg: pull from type
+emails: pull from reminder
+texts: pull from reminder
 
-date_of_notification
 
-
-
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>180</y><w>140</w><h>120</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;120;100</additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>280</y><w>140</w><h>60</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;40;120;10</additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>290</y><w>140</w><h>180</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;160;120;10</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>420</x><y>180</y><w>220</w><h>410</h></coordinates><panel_attributes>type=state
+type=state
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>150</y><w>220</w><h>440</h></coordinates><panel_attributes>lt=.
+type
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>350</y><w>170</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>150;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>480</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element></diagram>
