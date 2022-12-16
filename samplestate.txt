@@ -1,0 +1,31 @@
+user: {
+    _id: ###
+    username: "Jimmy",
+    email: "jimmy@demo.io",
+    phone_number: ###,
+    password_digest: ###,
+    session_token: ###,
+    reminders: [
+        ObjectId("###"),
+        ObjectId("###"),
+        ObjectId("###")
+    ]
+}
+
+reminder: {
+    _id: ###,
+    type: "personal",
+    title: "replace toothbrush",
+    doc_links: ["www.buy.com", "reviews.com"],
+    datetime: "#/#/# #:#:#",
+    repeat_interval: ###,
+    notifications: [
+        ObjectId("###"),
+        ObjectId("###")
+    ]
+}
+
+notifications: {
+    _id: ###,
+    datetime: "#/#/# #:#:#"
+}
