@@ -20,12 +20,14 @@ reminder: {
     datetime: "#/#/# #:#:#",
     repeat_interval: ###,
     notifications: [
-        ObjectId("###"),
-        ObjectId("###")
+        {
+            _id: ###,
+            datetime: "#/#/# #:#:#"
+        },
+        {
+            _id: ###,
+            datetime: "#/#/# #:#:#"
+        }
     ]
 }
 
-notifications: {
-    _id: ###,
-    datetime: "#/#/# #:#:#"
-}
