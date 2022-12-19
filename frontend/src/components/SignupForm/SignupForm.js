@@ -1,17 +1,63 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { signupUser } from "../../store/session";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "./SignUpForm.css";
+import { signup, clearSessionErrors } from "../../store/session";
 
-export default function SignUpForm() {
+export default function SignupForm() {
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
+  const errors = useSelector((state) => state.errors.session);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearSessionErrors());
+    };
+  }, [dispatch]);
+
+  const update = (field) => {
+    let setState;
+
+    switch (field) {
+      case "email":
+        setState = setEmail;
+        break;
+      case "username":
+        setState = setUsername;
+        break;
+      case "password":
+        setState = setPassword;
+        break;
+      case "password2":
+        setState = setPassword2;
+        break;
+      default:
+        throw Error("Unknown field in Signup Form");
+    }
+
+    return (e) => setState(e.currentTarget.value);
+  };
+
+  const usernameSubmit = (e) => {
+    e.preventDefault();
+    const user = {
+      email,
+      username,
+      password,
+    };
+
+    dispatch(signup(user));
+  };
+
   return (
     <>
       <div className="signup-grid">
         <div className="signup-form">
           <h1 className="signup-title">Sign Up</h1>
           <span className="signup-description">
-            Create an account to enjoy all the services without any ads for
-            free!
+            Create an account to start setting up your reminders now!
           </span>
           <form>
             {/* onSubmit={handleSubmit} */}
@@ -37,6 +83,18 @@ export default function SignUpForm() {
                   placeholder="password"
                   // onChange={handleChange}
                   className="password"
+                />
+              </div>
+
+              <div className="phonenumber-input">
+                <input
+                  type="phonenumber"
+                  // value={formValues.phone}
+                  name="phonenumber"
+                  id="phonenumber"
+                  placeholder="phonenumber"
+                  // onChange={handleChange}
+                  className="phonenumber"
                 />
               </div>
             </div>

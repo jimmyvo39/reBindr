@@ -1,59 +1,30 @@
-// import { useState } from "react";
-// import { useDispatch } from "react-redux";
-// import { login } from "../../store/session";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "./LoginForm.css";
 
+import { login, clearSessionErrors } from "../../store/session";
+
 export default function LoginForm() {
-  // { onSuccess }
-  // const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const errors = useSelector((state) => state.errors.session);
+  const dispatch = useDispatch();
 
-  // const [formValues, setFormValues] = useState({
-  //   email: "",
-  //   password: "",
-  // });
+  useEffect(() => {
+    return () => {
+      dispatch(clearSessionErrors());
+    };
+  }, [dispatch]);
 
-  // const [errors, setErrors] = useState(null);
-  // const handleChange = (e) => {
-  //   setFormValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  // };
+  const update = (field) => {
+    const setState = field === "email" ? setEmail : setPassword;
+    return (e) => setState(e.currentTarget.value);
+  };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   const user = {
-  //     email: formValues.email,
-  //     password: formValues.password,
-  //   };
-
-  //   setErrors(null);
-  //   dispatch(login(user))
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         onSuccess();
-  //       }
-  //     })
-  //     .catch(async (res) => {
-  //       // const errors = await res.json();
-  //       setErrors("Invalid email or password.");
-  //     });
-  // };
-  // const handleDemoUser = () => {
-  //   setErrors("");
-  //   const user = {
-  //     email: "jimmy@vo.com",
-  //     password: "password",
-  //   };
-  //   dispatch(login(user))
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         onSuccess();
-  //       }
-  //     })
-  //     .catch(async (res) => {
-  //       const errors = await res.json();
-  //       setErrors(errors);
-  //     });
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login({ email, password }));
+  };
 
   return (
     <>
@@ -63,47 +34,50 @@ export default function LoginForm() {
           <span className="login-description">
             Already have an account? Get in to set your reminders now!
           </span>
-          <form>
-            {/* onSubmit={handleSubmit} */}
+          <form onSubmit={handleSubmit}>
             <div className="input-wrapper">
+              <div className="errors">{errors?.email}</div>
               <div className="login-input">
                 <input
                   type="email"
-                  // value={formValues.email}
+                  value={email}
                   name="email"
                   id="email"
                   placeholder="email"
-                  // onChange={handleChange}
+                  onChange={update("email")}
                   className="email"
                 />
               </div>
 
+              <div className="errors">{errors?.password}</div>
+
               <div className="password-input">
                 <input
                   type="password"
-                  // value={formValues.password}
+                  value={password}
                   name="password"
                   id="password"
                   placeholder="password"
-                  // onChange={handleChange}
+                  onChange={update("password")}
                   className="password"
                 />
               </div>
             </div>
 
-            {/* {errors && <div className="error-login">{errors}</div>} */}
+            {errors && <div className="error-login">{errors}</div>}
             <div className="buttons-wrapper">
-              <button type="submit" className="login-btn">
-                Sign in
-              </button>
+              <input
+                type="submit"
+                className="login-btn"
+                value="Log in"
+                disabled={!email || !password}
+              />
 
-              <button
-                // onClick={handleDemoUser}
+              <input
+                type="submit"
                 className="demo-user-btn"
-                type="button"
-              >
-                Demo User
-              </button>
+                value="Demo User"
+              />
             </div>
           </form>
         </div>
