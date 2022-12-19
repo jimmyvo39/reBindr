@@ -10,6 +10,10 @@ const userSchema = Schema({
       type: String,
       required: true
     },
+    phone: {
+      type: String,
+      required: true
+    },
     hashedPassword: {
       type: String,
       required: true

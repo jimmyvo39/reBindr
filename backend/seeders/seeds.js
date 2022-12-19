@@ -13,6 +13,7 @@ users.push(
   new User ({
     username: 'demouser',
     email: 'demo@user.io',
+    phone: '0000000000',
     hashedPassword: bcrypt.hashSync('password', 10)
   })
 )
@@ -55,3 +56,5 @@ const insertSeeds = () => {
                     process.exit(1);
                 });
 }
+
+//dotenv node seeders/seeds.js         

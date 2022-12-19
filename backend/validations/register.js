@@ -14,6 +14,10 @@ const validateRegisterInput = [
       .exists({ checkFalsy: true })
       .isLength({ min: 6, max: 30 })
       .withMessage('Password must be between 6 and 30 characters'),
+    check('phone')
+      .exists({ checkFalsy: true })
+      .isMobilePhone()
+      .withMessage('Phone number must be valid'),
     handleValidationErrors
   ];
   
