@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Karla:wght@400;500;700&display=swap');
+
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  font-family: 'Karla';
+  margin: 0 auto;
+  position: absolute;
+  width: 627px;
+  height: 627px;
+  left: 406px;
+  top: 105px;
+  background: #F6FBF9;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+  border-radius: 49px;
+}
+
+.login-title {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 72px;
+  text-align: center;
+  color: #212B27;
+  margin-top: 25px;
+  
+}
+
+.login-description{
+  position: relative;
+  top: 10px;
+  width: 424px;
+  height: 54px;
+  margin:0 auto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  color: #32403B;
+
+}
+
+.input-wrapper{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+
+.buttons-wrapper{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.login-input .email{
+  width: 517px;
+  height: 76px;
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 20px;
+}
+
+.password-input .password{
+  width: 517px;
+  height: 76px;
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 20px;
+  margin-top: 20px;
+}
+
+.login-input input{
+  text-indent: 40px;
+}
+
+.password-input input{
+  text-indent: 40px;
+}
+
+.login-btn{
+  width: 320px;
+  height: 70px;
+  background: #84C7AE;
+  border-radius: 23px;
+  border:none;
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 44px;
+  color: white;
+  margin-top:29px;
+}
+
+.demo-user-btn{
+  margin-top:20px;
+  width: 320px;
+  height: 70px;
+  background: #84C7AE;
+  border-radius: 23px;
+  border:none;
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 44px;
+  color: white;
+}
+
+.error-login {
+  color:#A61A2E;
+  text-align: center;
+  padding-top: 20px;
+}
