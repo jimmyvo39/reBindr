@@ -6,20 +6,38 @@ export default function NavBar() {
   return (
     <>
       <div className="nav-bar">
-        <nav className="navigations">
-          <a href="/">
+        <nav>
+          <ul>
+            <li>
+              <a href="/" className="logo">
+                <img src="../logo.png" alt="logo" />
+              </a>
+            </li>
+            <li>
+              <a href="/">Log In</a>
+            </li>
+            <li>
+              <a href="/signup">Sign Up</a>
+            </li>
+            <li>
+              <a href="#">About</a>
+            </li>
+          </ul>
+        </nav>
+        {/* <nav className="navigations">
+          <a className="logo" href="/">
             <img src="../logo.png" alt="logo" />
           </a>
-          <a href="/">
+          <a className="login-link" href="/">
             <h1>Log In</h1>
           </a>
-          <a href="/">
+          <a className="signup-link" href="/">
             <h1>Sign Up</h1>
           </a>
-          <a href="/">
+          <a className="about-link" href="/">
             <h1>About</h1>
           </a>
-        </nav>
+        </nav> */}
       </div>
     </>
   );
