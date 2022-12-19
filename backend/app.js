@@ -7,6 +7,8 @@ const cors = require('cors');
 const { isProduction } = require('./config/keys');
 const debug = require('debug');
 
+require('./models/User');
+
 const usersRouter = require('./routes/api/users');
 const csrfRouter = require('./routes/api/csrf');
 
