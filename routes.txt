@@ -6,6 +6,8 @@ Current user: 'GET', /api/users/current
 Current user's inventory: 'GET', /api/users/inventory
 Full inventory: 'GET', /api/inventories
 Specific Item: 'GET', /api/inventories/:id
-Create Item: 'POST, /api/inventories
+Create Item: 'POST', /api/inventories
 
-Current user's remidners: 'GET' /api/users/reminders
+Current user's reminders: 'GET' /api/users/reminders
+Create reminder: 'POST' /api/reminders
+Specific Item's reminders: 'GET' /api/inventories/:id/reminders

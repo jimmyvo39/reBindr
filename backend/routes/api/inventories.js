@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Inventory = mongoose.model('Inventory')
+const Reminder = mongoose.model('Reminder')
 const validateInventoryInput = require('../../validations/inventoryItems')
 const { requireUser } = require('../../config/passport');
 
@@ -50,5 +51,18 @@ router.post('/', requireUser, validateInventoryInput, async (req, res, next) => 
       next(err);
     }
 });
+
+router.get('/:id/reminders', async (req, res, next) => {
+    try {
+        const reminders = await Reminder.find({item: req.params.id})
+                                        .sort({ createdAt: -1 })
+                                        .populate("uploader", "_id, username")
+                                        .populate("item", "_id, user_manual name consumables")
+        return res.json(reminders);
+    }
+    catch(err) {
+        return res.json([]);
+    }
+})
 
 module.exports = router
