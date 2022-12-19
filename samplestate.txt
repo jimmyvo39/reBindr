@@ -17,6 +17,7 @@ user: {
 inventory: {
     _id: ###,
     name: "appliance",
+    uploader: "user_id" 
     model: ###,
     user_manual: "<link>",
     consumables: [

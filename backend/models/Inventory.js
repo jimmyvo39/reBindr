@@ -14,7 +14,7 @@ const inventorySchema = Schema({
       type: String
     },
     notes: {
-      type: Text
+      type: String
     },
     user_manual: {
       type: String
