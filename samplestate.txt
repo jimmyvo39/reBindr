@@ -17,7 +17,7 @@ user: {
 inventory: {
     _id: ###,
     name: "appliance",
-    uploader: "user_id" 
+    uploader:  ObjectId('###'),
     model: ###,
     user_manual: "<link>",
     consumables: [
@@ -32,10 +32,11 @@ inventory: {
 
 reminder: {
     _id: ###,
-    type: "personal",
+    item:  ObjectId('###'),
+    uploader: ObjectId('###'),
     title: "replace toothbrush",
     doc_links: ["www.buy.com", "reviews.com"],
-    datetime: "#/#/# #:#:#",
+    date: "#/#/# #:#:#",
     repeat_interval: ###,
     notifications: [
         {

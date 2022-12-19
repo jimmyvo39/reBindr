@@ -1,10 +1,11 @@
 Backend Routes:
 Sign-up: 'POST', /api/users/register
 Login: 'POST', /api/users/login
-Logout?
 Current user: 'GET', /api/users/current
 
 Current user's inventory: 'GET', /api/users/inventory
 Full inventory: 'GET', /api/inventories
 Specific Item: 'GET', /api/inventories/:id
 Create Item: 'POST, /api/inventories
+
+Current user's remidners: 'GET' /api/users/reminders

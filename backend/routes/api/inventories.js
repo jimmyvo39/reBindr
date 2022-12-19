@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 const Inventory = mongoose.model('Inventory')
 const validateInventoryInput = require('../../validations/inventoryItems')
 const { requireUser } = require('../../config/passport');
+
 router.get('/', async (req, res) => {
     try {
         const inventories = await Inventory.find()
