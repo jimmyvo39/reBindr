@@ -14,10 +14,10 @@ export default function NavBar() {
               </a>
             </li>
             <li>
-              <a href="http://google.com/">Log In</a>
+              <a href="/">Log In</a>
             </li>
             <li>
-              <a href="#">Sign Up</a>
+              <a href="/signup">Sign Up</a>
             </li>
             <li>
               <a href="#">About</a>
