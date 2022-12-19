@@ -144,7 +144,7 @@ table {
 }
 
 .App{
-    background-image: url(../assets/images/background.jpg);
+    background-image: url(../public/background.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;

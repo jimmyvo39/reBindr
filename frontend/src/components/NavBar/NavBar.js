@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import Logo from "../../public/assets/images/logo.png";
-import "./index.css";
+// import Logo from "../../../public/assets/images/logo.png";
+import "./NavBar.css";
 
 export default function NavBar() {
   return (
@@ -8,7 +8,7 @@ export default function NavBar() {
       <div className="nav-bar">
         <nav className="navigations">
           <a href="/">
-            <img src={Logo} alt="logo" />
+            <img src="../logo.png" alt="logo" />
           </a>
           <a href="/">
             <h1>Log In</h1>

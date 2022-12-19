@@ -3,21 +3,40 @@ user: {
     username: "Jimmy",
     email: "jimmy@demo.io",
     phone_number: ###,
-    password_digest: ###,
-    session_token: ###,
+    hashedPassword: ###,
     reminders: [
         ObjectId("###"),
         ObjectId("###"),
         ObjectId("###")
+    ],
+    inventory: [
+        ObjectId('###')
     ]
+}
+
+inventory: {
+    _id: ###,
+    name: "appliance",
+    uploader:  ObjectId('###'),
+    model: ###,
+    user_manual: "<link>",
+    consumables: [
+        {
+            _id: ###,
+            type: "appliance consumable"
+            link: "<link>"
+        }
+    ]
+    notes: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tempor nulla ac ultrices ultrices."
 }
 
 reminder: {
     _id: ###,
-    type: "personal",
+    item:  ObjectId('###'),
+    uploader: ObjectId('###'),
     title: "replace toothbrush",
     doc_links: ["www.buy.com", "reviews.com"],
-    datetime: "#/#/# #:#:#",
+    date: "#/#/# #:#:#",
     repeat_interval: ###,
     notifications: [
         {
