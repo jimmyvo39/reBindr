@@ -4,8 +4,17 @@ import { RECEIVE_USER_LOGOUT } from './session';
 const RECEIVE_INVENTORIES = "inventories/RECEIVE_INVENTORIES";
 const RECEIVE_USER_INVENTORIES = "inventories/RECEIVE_USER_INVENTORIES";
 const RECEIVE_NEW_INVENTORY = "inventories/RECEIVE_NEW_INVENTORY";
+const REMOVE_INVENTORY = "inventories/RECEIVE_INVENTORY";
+
 const RECEIVE_INVENTORY_ERRORS = "inventories/RECEIVE_INVENTORY_ERRORS";
 const CLEAR_INVENTORY_ERRORS = "inventories/CLEAR_INVENTORY_ERRORS";
+
+const removeInventory = inventoryId => ({
+    type: REMOVE_INVENTORY,
+    inventory
+})
+
+export const removeQuestion = (questionId) => ({type: REMOVE_QUESTION, questionId});
 
 const receiveInventories = inventories => ({
   type: RECEIVE_INVENTORIES,
