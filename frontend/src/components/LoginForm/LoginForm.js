@@ -3,11 +3,14 @@ import { useSelector, useDispatch } from "react-redux";
 import "./LoginForm.css";
 
 import { login, clearSessionErrors } from "../../store/session";
+import { Redirect } from "react-router-dom";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const errors = useSelector((state) => state.session.errors);
+  const errors = useSelector((state) => state.errors.session);
+  const currentUser = useSelector((state) => state.session.user)
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,6 +29,8 @@ export default function LoginForm() {
     dispatch(login({ email, password }));
   };
 
+  if (currentUser) return <Redirect to="/" />
+
   return (
     <>
       <div className="login-grid">
@@ -36,7 +41,6 @@ export default function LoginForm() {
           </span>
           <form onSubmit={handleSubmit}>
             <div className="input-wrapper">
-              <div className="errors">{errors?.email}</div>
               <div className="login-input">
                 <input
                   type="email"
@@ -48,8 +52,7 @@ export default function LoginForm() {
                   className="email"
                 />
               </div>
-
-              <div className="errors">{errors?.password}</div>
+              <div className="errors">{errors?.email}</div>
 
               <div className="password-input">
                 <input
@@ -62,9 +65,9 @@ export default function LoginForm() {
                   className="password"
                 />
               </div>
+              <div className="errors">{errors?.password}</div>
             </div>
 
-            {errors && <div className="error-login">{errors}</div>}
             <div className="buttons-wrapper">
               <input
                 type="submit"
