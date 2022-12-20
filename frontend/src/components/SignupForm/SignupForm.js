@@ -4,52 +4,52 @@ import "./SignUpForm.css";
 import { signup, clearSessionErrors } from "../../store/session";
 
 export default function SignupForm() {
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [password2, setPassword2] = useState("");
-  const errors = useSelector((state) => state.errors.session);
-  const dispatch = useDispatch();
+  // const [email, setEmail] = useState("");
+  // const [username, setUsername] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [password2, setPassword2] = useState("");
+  // const errors = useSelector((state) => state.errors.session);
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    return () => {
-      dispatch(clearSessionErrors());
-    };
-  }, [dispatch]);
+  // useEffect(() => {
+  //   return () => {
+  //     dispatch(clearSessionErrors());
+  //   };
+  // }, [dispatch]);
 
-  const update = (field) => {
-    let setState;
+  // const update = (field) => {
+  //   let setState;
 
-    switch (field) {
-      case "email":
-        setState = setEmail;
-        break;
-      case "username":
-        setState = setUsername;
-        break;
-      case "password":
-        setState = setPassword;
-        break;
-      case "password2":
-        setState = setPassword2;
-        break;
-      default:
-        throw Error("Unknown field in Signup Form");
-    }
+  //   switch (field) {
+  //     case "email":
+  //       setState = setEmail;
+  //       break;
+  //     case "username":
+  //       setState = setUsername;
+  //       break;
+  //     case "password":
+  //       setState = setPassword;
+  //       break;
+  //     case "password2":
+  //       setState = setPassword2;
+  //       break;
+  //     default:
+  //       throw Error("Unknown field in Signup Form");
+  //   }
 
-    return (e) => setState(e.currentTarget.value);
-  };
+  //   return (e) => setState(e.currentTarget.value);
+  // };
 
-  const usernameSubmit = (e) => {
-    e.preventDefault();
-    const user = {
-      email,
-      username,
-      password,
-    };
+  // const usernameSubmit = (e) => {
+  //   e.preventDefault();
+  //   const user = {
+  //     email,
+  //     username,
+  //     password,
+  //   };
 
-    dispatch(signup(user));
-  };
+  //   dispatch(signup(user));
+  // };
 
   return (
     <>
