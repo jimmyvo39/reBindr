@@ -2,12 +2,17 @@ Backend Routes:
 Sign-up: 'POST', /api/users/register
 Login: 'POST', /api/users/login
 Current user: 'GET', /api/users/current
+Edit current user: 'PATCH', /api/users/:id
 
 Current user's inventory: 'GET', /api/users/inventory
 Full inventory: 'GET', /api/inventories
 Specific Item: 'GET', /api/inventories/:id
 Create Item: 'POST', /api/inventories
+Edit Item: 'PATCH', /api/inventories/:id
+Add Consumable: 'PATCH', /api/inventories/:id/addConsumable
 
 Current user's reminders: 'GET' /api/users/reminders
 Create reminder: 'POST' /api/reminders
 Specific Item's reminders: 'GET' /api/inventories/:id/reminders
+Edit reminder: 'PATCH', /api/reminders/:id
+Add notification: 'PATCH', /api/reminders/:id/addNotification

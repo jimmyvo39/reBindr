@@ -40,4 +40,21 @@ router.post('/', requireUser, validateReminderInput, async (req, res, next) => {
     }
 });
 
+router.patch('/:id', async (req, res, next) => {
+    let reminder = await Reminder.findById(req.params.id)
+    if (!reminder) return res.json(null)
+    reminder.title = req.body.title
+    reminder.doc_links = req.body.doc_links
+    reminder.date = req.body.date
+    reminder.repeat = req.body.repeat
+    return res.json(reminder)
+})
+  
+router.patch('/:id/addNotification', async (req, res, next) => {
+    let reminder = await Reminder.findById(req.params.id)
+    if (!reminder) return res.json(null)
+    reminder.notifications.concat(req.body.notification)
+    return res.json(reminder)
+})
+
 module.exports = router
