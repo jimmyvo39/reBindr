@@ -1,4 +1,6 @@
 const { check } = require("express-validator");
+const { router } = require("../app");
+const Reminder = require("../models/Reminder");
 const handleValidationErrors = require('./handleValidationErrors');
 
 const validateReminderInput = [
@@ -13,6 +15,7 @@ const validateReminderInput = [
         .withMessage('Reminder must have a valid date.'),
     handleValidationErrors
 ];
-  
+
+
   
 module.exports = validateReminderInput;

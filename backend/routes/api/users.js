@@ -105,7 +105,6 @@ router.get('/inventory', requireUser, async (req, res, next) => {
 
 router.get('/reminders', requireUser, async (req, res, next) => {
   let user;
-  let inventory
   try {
       user = await User.findById(req.user._id);
   } catch(err) {
@@ -124,6 +123,15 @@ router.get('/reminders', requireUser, async (req, res, next) => {
   catch(err) {
       return res.json([]);
   }
+})
+
+router.patch('/:id', requireUser, async (req, res, next) => {
+  const user = req.user
+  if (!user) return res.json(null)
+  user.username = req.body.username
+  user.email = req.body.email
+  user.phone = req.body.phone
+  return res.json(user)
 })
 
 module.exports = router;
