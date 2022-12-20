@@ -19,13 +19,12 @@ function Root() {
   );
 }
 
-const renderApplication = () => {
-  ReactDOM.render(
-    <React.StrictMode>
-      <Root />
-    </React.StrictMode>,
-    document.getElementById("root")
-  );
-}
 
-store.dispatch(restoreSession()).then(renderApplication)
+ReactDOM.render(
+  <React.StrictMode>
+    <Root />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+
+

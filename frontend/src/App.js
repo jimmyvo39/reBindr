@@ -1,11 +1,13 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import BigCalendar from "./components/Calendar";
+import HomePage from "./components/HomePage";
 import LoginForm from "./components/LoginForm/LoginForm";
 import SignUpForm from "./components/SignupForm/SignupForm";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getCurrentUser } from "./store/session";
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -21,7 +23,7 @@ function App() {
   if (sessionUser) {
     SessionLinks = (
       <>
-        <h1>Home Page</h1>
+        <HomePage/>
       </>
     );
   } else {

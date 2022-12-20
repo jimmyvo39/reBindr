@@ -1,15 +1,17 @@
 import jwtFetch from './jwt';
 import { RECEIVE_USER_LOGOUT } from './session';
 
-const RECEIVE_INVENTORIES = "inventories/RECEIVE_INVENTORIES";
-const RECEIVE_USER_INVENTORIES = "inventories/RECEIVE_USER_INVENTORIES";
-const RECEIVE_NEW_INVENTORY = "inventories/RECEIVE_NEW_INVENTORY";
-const REMOVE_INVENTORY = "inventories/RECEIVE_INVENTORY";
+export const RECEIVE_INVENTORIES = "inventories/RECEIVE_INVENTORIES";
+export const RECEIVE_INVENTORY = "inventories/RECEIVE_INVENTORY";
+export const RECEIVE_USER_INVENTORIES = "inventories/RECEIVE_USER_INVENTORIES";
+export const RECEIVE_NEW_INVENTORY = "inventories/RECEIVE_NEW_INVENTORY";
+export const REMOVE_INVENTORY = "inventories/RECEIVE_INVENTORY";
 
-const RECEIVE_INVENTORY_ERRORS = "inventories/RECEIVE_INVENTORY_ERRORS";
-const CLEAR_INVENTORY_ERRORS = "inventories/CLEAR_INVENTORY_ERRORS";
+export const RECEIVE_INVENTORY_ERRORS = "inventories/RECEIVE_INVENTORY_ERRORS";
+export const CLEAR_INVENTORY_ERRORS = "inventories/CLEAR_INVENTORY_ERRORS";
 
-
+export const getInventory = (inventoryId) => (state) => state.inventories ? state.inventories[inventoryId] : null;
+export const getInventories =  (state) => state.inventories ? Object.values(state.inventories) : [];
 
 
 const receiveInventories = inventories => ({
@@ -22,8 +24,8 @@ const receiveUserInventories = inventories => ({
     inventories
 });
 
-const receiveNewInventory = inventory => ({
-    type: RECEIVE_NEW_INVENTORY,
+const receiveInventory = inventory => ({
+    type: RECEIVE_INVENTORY,
     inventory
 });
 
@@ -31,6 +33,9 @@ const removeInventory = inventoryId => ({
     type: REMOVE_INVENTORY,
     inventoryId
 });
+
+
+
 
 const receiveErrors = errors => ({
   type: RECEIVE_INVENTORY_ERRORS,
@@ -41,6 +46,8 @@ export const clearInventoryErrors = errors => ({
     type: CLEAR_INVENTORY_ERRORS,
     errors
 });
+
+
 
 export const deleteInventory = (inventoryId) => async (dispatch) => {
     await jwtFetch(`/api/inventories/${inventoryId}`,{
@@ -65,10 +72,24 @@ export const fetchInventories = () => async dispatch => {
     }
   };
 
-  export const fetchUserInventories = async dispatch => {
+export const fetchInventory = (InventoryId) => async dispatch => {
+    try {
+      const res = await jwtFetch (`/api/inventories/${InventoryId}`);
+      const inventory = await res.json();
+      dispatch(receiveInventory(inventory));
+    } catch (err) {
+      const resBody = await err.json();
+      if (resBody.statusCode === 400) {
+        dispatch(receiveErrors(resBody.errors));
+      }
+    }
+  };
+
+  export const fetchUserInventories = () => async dispatch => {
     try {
       const res = await jwtFetch(`/api/users/inventory`);
       const inventories = await res.json();
+    //   console.log(inventories)
       dispatch(receiveUserInventories(inventories));
     } catch(err) {
       const resBody = await err.json();
@@ -80,12 +101,12 @@ export const fetchInventories = () => async dispatch => {
   
   export const addInventory = data => async dispatch => {
     try {
-      const res = await jwtFetch('/api/i/inventories/', {
+      const res = await jwtFetch('/api/inventories/', {
         method: 'POST',
         body: JSON.stringify(data)
       });
       const inventory = await res.json();
-      dispatch(receiveNewInventory(inventory));
+      dispatch(receiveInventory(inventory));
     } catch(err) {
       const resBody = await err.json();
       if (resBody.statusCode === 400) {
@@ -96,7 +117,7 @@ export const fetchInventories = () => async dispatch => {
 
   const nullErrors = null;
 
-export const tweetErrorsReducer = (state = nullErrors, action) => {
+export const inventoryErrorsReducer = (state = nullErrors, action) => {
   switch(action.type) {
     case RECEIVE_INVENTORY_ERRORS:
       return action.errors;
@@ -108,14 +129,14 @@ export const tweetErrorsReducer = (state = nullErrors, action) => {
   }
 };
 
-const inventoriesReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
+const inventoriesReducer = (state = {}, action) => {
     switch(action.type) {
       case RECEIVE_INVENTORIES:
-        return { ...state, all: action.inventories, new: undefined};
+        return { ...state, ...action.inventories};
       case RECEIVE_USER_INVENTORIES:
-        return { ...state, user: action.inventories, new: undefined};
-      case RECEIVE_NEW_INVENTORY:
-        return { ...state, new: action.tweet};
+        return { ...state,  ...action.inventories};
+      case RECEIVE_INVENTORY:
+        return { [action.inventory.id]: action.inventory};
       case RECEIVE_USER_LOGOUT:
         return { ...state, user: {}, new: undefined }
       default:
