@@ -1,90 +1,42 @@
-import jwtFetch from "./jwt";
-
-const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER";
-const RECEIVE_SESSION_ERRORS = "session/RECEIVE_SESSION_ERRORS";
-const CLEAR_SESSION_ERRORS = "session/CLEAR_SESSION_ERRORS";
-export const RECEIVE_USER_LOGOUT = "session/RECEIVE_USER_LOGOUT";
-
-// Dispatch receiveCurrentUser when a user logs in.
-const receiveCurrentUser = (currentUser) => ({
-  type: RECEIVE_CURRENT_USER,
-  currentUser,
-});
-
-// Dispatch receiveErrors to show authentication errors on the frontend.
-const receiveErrors = (errors) => ({
-  type: RECEIVE_SESSION_ERRORS,
-  errors,
-});
-
-// Dispatch logoutUser to clear the session user when a user logs out.
-const logoutUser = () => ({
-  type: RECEIVE_USER_LOGOUT,
-});
-
-// Dispatch clearSessionErrors to clear any session errors.
-export const clearSessionErrors = () => ({
-  type: CLEAR_SESSION_ERRORS,
-});
-
-export const signup = (user) => startSession(user, "api/users/register");
-export const login = (user) => startSession(user, "api/users/login");
-
-const startSession = (userInfo, route) => async (dispatch) => {
-  try {
-    const res = await jwtFetch(route, {
-      method: "POST",
-      body: JSON.stringify(userInfo),
-    });
-    const { user, token } = await res.json();
-    localStorage.setItem("jwtToken", token);
-    return dispatch(receiveCurrentUser(user));
-  } catch (err) {
-    const res = await err.json();
-    if (res.statusCode === 400) {
-      return dispatch(receiveErrors(res.errors));
-    }
+function getCookie(cookieName) {
+  const cookies = document.cookie.split(";");
+  debugger;
+  for (let cookie of cookies) {
+    const [name, value] = cookie.split("=");
+    if (name.trim() === cookieName) return value;
   }
-};
+  return null;
+}
 
-export const logout = () => (dispatch) => {
-  localStorage.removeItem("jwtToken");
-  dispatch(logoutUser());
-};
+async function jwtFetch(url, options = {}) {
+  // Set options.method to 'GET' if there is no method.
+  options.method = options.method || "GET";
 
-export const getCurrentUser = () => async (dispatch) => {
-  const res = await jwtFetch("/api/users/current");
-  const user = await res.json();
-  return dispatch(receiveCurrentUser(user));
-};
+  // Set options.headers to an empty object if there is no headers.
+  options.headers = options.headers || {};
+  // Set the "Authorization" header to the value of "jwtToken" in localStorage.
+  options.headers["Authorization"] = localStorage.getItem("jwtToken");
 
-const nullErrors = null;
-
-export const sessionErrorsReducer = (state = nullErrors, action) => {
-  switch (action.type) {
-    case RECEIVE_SESSION_ERRORS:
-      return action.errors;
-    case RECEIVE_CURRENT_USER:
-    case CLEAR_SESSION_ERRORS:
-      return nullErrors;
-    default:
-      return state;
+  // If the options.method is not 'GET', then set the "Content-Type" header to
+  // "application/json" and the "CSRF-Token" header to the value stored in the
+  // "CSRF-TOKEN" cookie.
+  if (options.method.toUpperCase() !== "GET") {
+    options.headers["Content-Type"] =
+      options.headers["Content-Type"] || "application/json";
+    options.headers["CSRF-Token"] = getCookie("CSRF-TOKEN");
   }
-};
 
-const initialState = {
-  user: undefined,
-};
+  // debugger;
+  // Call fetch with the url and the updated options hash.
+  const res = await fetch(url, options);
 
-const sessionReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case RECEIVE_CURRENT_USER:
-      return { user: action.currentUser };
-    case RECEIVE_USER_LOGOUT:
-      return initialState;
-    default:
-      return state;
-  }
-};
+  // If the response status code is 400 or above, then throw an error with the
+  // error being the response.
+  if (res.status >= 400) throw res;
 
-export default sessionReducer;
+  // If the response status code is under 400, then return the response to the
+  // next promise chain.
+  return res;
+}
+
+export default jwtFetch;

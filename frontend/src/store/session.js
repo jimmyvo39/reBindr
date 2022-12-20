@@ -36,6 +36,7 @@ const startSession = (userInfo, route) => async (dispatch) => {
       method: "POST",
       body: JSON.stringify(userInfo),
     });
+
     const { user, token } = await res.json();
     localStorage.setItem("jwtToken", token);
     return dispatch(receiveCurrentUser(user));

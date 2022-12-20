@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const { requireUser } = require('../../config/passport');
 const Reminder = mongoose.model('Reminder')
 const validateReminderInput = require('../../validations/reminder');
+const Notification = mongoose.model('Notification')
 
 router.get('/:id', async (req, res, next) => {
     try {
@@ -27,7 +28,6 @@ router.post('/', requireUser, validateReminderInput, async (req, res, next) => {
         item: req.body.item,
         date: Date.parse(req.body.date),
         repeat: req.body.repeat,
-        doc_links: req.body.doc_links
       });
       console.log(newReminder)
   
@@ -41,24 +41,34 @@ router.post('/', requireUser, validateReminderInput, async (req, res, next) => {
 });
 
 router.patch('/:id', async (req, res, next) => {
+    console.log(req.params.id)
     let reminder = await Reminder.findById(req.params.id)
     if (!reminder) return res.json(null)
     reminder.title = req.body.title
-    reminder.doc_links = req.body.doc_links
     reminder.date = req.body.date
     reminder.repeat = req.body.repeat
+    reminder.save()
     return res.json(reminder)
 })
   
 router.patch('/:id/addNotification', async (req, res, next) => {
     let reminder = await Reminder.findById(req.params.id)
     if (!reminder) return res.json(null)
-    reminder.notifications.concat(req.body.notification)
+    const newNotification = new Notification({ date: req.body.date })
+    console.log(newNotification)
+    reminder.notifications.push(newNotification)
+    reminder.save()
     return res.json(reminder)
 })
 
 router.delete('/:id', async (req, res, next) => {
     await Reminder.findByIdAndDelete(req.params.id)
+        .then(reminders => {
+            return res.redirect('/api/users/reminders')
+        })
+        .catch(err => {
+            console.log(err);
+        });
 })
 
 module.exports = router

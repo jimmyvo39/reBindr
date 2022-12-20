@@ -77,7 +77,7 @@ router.patch('/:id', async (req, res, next) => {
 router.patch('/:id/addConsumable', async (req, res, next) => {
     let item = await Inventory.findById(req.params.id)
     if (!item) return res.json(null)
-    item.consumables.concat(req.body.consumable)
+    item.consumables.push(req.body.consumable)
     return res.json(item)
 })
 
