@@ -41,7 +41,6 @@ router.post('/', requireUser, validateReminderInput, async (req, res, next) => {
 });
 
 router.patch('/:id', async (req, res, next) => {
-    console.log(req.params.id)
     let reminder = await Reminder.findById(req.params.id)
     if (!reminder) return res.json(null)
     reminder.title = req.body.title
@@ -55,20 +54,31 @@ router.patch('/:id/addNotification', async (req, res, next) => {
     let reminder = await Reminder.findById(req.params.id)
     if (!reminder) return res.json(null)
     const newNotification = new Notification({ date: req.body.date })
-    console.log(newNotification)
     reminder.notifications.push(newNotification)
+    reminder.save()
+    return res.json(reminder)
+})
+
+router.delete('/:id/notifications/:notification_id', async (req, res, next) => {
+    const reminder = await Reminder.findById(req.params.id)
+    if (!reminder) return res.json(null)
+    reminder.notifications.forEach(notification => {
+        if (notification._id.toString() === req.params.notification_id) {
+            reminder.notifications.pop(notification)
+        }
+    })
     reminder.save()
     return res.json(reminder)
 })
 
 router.delete('/:id', async (req, res, next) => {
     await Reminder.findByIdAndDelete(req.params.id)
-        .then(reminders => {
-            return res.redirect('/api/users/reminders')
-        })
-        .catch(err => {
-            console.log(err);
-        });
+    .then(() => {
+        return res.redirect('/api/users/reminders')
+    })
+    .catch(err => {
+        console.log(err);
+    });
 })
 
 module.exports = router
