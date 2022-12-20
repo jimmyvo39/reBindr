@@ -13,6 +13,7 @@ const passport = require('passport');
 require('./models/Inventory')
 require('./models/Reminder')
 require('./models/Notifications')
+require('./models/Consumable')
 
 const usersRouter = require('./routes/api/users');
 const csrfRouter = require('./routes/api/csrf');
