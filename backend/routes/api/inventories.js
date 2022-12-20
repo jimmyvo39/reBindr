@@ -65,4 +65,24 @@ router.get('/:id/reminders', async (req, res, next) => {
     }
 })
 
+router.patch('/:id', async (req, res, next) => {
+    let item = await Inventory.findById(req.params.id)
+    if (!item) return res.json(null)
+    item.name = req.body.name
+    item.model = req.body.model
+    item.user_manual = req.body.user_manual
+    return res.json(item)
+})
+
+router.patch('/:id/addConsumable', async (req, res, next) => {
+    let item = await Inventory.findById(req.params.id)
+    if (!item) return res.json(null)
+    item.consumables.push(req.body.consumable)
+    return res.json(item)
+})
+
+router.delete('/:id', async (req, res, next) => {
+    await Inventory.findByIdAndDelete(req.params.id)
+})
+
 module.exports = router

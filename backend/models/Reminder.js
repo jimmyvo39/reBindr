@@ -21,9 +21,7 @@ const reminderSchema = Schema({
     repeat: {
         type: String
     },
-    doc_links: {
-        type: Array
-    }
+    notifications: []
   }, {
     timestamps: true
   });

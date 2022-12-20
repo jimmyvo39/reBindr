@@ -35,7 +35,6 @@ reminder: {
     item:  ObjectId('###'),
     uploader: ObjectId('###'),
     title: "replace toothbrush",
-    doc_links: ["www.buy.com", "reviews.com"],
     date: "#/#/# #:#:#",
     repeat_interval: ###,
     notifications: [
