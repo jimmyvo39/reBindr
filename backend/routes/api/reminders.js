@@ -57,4 +57,8 @@ router.patch('/:id/addNotification', async (req, res, next) => {
     return res.json(reminder)
 })
 
+router.delete('/:id', async (req, res, next) => {
+    await Reminder.findByIdAndDelete(req.params.id)
+})
+
 module.exports = router

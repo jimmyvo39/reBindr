@@ -81,4 +81,8 @@ router.patch('/:id/addConsumable', async (req, res, next) => {
     return res.json(item)
 })
 
+router.delete('/:id', async (req, res, next) => {
+    await Inventory.findByIdAndDelete(req.params.id)
+})
+
 module.exports = router
