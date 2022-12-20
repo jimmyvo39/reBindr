@@ -19,10 +19,10 @@ const InventoryIndex  = () => {
     useEffect(()=>{
         dispatch(fetchUserInventories())
     },[])
-    // console.log(inventories)
+    console.log(inventories)
 
     const InventoriesIndexItems = inventories.map(inventory => {
-        return <InventoryIndexItem inventory={inventory} key={inventory}/>
+        return <InventoryIndexItem inventory={inventory} key={inventory.id}/>
     })
 
     console.log(InventoriesIndexItems)
