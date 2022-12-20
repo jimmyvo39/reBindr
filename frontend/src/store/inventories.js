@@ -89,7 +89,7 @@ export const fetchInventory = (InventoryId) => async dispatch => {
     try {
       const res = await jwtFetch(`/api/users/inventory`);
       const inventories = await res.json();
-      console.log(inventories)
+    //   console.log(inventories)
       dispatch(receiveUserInventories(inventories));
     } catch(err) {
       const resBody = await err.json();
