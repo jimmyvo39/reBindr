@@ -13,6 +13,7 @@ function App() {
   useEffect(() => {
     dispatch(getCurrentUser()).then(() => setLoaded(true));
   }, [dispatch]);
+  // debugger
 
   const sessionUser = useSelector((state) => state.session.user);
 
