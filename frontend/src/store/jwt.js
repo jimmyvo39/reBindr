@@ -14,7 +14,7 @@ async function jwtFetch(url, options = {}) {
   // Set options.headers to an empty object if there is no headers.
   options.headers = options.headers || {};
   // Set the "Authorization" header to the value of "jwtToken" in localStorage.
-  options.headers["Authorization"] = localStorage.getItem("jwtToken");
+  options.headers["Authorization"] = `Bearer ${localStorage.getItem("jwtToken")}`;
 
   // If the options.method is not 'GET', then set the "Content-Type" header to
   // "application/json" and the "CSRF-Token" header to the value stored in the

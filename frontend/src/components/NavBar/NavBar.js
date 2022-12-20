@@ -9,18 +9,18 @@ export default function NavBar() {
         <nav>
           <ul>
             <li>
-              <a href="/" className="logo">
+              <Link to="/" className="logo">
                 <img src="../logo.png" alt="logo" />
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/">Log In</a>
+              <Link to="/">Log In</Link>
             </li>
             <li>
-              <a href="/signup">Sign Up</a>
+              <Link to="/signup">Sign Up</Link>
             </li>
             <li>
-              <a href="#">About</a>
+              <Link to="#">About</Link>
             </li>
           </ul>
         </nav>

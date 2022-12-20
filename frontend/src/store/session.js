@@ -59,6 +59,13 @@ export const getCurrentUser = () => async (dispatch) => {
   return dispatch(receiveCurrentUser(user));
 };
 
+export const restoreSession = () => async (dispatch) => {
+  const res = await jwtFetch("/api/users/current");
+    const data = await res.json();
+    dispatch(receiveCurrentUser(data));
+    return res;
+}
+
 const nullErrors = null;
 
 export const sessionErrorsReducer = (state = nullErrors, action) => {
@@ -80,7 +87,7 @@ const initialState = {
 const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      return { user: action.currentUser };
+      return { ...state,  user: action.currentUser };
     case RECEIVE_USER_LOGOUT:
       return initialState;
     default:
