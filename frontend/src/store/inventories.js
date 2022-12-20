@@ -9,26 +9,27 @@ const REMOVE_INVENTORY = "inventories/RECEIVE_INVENTORY";
 const RECEIVE_INVENTORY_ERRORS = "inventories/RECEIVE_INVENTORY_ERRORS";
 const CLEAR_INVENTORY_ERRORS = "inventories/CLEAR_INVENTORY_ERRORS";
 
-const removeInventory = inventoryId => ({
-    type: REMOVE_INVENTORY,
-    inventory
-})
 
-export const removeQuestion = (questionId) => ({type: REMOVE_QUESTION, questionId});
+
 
 const receiveInventories = inventories => ({
-  type: RECEIVE_INVENTORIES,
-  inventories
+    type: RECEIVE_INVENTORIES,
+    inventories
 });
 
 const receiveUserInventories = inventories => ({
-  type: RECEIVE_USER_INVENTORIES,
-  inventories
+    type: RECEIVE_USER_INVENTORIES,
+    inventories
 });
 
 const receiveNewInventory = inventory => ({
-  type: RECEIVE_NEW_INVENTORY,
-  inventory
+    type: RECEIVE_NEW_INVENTORY,
+    inventory
+});
+
+const removeInventory = inventoryId => ({
+    type: REMOVE_INVENTORY,
+    inventoryId
 });
 
 const receiveErrors = errors => ({
@@ -40,6 +41,16 @@ export const clearInventoryErrors = errors => ({
     type: CLEAR_INVENTORY_ERRORS,
     errors
 });
+
+export const deleteInventory = (inventoryId) => async (dispatch) => {
+    await jwtFetch(`/api/inventories/${inventoryId}`,{
+        method: "DELETE"
+    });
+    
+    dispatch(removeInventory(inventoryId))
+}
+
+
 
 export const fetchInventories = () => async dispatch => {
     try {
