@@ -106,6 +106,7 @@
   line-height: 44px;
   color: white;
   margin-top:29px;
+  cursor: pointer;
 }
 
 .demo-user-btn{
@@ -121,10 +122,12 @@
   font-size: 28px;
   line-height: 44px;
   color: white;
+  cursor: pointer;
 }
 
-.error-login {
+/* .errors {
   color:#A61A2E;
   text-align: center;
   padding-top: 20px;
-}
+  font-size: 20px;
+} */
