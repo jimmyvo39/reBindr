@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import InventoryIndexItem from "./InventoryIndexItem";
-import {fetchInventories, getInventories} from "../../store/inventories"
+import {fetchUserInventories, getInventories} from "../../store/inventories"
 
 
 
@@ -17,13 +17,15 @@ const InventoryIndex  = () => {
     const inventories = useSelector(getInventories);
     
     useEffect(()=>{
-        dispatch(fetchInventories())
+        dispatch(fetchUserInventories())
     },[])
     // console.log(inventories)
 
     const InventoriesIndexItems = inventories.map(inventory => {
-        return <InventoryIndexItem key={inventory.id}/>
+        return <InventoryIndexItem inventory={inventory} key={inventory}/>
     })
+
+    console.log(InventoriesIndexItems)
 
     return(
         <>  

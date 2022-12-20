@@ -1,6 +1,6 @@
 function getCookie(cookieName) {
   const cookies = document.cookie.split(";");
-  debugger;
+  // debugger;
   for (let cookie of cookies) {
     const [name, value] = cookie.split("=");
     if (name.trim() === cookieName) return value;

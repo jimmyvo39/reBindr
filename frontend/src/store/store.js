@@ -8,7 +8,7 @@ import inventoriesReducer from "./inventories";
 const rootReducer = combineReducers({
   session,
   errors,
-  inventoriesReducer
+  inventories: inventoriesReducer
 });
 
 let enhancer;
