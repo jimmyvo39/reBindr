@@ -21,7 +21,8 @@
     "morgan": "~1.9.1",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "twilio": "^3.84.0"
   },
   "devDependencies": {
     "dotenv-cli": "^6.0.0",
