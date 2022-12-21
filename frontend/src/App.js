@@ -7,6 +7,7 @@ import SignUpForm from "./components/SignupForm/SignupForm";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getCurrentUser } from "./store/session";
+import InventoryForm from "./components/InventoryCreateForm/InventoryCreateForm";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,7 +46,7 @@ function App() {
             <Route path={"/test"}>
               <>
                 <h1>test page</h1>
-                <BigCalendar />
+                <InventoryForm />
               </>
             </Route>
           </Switch>

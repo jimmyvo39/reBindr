@@ -99,7 +99,7 @@ export const fetchInventory = (InventoryId) => async dispatch => {
     }
   };
   
-  export const addInventory = data => async dispatch => {
+  export const addInventory = (data) => async dispatch => {
     try {
       const res = await jwtFetch('/api/inventories/', {
         method: 'POST',
@@ -108,6 +108,7 @@ export const fetchInventory = (InventoryId) => async dispatch => {
       const inventory = await res.json();
       dispatch(receiveInventory(inventory));
     } catch(err) {
+      console.log(err)
       const resBody = await err.json();
       if (resBody.statusCode === 400) {
         return dispatch(receiveErrors(resBody.errors));
