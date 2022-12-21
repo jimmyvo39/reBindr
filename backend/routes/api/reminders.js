@@ -3,22 +3,44 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const { requireUser } = require('../../config/passport');
 const Reminder = mongoose.model('Reminder')
-const validateReminderInput = require('../../validations/reminder');
+const Inventory = mongoose.model('Inventory')
 const Notification = mongoose.model('Notification')
+const validateReminderInput = require('../../validations/reminder');
 
+// using Twilio SendGrid's v3 Node.js Library
+// https://github.com/sendgrid/sendgrid-nodejs
 const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
-const sendMailer = (msg) => {      
+const sendMailer = (msg) => {
+    const msg2 = {
+        to: 'reBindr.emails@gmail.com', // Change to your recipient
+        from: 'reBindr.emails@gmail.com', // Change to your verified sender
+        subject: "test",
+        text: "test",
+        html: `<strong>test</strong>`,
+    }
     sgMail
-        .send(msg)
+        // .send(msg)
+        .send(msg2)
         .then((response) => {
-          console.log(response[0].statusCode)
-          console.log(response[0].headers)
+            console.log(response[0].statusCode)
+            console.log(response[0].headers)
         })
         .catch((error) => {
-          console.error(error)
+            console.error(error)
     })
+}
+
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const messageSid = process.env.TWILIO_MESSAGE_SID
+const client = require('twilio')(accountSid, authToken);
+
+const sendText = (msg) => {
+    client.messages
+        .create(msg)
+        .then(message => console.log(message.sid));
 }
 
 
@@ -45,7 +67,6 @@ router.post('/', requireUser, validateReminderInput, async (req, res, next) => {
         date: Date.parse(req.body.date),
         repeat: req.body.repeat,
       });
-      console.log(newReminder)
   
       let reminder = await newReminder.save();
       reminder = await reminder.populate('item', '_id, name');
@@ -66,23 +87,47 @@ router.patch('/:id', async (req, res, next) => {
     return res.json(reminder)
 })
   
-router.patch('/:id/addNotification', async (req, res, next) => {
+router.patch('/:id/addNotification', requireUser, async (req, res, next) => {
     let reminder = await Reminder.findById(req.params.id)
-    if (!reminder) return res.json(null)
+    let item = await Inventory.findById(reminder.item)
+    
+    if (!reminder || !item) return res.json(null)
     const newNotification = new Notification({ date: req.body.date })
     reminder.notifications.push(newNotification)
     reminder.save()
-    const sendDate = Math.floor(new Date(`${newNotification.date}`).getTime() / 1000)
+    
 
-    const msg = {
-        to: `${req.user.email}`, // Change to your recipient
+    const sendDate = parseInt(Math.floor(new Date(`${newNotification.date}`).getTime() / 1000))
+    const msgBody = 
+    `   
+        Hey ${req.user.username}!
+        This is a reBindr reminder to ${reminder.title} for your ${item.name}. This is due ${reminder.date}!  
+        ${item.model ? 'Model #: ' + item.model + '.' : ''} 
+        ${item.notes ? 'Notes: ' + item.notes + '.' : ''} 
+        ${item.user_manual ? 'User Manual: ' + item.user_manual + '.' : ''} 
+        ${item.consumables.map(consumable => consumable.consumable_name + ': ' + consumable.link)} 
+    }`
+    console.log(msgBody)
+
+    const emailMsg = {
+        to: req.user.email, // Change to your recipient
         from: 'reBindr.emails@gmail.com', // Change to your verified sender
-        subject: `${reminder.title}`,
-        text: 'item info',
-        html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-        send_at: `${sendDate}`
+        subject: reminder.title,
+        text: msgBody,
+        html: `<strong>${reminder.title}</strong>`,
     }
-    sendMailer(msg)
+    // send_at: sendDate
+    sendMailer(emailMsg)
+
+    const textMsg = {
+        messagingServiceSid: messageSid,
+        body: msgBody,
+        to: req.user.phone,
+        from: '218-522-9665 ',
+    }
+    // scheduleType: 'fixed',
+    // sendAt: new Date(`${newNotification.date}`).toISOString(),
+    
     return res.json(reminder)
 })
 
