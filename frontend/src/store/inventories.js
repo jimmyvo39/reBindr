@@ -75,8 +75,9 @@ export const fetchInventories = () => async dispatch => {
 export const fetchInventory = (InventoryId) => async dispatch => {
     try {
       const res = await jwtFetch (`/api/inventories/${InventoryId}`);
-      const inventory = await res.json();
-      dispatch(receiveInventory(inventory));
+      const data = await res.json();
+      // console.log(data)
+      dispatch(receiveInventory(data));
     } catch (err) {
       const resBody = await err.json();
       if (resBody.statusCode === 400) {
@@ -137,7 +138,8 @@ const inventoriesReducer = (state = {}, action) => {
       case RECEIVE_USER_INVENTORIES:
         return { ...state,  ...action.inventories};
       case RECEIVE_INVENTORY:
-        return { [action.inventory.id]: action.inventory};
+        // console.log(action.inventory)
+        return { [action.inventory._id]: action.inventory};
       // case RECEIVE_USER_LOGOUT:
       //   return state
       default:
