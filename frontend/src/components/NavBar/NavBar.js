@@ -25,12 +25,28 @@ export default function NavBar() {
                 <img src="../logo.png" alt="logo" />
               </Link>
             </li>
+            <li className="drop-down">
+              <select
+                name="upcoming-reminders"
+                id="upcoming-reminders"
+                className="upcoming-reminders"
+                placeholder="upcoming-reminders"
+                // onChange={handleReminders}
+              >
+                <option value="" disabled selected>
+                  Upcoming Reminders
+                </option>
+              </select>
+            </li>
+
+            <li>
+              <button className="logout-btn" onClick={logoutUser}>
+                Logout
+              </button>
+            </li>
 
             <li>
               <Link to="#">About</Link>
-            </li>
-            <li>
-              <button onClick={logoutUser}>Logout</button>
             </li>
           </ul>
         </nav>

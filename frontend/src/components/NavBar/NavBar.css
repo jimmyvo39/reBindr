@@ -36,6 +36,54 @@ nav ul li a:hover {
   color: #151826;
 }
 
+
+.logout-btn{
+  background:none;
+  border:none;
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 20px;
+  color: #8394EA;
+  display: block;
+  line-height: 3em;
+  padding: 8px 48px;
+  text-decoration: none;
+}
+
+.logout-btn:hover{
+  color: #151826
+}
+
+nav ul .drop-down{
+  margin-top: 22px;
+  margin-right: 40px;
+}
+
+.upcoming-reminders {
+  box-sizing: border-box;
+  width: 237px;
+  height: 30px;
+  display:block;
+
+  color: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), #8394EA;
+  border-radius: 8px;
+  border-color: #ccd3db;
+  border-width: thin;
+  text-indent: 5px;
+  
+}
+
+.upcoming-reminders option{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+
 /* .nav-bar{
   display: flex;
   flex-direction: row;
