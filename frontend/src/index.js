@@ -5,7 +5,6 @@ import App from "./App";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import configureStore from "./store/store";
-import { restoreSession } from "./store/session";
 
 let store = configureStore({});
 
@@ -19,12 +18,9 @@ function Root() {
   );
 }
 
-
 ReactDOM.render(
   <React.StrictMode>
     <Root />
   </React.StrictMode>,
   document.getElementById("root")
 );
-
-

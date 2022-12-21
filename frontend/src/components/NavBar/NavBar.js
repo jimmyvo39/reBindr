@@ -1,10 +1,43 @@
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import { logout } from "../../store/session";
 // import Logo from "../../../public/assets/images/logo.png";
 import "./NavBar.css";
 
 export default function NavBar() {
-  return (
-    <>
+  const dispatch = useDispatch();
+  const loggedIn = useSelector((state) => !!state.session.user);
+  const history = useHistory();
+
+  const logoutUser = (e) => {
+    e.preventDefault();
+    dispatch(logout());
+    history.push("/");
+  };
+
+  if (loggedIn) {
+    return (
+      <div className="nav-bar">
+        <nav>
+          <ul>
+            <li>
+              <Link to="/" className="logo">
+                <img src="../logo.png" alt="logo" />
+              </Link>
+            </li>
+
+            <li>
+              <Link to="#">About</Link>
+            </li>
+            <li>
+              <button onClick={logoutUser}>Logout</button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    );
+  } else {
+    return (
       <div className="nav-bar">
         <nav>
           <ul>
@@ -24,21 +57,7 @@ export default function NavBar() {
             </li>
           </ul>
         </nav>
-        {/* <nav className="navigations">
-          <a className="logo" href="/">
-            <img src="../logo.png" alt="logo" />
-          </a>
-          <a className="login-link" href="/">
-            <h1>Log In</h1>
-          </a>
-          <a className="signup-link" href="/">
-            <h1>Sign Up</h1>
-          </a>
-          <a className="about-link" href="/">
-            <h1>About</h1>
-          </a>
-        </nav> */}
       </div>
-    </>
-  );
+    );
+  }
 }
