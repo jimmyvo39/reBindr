@@ -16,7 +16,7 @@ import {getCurrentUser} from "../../store/session"
 const InventoryIndex  = () => {
     const dispatch = useDispatch();
     const inventories = useSelector(getInventories);
-    const currentUser = useSelector(getCurrentUser())
+    // const currentUser = useSelector(getCurrentUser())
     // console.log(dispatch(getCurrentUser()))
     
     useEffect(()=>{
@@ -25,14 +25,15 @@ const InventoryIndex  = () => {
     // console.log(inventories)
 
     const InventoriesIndexItems = inventories.map(inventory => {
-        return <InventoryIndexItem inventory={inventory} key={inventory.id}/>
+        return <InventoryIndexItem inventory={inventory} key={inventory._id}/>
     })
 
     // console.log(InventoriesIndexItems)
 
     return(
         <>  
-            <div >
+            <div className="inventory-container" >
+            <h1>INVENTORY</h1>
                 
             <ul className="index-list">{InventoriesIndexItems}</ul>
             </div>
