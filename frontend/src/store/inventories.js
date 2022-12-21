@@ -136,7 +136,7 @@ const inventoriesReducer = (state = {}, action) => {
     case RECEIVE_INVENTORY:
       // console.log(action.inventory);
 
-      return { [action.inventory._id]: action.inventory };
+      return { ...state, [action.inventory._id]: action.inventory };
 
     // case RECEIVE_USER_LOGOUT:
     //   return state
