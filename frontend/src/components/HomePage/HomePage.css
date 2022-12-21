@@ -2,3 +2,22 @@
     display: flex;
     justify-content: space-around;
 }
+
+.inventory-container {
+    height: 500px;  
+    width: 600px;
+    border: red solid 1px
+}
+
+.item-button {
+    background: white;
+    height: 20px;  
+    /* width: 90%; */
+    white-space: nowrap;
+    border: red solid 1px;
+    cursor: pointer;
+}
+
+.item-button:hover {
+background: grey;
+}

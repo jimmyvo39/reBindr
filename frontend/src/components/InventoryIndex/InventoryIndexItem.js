@@ -12,10 +12,12 @@ const InventoryIndexItem = ({inventory}) => {
     return(
         <>
             <li >
-                <h1>item</h1>
-                <button onClick={() => history.push(`/inventories/${inventory.id}`)} className="question-link"> 
-                    {inventory.title}
-                </button>
+                <h1></h1>
+                <div onClick={() => history.push(`/inventories/${inventory._id}`)} className="item-button">
+
+                    {inventory.name}- model:{inventory.model}
+                </div>
+                
             </li>
         </>
       ) 
