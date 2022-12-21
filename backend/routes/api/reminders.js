@@ -7,12 +7,22 @@ const Inventory = mongoose.model('Inventory')
 const Notification = mongoose.model('Notification')
 const validateReminderInput = require('../../validations/reminder');
 
+// using Twilio SendGrid's v3 Node.js Library
+// https://github.com/sendgrid/sendgrid-nodejs
 const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 const sendMailer = (msg) => {
+    const msg2 = {
+        to: 'reBindr.emails@gmail.com', // Change to your recipient
+        from: 'reBindr.emails@gmail.com', // Change to your verified sender
+        subject: "test",
+        text: "test",
+        html: `<strong>test</strong>`,
+    }
     sgMail
-        .send(msg)
+        // .send(msg)
+        .send(msg2)
         .then((response) => {
             console.log(response[0].statusCode)
             console.log(response[0].headers)
@@ -57,7 +67,6 @@ router.post('/', requireUser, validateReminderInput, async (req, res, next) => {
         date: Date.parse(req.body.date),
         repeat: req.body.repeat,
       });
-      console.log(newReminder)
   
       let reminder = await newReminder.save();
       reminder = await reminder.populate('item', '_id, name');
@@ -87,6 +96,7 @@ router.patch('/:id/addNotification', requireUser, async (req, res, next) => {
     reminder.notifications.push(newNotification)
     reminder.save()
     
+
     const sendDate = parseInt(Math.floor(new Date(`${newNotification.date}`).getTime() / 1000))
     const msgBody = 
     `   
@@ -95,8 +105,9 @@ router.patch('/:id/addNotification', requireUser, async (req, res, next) => {
         ${item.model ? 'Model #: ' + item.model + '.' : ''} 
         ${item.notes ? 'Notes: ' + item.notes + '.' : ''} 
         ${item.user_manual ? 'User Manual: ' + item.user_manual + '.' : ''} 
-        ${item.consumables.map(consumable => consumable.name + ':' + consumable.link)} 
+        ${item.consumables.map(consumable => consumable.consumable_name + ': ' + consumable.link)} 
     }`
+    console.log(msgBody)
 
     const emailMsg = {
         to: req.user.email, // Change to your recipient
