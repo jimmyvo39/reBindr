@@ -9,20 +9,15 @@ const validateReminderInput = require('../../validations/reminder');
 
 // using Twilio SendGrid's v3 Node.js Library
 // https://github.com/sendgrid/sendgrid-nodejs
-const sgMail = require('@sendgrid/mail')
-sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+
 
 const sendMailer = (msg) => {
-    const msg2 = {
-        to: 'reBindr.emails@gmail.com', // Change to your recipient
-        from: 'reBindr.emails@gmail.com', // Change to your verified sender
-        subject: "test",
-        text: "test",
-        html: `<strong>test</strong>`,
-    }
+    const sgMail = require('@sendgrid/mail')
+    const sendgridAPI = process.env.SG_API_KEY
+    sgMail.setApiKey(sendgridAPI)
+    
     sgMail
-        // .send(msg)
-        .send(msg2)
+        .send(msg)
         .then((response) => {
             console.log(response[0].statusCode)
             console.log(response[0].headers)
@@ -90,7 +85,7 @@ router.patch('/:id', async (req, res, next) => {
 router.patch('/:id/addNotification', requireUser, async (req, res, next) => {
     let reminder = await Reminder.findById(req.params.id)
     let item = await Inventory.findById(reminder.item)
-    
+
     if (!reminder || !item) return res.json(null)
     const newNotification = new Notification({ date: req.body.date })
     reminder.notifications.push(newNotification)
@@ -107,16 +102,15 @@ router.patch('/:id/addNotification', requireUser, async (req, res, next) => {
         ${item.user_manual ? 'User Manual: ' + item.user_manual + '.' : ''} 
         ${item.consumables.map(consumable => consumable.consumable_name + ': ' + consumable.link)} 
     }`
-    console.log(msgBody)
-
+    
     const emailMsg = {
         to: req.user.email, // Change to your recipient
         from: 'reBindr.emails@gmail.com', // Change to your verified sender
         subject: reminder.title,
         text: msgBody,
-        html: `<strong>${reminder.title}</strong>`,
+        send_at: sendDate
     }
-    // send_at: sendDate
+    console.log(emailMsg)
     sendMailer(emailMsg)
 
     const textMsg = {
