@@ -7,7 +7,7 @@ import SignUpForm from "./components/SignupForm/SignupForm";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getCurrentUser } from "./store/session";
-import InventoryForm from "./components/InventoryCreateForm/InventoryCreateForm";
+// import InventoryForm from "./components/InventoryCreateFormModal/InventoryCreateForm";
 import InventoryShow from "./components/InventoryShow/InventoryShow";
 
 function App() {
@@ -44,20 +44,18 @@ function App() {
               <SignUpForm />
             </Route>
 
-            <Route path={"/test"}>
+            {/* <Route path={"/test"}>
               <>
                 <h1>test page</h1>
                 <InventoryForm />
               </>
-            </Route>
+            </Route> */}
 
             <Route path={"/inventories/:id"}>
               <>
-              <InventoryShow/>
+                <InventoryShow />
               </>
             </Route>
-
-
           </Switch>
         </div>
       </BrowserRouter>

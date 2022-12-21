@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { logout } from "../../store/session";
-// import Logo from "../../../public/assets/images/logo.png";
 import "./NavBar.css";
 
 export default function NavBar() {

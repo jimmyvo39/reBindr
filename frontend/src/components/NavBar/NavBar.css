@@ -16,6 +16,12 @@ nav ul li {
   display: inline-block;
   list-style-type: none;
 }
+
+nav ul li img{
+  width: 163px;
+  height: auto;
+}
+
 nav ul li a {
   font-family: 'Inter';
   font-weight: 600;

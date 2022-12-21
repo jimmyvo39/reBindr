@@ -7,7 +7,7 @@ const HomePage = () => {
   return (
     <>
       <div className="home-page">
-        <InventoryIndex/>
+        <InventoryIndex />
         <BigCalendar />
       </div>
     </>
