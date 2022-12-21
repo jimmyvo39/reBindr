@@ -3,13 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import "./LoginForm.css";
 
 import { login, clearSessionErrors } from "../../store/session";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const errors = useSelector((state) => state.errors.session);
-  const currentUser = useSelector((state) => state.session.user)
+  // const currentUser = useSelector((state) => !!state.session.user);
 
   const dispatch = useDispatch();
 
@@ -29,7 +29,7 @@ export default function LoginForm() {
     dispatch(login({ email, password }));
   };
 
-  if (currentUser) return <Redirect to="/" />
+  // if (currentUser) return <Redirect to="/" />;
 
   return (
     <>

@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getCurrentUser } from "./store/session";
 
-
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -17,13 +16,13 @@ function App() {
   }, [dispatch]);
   // debugger
 
-  const sessionUser = useSelector((state) => state.session.user);
+  const sessionUser = useSelector((state) => !!state.session.user);
 
   let SessionLinks;
   if (sessionUser) {
     SessionLinks = (
       <>
-        <HomePage/>
+        <HomePage />
       </>
     );
   } else {
