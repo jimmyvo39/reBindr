@@ -294,6 +294,7 @@ const insertSeeds = () => {
                     console.error(err.stack);
                     process.exit(1);
                 });
+
 }
 
 //dotenv node seeders/seeds.js         
