@@ -261,10 +261,10 @@ mongoose
         process.exit(1);
     });
 
-const insertSeeds = () => {
+const insertSeeds = async() => {
     console.log("Resetting db and seeding users...");
 
-    User.collection.drop()
+    await User.collection.drop()
                 .then(() => User.insertMany(users))
                 .then(() => {
                     console.log("Done!");
@@ -274,7 +274,7 @@ const insertSeeds = () => {
                     process.exit(1);
                 });
                 console.log("seeding inventory...")
-    Inventory.collection.drop()
+    await Inventory.collection.drop()
                 .then(() => Inventory.insertMany(items))
                 .then(() => {
                     console.log("Done!");
@@ -284,17 +284,17 @@ const insertSeeds = () => {
                     process.exit(1);
                 });
                 console.log("seeding reminder...")
-    Reminder.collection.drop()
+    await Reminder.collection.drop()
                 .then(() => Reminder.insertMany(reminders))
                 .then(() => {
                     console.log("Done!");
-                    mongoose.disconnect();
                 })
                 .catch(err => {
                     console.error(err.stack);
                     process.exit(1);
                 });
 
+    mongoose.disconnect();
 }
 
 //dotenv node seeders/seeds.js         

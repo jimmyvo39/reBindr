@@ -69,6 +69,10 @@ router.post('/', requireUser, validateReminderInput, async (req, res, next) => {
         
         let reminder = await newReminder.save();
         reminder = await reminder.populate('item', '_id, name');
+
+
+
+
         return res.json(reminder);
     }
     catch(err) {
@@ -123,6 +127,7 @@ router.patch('/:id/addNotification', requireUser, async (req, res, next) => {
         to: req.user.phone,
         from: '218-522-9665 ',
     }
+    sendText(textMsg)
     // scheduleType: 'fixed',
     // sendAt: new Date(`${newNotification.date}`).toISOString(),
     
