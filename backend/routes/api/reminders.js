@@ -161,7 +161,7 @@ router.patch('/:id/addNotification', requireUser, async (req, res, next) => {
     return res.json(reminder)
 })
 
-router.delete('/:id/notifications/:notification_id', requireUser, async (req, res, next) => {
+router.delete('/:id/notifications/:notification_id', async (req, res, next) => {
     const reminder = await Reminder.findById(req.params.id)
 
     if (!reminder) return res.json(null)
@@ -174,9 +174,10 @@ router.delete('/:id/notifications/:notification_id', requireUser, async (req, re
     return res.json(reminder)
 })
 
-router.post('/:id/shareReminder', async (req, res, next) => {
+router.post('/:id/shareReminder', requireUser, async (req, res, next) => {
     const reminder = await Reminder.findById(req.params.id)
     let item = await Inventory.findById(reminder.item)
+    
 
     if (!reminder || !item) return res.json(null)
 
@@ -213,6 +214,7 @@ router.post('/:id/shareReminder', async (req, res, next) => {
         }
         sendText(textMsg)
     }
+    return res.json(reminder)
 })
 
 router.delete('/:id', async (req, res, next) => {
