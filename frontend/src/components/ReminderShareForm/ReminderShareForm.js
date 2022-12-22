@@ -1,15 +1,17 @@
 import React, {useState} from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import jwtFetch from "../../store/jwt";
 
 const ReminderShareForm = () => {
-    const dispatch = useDispatch();
+    const {id} = useParams();
 
-    const onSubmit = (e) => {
+    const onSubmit = (e) => async() =>{
         e.preventDefault();
-        const data = { phone, email};
-        // dispatch(createReminder(data));
-        // setShowModal(false);
-        // setItem(false);
+        await jwtFetch(`/api/reminders/${id}/shareReminder`,{
+            method: "POST",
+            body: JSON.stringify({email, phone})
+        })
     };
 
     function useInput(initialValue) {
@@ -20,12 +22,6 @@ const ReminderShareForm = () => {
     
     const [email, onEmailChange] = useInput();
     const [phone, onPhoneChange] = useInput();
-
-    const closeModal = (e) => {
-        e.preventDefault();
-        // setShowModal(false);
-        // setItem(false);
-      };
 
     return (
         <>
