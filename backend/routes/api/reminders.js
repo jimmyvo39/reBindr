@@ -177,9 +177,9 @@ router.delete('/:id/notifications/:notification_id', async (req, res, next) => {
 
 router.post('/:id/shareReminder', requireUser, async (req, res, next) => {
     const reminder = await Reminder.findById(req.params.id)
+    reminder = await reminder.populate('item', '_id, name');
     let item = await Inventory.findById(reminder.item)
     
-
     if (!reminder || !item) return res.json(null)
 
     const shareEmail = req.body.email
@@ -201,8 +201,8 @@ router.post('/:id/shareReminder', requireUser, async (req, res, next) => {
             from: 'reBindr.emails@gmail.com', // Change to your verified sender
             subject: reminder.title,
             text: msgBody,
-            send_at: sendDate
         }      
+        // send_at: sendDate
         sendMailer(emailMsg)    
     }
     
