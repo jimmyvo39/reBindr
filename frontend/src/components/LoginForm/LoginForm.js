@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "./LoginForm.css";
 
 import { login, clearSessionErrors } from "../../store/session";
+import DemoUser from "./DemoUser";
 // import { Redirect } from "react-router-dom";
 
 export default function LoginForm() {
@@ -41,7 +42,7 @@ export default function LoginForm() {
           </span>
           <form onSubmit={handleSubmit}>
             <div className="input-wrapper">
-              <div className="login-input">
+              <div className="email-input">
                 <input
                   type="email"
                   value={email}
@@ -76,11 +77,7 @@ export default function LoginForm() {
                 disabled={!email || !password}
               />
 
-              <input
-                type="submit"
-                className="demo-user-btn"
-                value="Demo User"
-              />
+              <DemoUser />
             </div>
           </form>
         </div>

@@ -31,16 +31,17 @@
 .signup-description{
   position: relative;
   top: 10px;
-  width: 424px;
+  width: 530px;
   height: 54px;
   margin:0 auto;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
-  line-height: 30px;
+  /* line-height: 30px; */
   text-align: center;
   color: #32403B;
-
+  margin-bottom: 10px;
+  /* margin-top: 5px; */
 }
 
 .input-wrapper{
@@ -48,7 +49,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 40px;
+  /* margin-top: 40px; */
 }
 
 
@@ -60,67 +61,47 @@
 }
 
 
-.signup-input .email{
-  width: 517px;
-  height: 76px;
+.input-wrapper div input{
+  width: 490px;
+  height: 50px;
   border: 1.5px solid rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   font-family: 'Karla';
   font-style: normal;
   font-weight: 400;
-  font-size: 25px;
+  font-size: 20px;
   line-height: 20px;
-}
-
-.password-input .password{
-  width: 517px;
-  height: 76px;
-  border: 1.5px solid rgba(0, 0, 0, 0.1);
-  border-radius: 15px;
-  font-family: 'Karla';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 25px;
-  line-height: 20px;
-  margin-top: 20px;
-}
-
-.phonenumber-input .phonenumber{
-  width: 517px;
-  height: 76px;
-  border: 1.5px solid rgba(0, 0, 0, 0.1);
-  border-radius: 15px;
-  font-family: 'Karla';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 25px;
-  line-height: 20px;
-  margin-top: 20px;
-}
-
-.phonenumber-input input{
   text-indent: 50px;
+  /* margin-top: 10px; */
 }
 
-.signup-input input{
-  text-indent: 50px;
-}
 
-.password-input input{
-  text-indent: 50px;
-}
+
 
 .signup-btn{
-  width: 320px;
-  height: 70px;
+  width: 300px;
+  height: 50px;
   background: #84C7AE;
   border-radius: 23px;
   border:none;
   font-family: 'Karla';
   font-style: normal;
   font-weight: 700;
-  font-size: 28px;
+  font-size: 20px;
   line-height: 44px;
   color: white;
-  margin-top:29px;
+  margin-top:10px;
+  cursor: pointer;
+}
+
+.signup-btn:hover{
+  background: #5A9E85;
+}
+
+.errors {
+  color:#A61A2E;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
 }
