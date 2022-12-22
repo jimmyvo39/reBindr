@@ -25,11 +25,11 @@ function InventoryForm(props) {
   const [name, onNameChange] = useInput("");
   const [model, onModelChange] = useInput("");
   const [notes, onNotesChange] = useInput("");
-  const [user_manuel, onUserManuelChange] = useInput("");
+  const [user_manual, onUsermanualChange] = useInput("");
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const data = { uploader, name, model, notes, user_manuel };
+    const data = { uploader, name, model, notes, user_manual };
     dispatch(addInventory(data));
     setShowModal(false);
     setItem(false);
@@ -71,9 +71,9 @@ function InventoryForm(props) {
         <textarea placeholder="notes" value={notes} onChange={onNotesChange} />
         <input
           type="text"
-          placeholder="user manuel link"
-          value={user_manuel}
-          onChange={onUserManuelChange}
+          placeholder="user manual link"
+          value={user_manual}
+          onChange={onUsermanualChange}
         />
         <button type="submit">Add item</button>
       </form>

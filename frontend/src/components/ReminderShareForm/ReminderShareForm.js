@@ -6,9 +6,10 @@ import jwtFetch from "../../store/jwt";
 const ReminderShareForm = () => {
     const {id} = useParams();
 
-    const onSubmit = (e) => async() =>{
+    const onSubmit = (e) => {
         e.preventDefault();
-        await jwtFetch(`/api/reminders/${id}/shareReminder`,{
+        console.log(phone,email)
+        jwtFetch(`/api/reminders/${id}/shareReminder`,{
             method: "POST",
             body: JSON.stringify({email, phone})
         })
