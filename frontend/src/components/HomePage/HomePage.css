@@ -1,23 +1,113 @@
 .home-page {
     display: flex;
     justify-content: space-around;
+    background-color: #F6FBF9;
+    width: 1284px;
+    height: 622px;
+    border-radius: 49px;
+    margin:0 auto;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    margin-top: 63px;
+    justify-content: center;
+    align-items: center;
 }
 
 .inventory-container {
-    height: 500px;  
-    width: 600px;
-    border: red solid 1px
+    height: 395px;  
+    width: 525px;
+    overflow: scroll;
+    margin-top: 30px;
+    /* border: red solid 1px; */
+    
+    /* margin: auto 0; */
+
 }
 
-.item-button {
-    background: white;
-    height: 20px;  
-    /* width: 90%; */
-    white-space: nowrap;
-    border: red solid 1px;
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 9px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background-color: #a8a8a8;
+    /* box-shadow: 0 0 1px rgba(255, 255, 255, .5); */
+  }
+
+.index-wrapper h1{
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 37px;
+    text-align: center;
+}
+
+.index-list{
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    
+}
+
+.index-list li .item-button{
+    display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  margin-right:15px;
+}
+
+.edit-form-btn{
+    width:30px;
+    height:30px;
+    float: right;
+    margin-top: -55px;
+    margin-right:20px;
+    border:none;
     cursor: pointer;
+    background:none;
 }
 
-.item-button:hover {
-background: grey;
+.edit-icon-btn{
+    width: 20px;
+    height:20px;
 }
+
+.item-button{
+    width: 234px;
+    height: 90px;
+    background: #8394EA;
+    border-radius: 15px;
+    border:none;
+    color: #F6FBF9;
+    cursor: pointer;
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    padding-left: 10px;
+    padding-top: 10px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.create-form-btn{
+    width: 96px;
+    height: 35px;
+    background: #84C7AE;
+    border-radius: 15px;
+    border:none;
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 10px;
+    color: #F6FBF9;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
