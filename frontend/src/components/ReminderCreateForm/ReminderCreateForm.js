@@ -16,7 +16,6 @@ function ReminderCreateForm(props) {
   const sessionUser = useSelector((state) => state.session.user);
   const uploader = sessionUser ? sessionUser._id : null;
 
-//   const [item, setItem] = useState(true);
 
   const setShowModal = props.setShowModal;
 

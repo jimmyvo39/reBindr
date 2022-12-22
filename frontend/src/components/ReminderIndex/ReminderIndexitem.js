@@ -8,42 +8,38 @@ import { useParams } from "react-router-dom";
 
 const ReminderIndexItem = ({reminder}) => {
     // const itemId = useParams()
-    console.log(reminder)
-    const dispatch = useDispatch
+    
+    const dispatch = useDispatch();
     const [reminding, setReminding] = useState(true);
 
     const handleDelete = (e) => {
-        console.log(reminder)
+        console.log(reminder, reminder._id)
         e.preventDefault();
         dispatch(deleteReminder(reminder._id));
+        setReminding(false)
     };
-
-    // if (itemId === reminder.item._id){
-    //     return (
-
-    //         <h1>a match</h1>
-    //     )
-    // }
 
     return(
         <>
-        <li>
-            <div className="reminder-container" >
-                <div className="reminder-details" >
-                    <div>
-                        {reminder.title}
+        {reminding && (
+            <li>
+                <div className="reminder-container" >
+                    <div className="reminder-details" >
+                        <div>
+                            {reminder.title}
+                        </div>
+                        <div>
+                            {moment(reminder.date).format('MMMM Do YYYY, h:mm a')}
+                        </div> 
                     </div>
-                    <div>
-                        {moment(reminder.date).format('MMMM Do YYYY, h:mm:ss a')}
-                    </div> 
+                    <div className="button-set">
+                        <button>share</button>
+                        <button onClick={handleDelete} >delete</button>
+                    </div>
                 </div>
-                <div className="button-set">
-                    <button>share</button>
-                    <button onSubmit={handleDelete} >delete</button>
-                </div>
-            </div>
-            
-        </li>
+                
+            </li>
+        )}
         </>
     )
 

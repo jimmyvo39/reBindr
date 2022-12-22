@@ -11,7 +11,6 @@ const InventoryShow = (props) => {
 
     // console.log(id)
     const item = useSelector(getInventory(id))
-    console.log(item)
 
     const [modalOpen, setModalOpen] = useState(false);
     const setShowModal = props.setShowModal;
