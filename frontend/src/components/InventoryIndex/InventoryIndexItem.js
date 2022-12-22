@@ -21,6 +21,7 @@ const InventoryIndexItem = ({ inventory }) => {
     <>
       {item && (
         <li>
+
           <div
             onClick={() => history.push(`/inventories/${inventory._id}`)}
             className="item-button"

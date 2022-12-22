@@ -45,7 +45,7 @@ export default function NavBar() {
             </li>
 
             <li>
-              <Link to="#">About</Link>
+              <Link to="/about">About</Link>
             </li>
           </ul>
         </nav>
@@ -68,7 +68,7 @@ export default function NavBar() {
               <Link to="/signup">Sign Up</Link>
             </li>
             <li>
-              <Link to="#">About</Link>
+              <Link to="/about">About</Link>
             </li>
           </ul>
         </nav>

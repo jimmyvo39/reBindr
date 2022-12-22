@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { getCurrentUser } from "./store/session";
 // import InventoryForm from "./components/InventoryCreateFormModal/InventoryCreateForm";
 import InventoryShow from "./components/InventoryShow/InventoryShow";
+import AboutPage from "./components/About";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,13 +44,16 @@ function App() {
             <Route exact path={"/signup"}>
               <SignUpForm />
             </Route>
+            <Route path={"/about"}>
+              <AboutPage />
+            </Route>
 
-            {/* <Route path={"/test"}>
+            <Route path={"/test"}>
               <>
                 <h1>test page</h1>
-                <InventoryForm />
+                
               </>
-            </Route> */}
+            </Route>
 
             <Route path={"/inventories/:id"}>
               <>

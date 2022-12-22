@@ -1,0 +1,10 @@
+.item-show-page {
+    display: flex;
+    justify-content: space-around;
+}
+.inventory-show-containers {
+    
+    width: 500px;
+    height: 700px;
+    border: red 1px solid
+}
