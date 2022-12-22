@@ -33,7 +33,7 @@ const InventoryShow = (props) => {
                         <h1>{item ? item.name : ""} details</h1>
                         <h1>{item ? item.model : ""}</h1>
                         <h1>{item ? item.notes : ""}</h1>
-                        <h1>{item ? item.link : ""}</h1>
+                        <h1>{item ? item.user_manual : ""}</h1>
                     </div>
                 </div>
             </>
