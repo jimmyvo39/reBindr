@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import { deleteInventory } from "../../store/inventories";
+import InventoryFormModal from "../InventoryCreateFormModal";
 import InventoryEditFormModal from "../InventoryEditFormModal";
 
 // import {deleteQuestion} from "../../store/questions";
@@ -21,14 +22,16 @@ const InventoryIndexItem = ({ inventory }) => {
     <>
       {item && (
         <li>
-
           <div
             onClick={() => history.push(`/inventories/${inventory._id}`)}
             className="item-button"
           >
-            {inventory.name}- model:{inventory.model}
+            {inventory.name}
           </div>
+
           <InventoryEditFormModal inventory={inventory} />
+
+          <button onClick={handleDelete}>temp delete button</button>
         </li>
       )}
     </>

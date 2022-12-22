@@ -126,18 +126,19 @@ export const inventoryErrorsReducer = (state = nullErrors, action) => {
   }
 };
 
-export const updateInventory= (inventory) => async (dispatch) => {
-  const res = await jwtFetch(`/api/inventories/${inventory.id}`,{
-      headers: {"Content-Type":"application/json"},
-      body: JSON.stringify(inventory),
-      method: "PATCH"
+export const updateInventory = (inventory) => async (dispatch) => {
+  const res = await jwtFetch(`/api/inventories/${inventory._id}`, {
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(inventory),
+    method: "PATCH",
   });
   const data = await res.json();
-  dispatch(receiveInventory(data))
-}
+  // console.log(inventory);
+  dispatch(receiveInventory(data));
+};
 
 const inventoriesReducer = (state = {}, action) => {
-  const newState = {...state}
+  const newState = { ...state };
 
   switch (action.type) {
     case RECEIVE_INVENTORIES:
@@ -146,8 +147,8 @@ const inventoriesReducer = (state = {}, action) => {
       return { ...action.inventories };
     case RECEIVE_INVENTORY:
       // console.log(action.inventory);
-      newState[action.inventory._id] = action.inventory 
-      return newState
+      newState[action.inventory._id] = action.inventory;
+      return newState;
 
     // case RECEIVE_USER_LOGOUT:
     //   return state

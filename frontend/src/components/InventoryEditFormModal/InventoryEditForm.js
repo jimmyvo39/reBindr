@@ -6,6 +6,7 @@ import {
   addInventory,
   deleteInventory,
   receiveInventory,
+  updateInventory,
 } from "../../store/inventories";
 import receiveErrors from "../../store/errors";
 // import { getCurrentUser } from "../../store/session";
@@ -21,17 +22,6 @@ function InventoryEditForm(props) {
   const inventory = props.inventory;
 
   const setShowModal = props.setShowModal;
-
-  // function useInput(initialValue) {
-  //   const [value, setValue] = useState(initialValue);
-  //   const onChange = (e) => setValue(e.target.value);
-  //   return [value, onChange];
-  // }
-
-  // const [name, onNameChange] = useInput("");
-  // const [model, onModelChange] = useInput("");
-  // const [notes, onNotesChange] = useInput("");
-  // const [user_manual, onUserManualChange] = useInput("");
 
   const [currentName, setNewName] = useState(inventory.name);
   const [currentModel, setNewModel] = useState(inventory.model);
@@ -58,17 +48,19 @@ function InventoryEditForm(props) {
     setNewUserManual(newUserManual);
   };
 
+  console.log(inventory);
   const onSubmit = (e) => {
     e.preventDefault();
 
     const data = {
+      ...inventory,
       uploader,
-      currentName,
-      currentModel,
-      currentNotes,
-      currentUserManual,
+      name: currentName,
+      model: currentModel,
+      notes: currentNotes,
+      user_manual: currentUserManual,
     };
-    dispatch(addInventory(data));
+    dispatch(updateInventory(data));
     setShowModal(false);
     setItem(false);
     // history.push("/");
@@ -79,8 +71,6 @@ function InventoryEditForm(props) {
     dispatch(deleteInventory(inventory._id));
     setItem(false);
   };
-
-  // const [] = (useInput = "");
 
   const closeModal = (e) => {
     e.preventDefault();
@@ -124,8 +114,8 @@ function InventoryEditForm(props) {
           onChange={onUserManualChange}
         />
         <button type="submit">Update item</button>
+        <button onClick={handleDelete}>temp delete button</button>
       </form>
-      <button onClick={handleDelete}>temp delete button</button>
     </>
   );
 }
