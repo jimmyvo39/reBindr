@@ -55,17 +55,21 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/', requireUser, validateReminderInput, async (req, res, next) => {
     try {
-      const newReminder = new Reminder({
-        title: req.body.title,
-        uploader: req.user._id,
-        item: req.body.item,
-        date: Date.parse(req.body.date),
-        repeat: req.body.repeat,
-      });
-  
-      let reminder = await newReminder.save();
-      reminder = await reminder.populate('item', '_id, name');
-      return res.json(reminder);
+        const newReminder = new Reminder({
+            title: req.body.title,
+            uploader: req.user._id,
+            item: req.body.item,
+            date: Date.parse(req.body.date),
+            repeat: req.body.repeat,
+        });
+        const notification = new Notification ({
+            date: newReminder.date
+        })
+        newReminder.notifications.push(notification)
+        
+        let reminder = await newReminder.save();
+        reminder = await reminder.populate('item', '_id, name');
+        return res.json(reminder);
     }
     catch(err) {
       next(err);
