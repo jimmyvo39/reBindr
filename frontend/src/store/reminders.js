@@ -21,8 +21,11 @@ export const fetchReminders= () => async (dispatch) => {
 }
 
 export const fetchItemReminders= (itemId) => async (dispatch) => {
-    const res = await jwtFetch(`/api/inventories/${itemId}/reminders`);
+    console.log(itemId)
+    const res = await jwtFetch(`/api/inventories/${itemId.id}/reminders`);
+    console.log(res)
     const data = await res.json();
+    console.log(data)
     dispatch(receiveReminders(data))
 }
 
