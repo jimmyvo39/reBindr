@@ -177,6 +177,7 @@ router.delete('/:id/notifications/:notification_id', async (req, res, next) => {
 
 router.post('/:id/shareReminder', requireUser, async (req, res, next) => {
     const reminder = await Reminder.findById(req.params.id)
+    reminder = await reminder.populate('item', '_id, name');
     let item = await Inventory.findById(reminder.item)
     
 
