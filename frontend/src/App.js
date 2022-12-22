@@ -44,12 +44,12 @@ function App() {
               <SignUpForm />
             </Route>
 
-            {/* <Route path={"/test"}>
+            <Route path={"/test"}>
               <>
                 <h1>test page</h1>
-                <InventoryForm />
+                
               </>
-            </Route> */}
+            </Route>
 
             <Route path={"/inventories/:id"}>
               <>

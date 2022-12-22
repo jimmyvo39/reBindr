@@ -1,82 +1,87 @@
 import jwtFetch from "./jwt";
 
-export const RECEIVE_REMINDERS = "questions/RECEIVE_REMINDERS";
-export const RECEIVE_QUESTION = "questions/RECEIVE_REMINDER";
-export const REMOVE_QUESTION = "questions/REMOVE_REMINDER";
+export const RECEIVE_REMINDERS = "reminders/RECEIVE_REMINDERS";
+export const RECEIVE_REMINDER = "reminders/RECEIVE_REMINDER";
+export const REMOVE_REMINDER = "reminders/REMOVE_REMINDER";
 
-export const receiveQuestions = (questions) => ({type: RECEIVE_QUESTIONS, questions});
-export const receiveQuestion = (question) => ({type: RECEIVE_QUESTION, question});
-export const removeQuestion = (questionId) => ({type: REMOVE_QUESTION, questionId});
-
-
-export const getQuestion = (questionId) => (state) => state.questions ? state.questions[questionId] : null;
-export const getQuestions =  (state) => state.questions ? Object.values(state.questions) : [];
+export const receiveReminders = (reminders) => ({type: RECEIVE_REMINDERS, reminders});
+export const receiveReminder = (reminder) => ({type: RECEIVE_REMINDER, reminder});
+export const removeReminder = (reminderId) => ({type: REMOVE_REMINDER, reminderId });
 
 
+export const getReminder = (reminderId) => (state) => state.reminders ? state.reminders[reminderId] : null;
+export const getReminders =  (state) => state.reminders ? Object.values(state.reminders) : [];
 
-export const fetchQuestions= () => async (dispatch) => {
-    const res = await jwtFetch(`/api/questions`);
+
+
+export const fetchReminders= () => async (dispatch) => {
+    const res = await jwtFetch(`/api/users/reminders`);
     const data = await res.json();
-    dispatch(receiveQuestions(data))
-
+    dispatch(receiveReminders(data))
 }
 
-export const fetchQuestion= (questionId) => async (dispatch) => {
-    const res = await jwtFetch(`/api/questions/${questionId}`);
+export const fetchItemReminders= (itemId) => async (dispatch) => {
+    const res = await jwtFetch(`/api/inventories/${itemId}/reminders`);
     const data = await res.json();
-    // debugger
-    dispatch(receiveQuestion(data.question))
+    dispatch(receiveReminders(data))
 }
 
-export const createQuestion= (question) => async (dispatch) => {
-    const res = await jwtFetch(`/api/questions`,{
+export const fetchReminder= (reminderId) => async (dispatch) => {
+    const res = await jwtFetch(`/api/reminders/${reminderId}`);
+    const data = await res.json();
+    dispatch(receiveReminder(data.reminder))
+}
+
+export const createReminder= (reminder) => async (dispatch) => {
+    const res = await jwtFetch(`/api/reminders`,{
         headers: {"Content-Type":"application/json"},
-        body: JSON.stringify(question),
+        body: JSON.stringify(reminder),
         method: "POST"
     });
     const data = await res.json();
-    dispatch(receiveQuestion(data));
+    dispatch(receiveReminder(data));
     
 }
 
-export const updateQuestion= (question) => async (dispatch) => {
-    const res = await jwtFetch(`/api/questions/${question.id}`,{
+export const updateReminder = (reminder) => async (dispatch) => {
+    const res = await jwtFetch(`/api/reminders/${reminder.id}`,{
         headers: {"Content-Type":"application/json"},
-        body: JSON.stringify(question),
+        body: JSON.stringify(reminder),
         method: "PATCH"
     });
     const data = await res.json();
-    dispatch(receiveQuestion(data))
+    dispatch(receiveReminder(data))
 }
 
-export const deleteQuestion= (questionId) => async (dispatch) => {
-    await jwtFetch(`/api/questions/${questionId}`,{
+export const deleteReminder= (reminderId) => async (dispatch) => {
+    debugger
+    await jwtFetch(`/api/reminders/${reminderId}`,{
         method: "DELETE"
     });
 
-    dispatch(removeQuestion(questionId))
+    dispatch(removeReminder(reminderId))
 }
 
 
 
-const questionsReducer = (state={},action)=>{
+const remindersReducer = (state={},action)=>{
     const newState = {...state};
 
     switch(action.type){
-        case RECEIVE_QUESTIONS:
-            return {...newState,...action.questions};
-        case RECEIVE_QUESTION:
-            // newState[action.question.id] = action.question;
+        case RECEIVE_REMINDERS:
+            return {...newState,...action.reminders};
+        case RECEIVE_REMINDER:
+            // newState[action.reminder.id] = action.reminder;
             // return newState;
             return{
-                [action.question.id]: action.question
+                ...state,[action.reminder.id]: action.reminder
             }
-        case REMOVE_QUESTION:
-            delete newState[action.questionId];
+        case REMOVE_REMINDER:
+            delete newState[action.reminderId];
             return newState;
         default:
             return state
     }
 }
 
-export default questionsReducer
+export default remindersReducer

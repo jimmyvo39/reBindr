@@ -3,12 +3,14 @@ import thunk from "redux-thunk";
 import session from "./session";
 import errors from "./errors"
 import inventoriesReducer from "./inventories";
+import remindersReducer from "./reminders"
 
 
 const rootReducer = combineReducers({
   session,
   errors,
-  inventories: inventoriesReducer
+  inventories: inventoriesReducer,
+  reminders: remindersReducer
 });
 
 let enhancer;

@@ -1,0 +1,23 @@
+.reminder-container {
+    /* border:solid red 1px; */
+    display: flex;
+    justify-content: space-around;
+    padding: 3px;
+    margin: 7px;
+}
+
+.reminder-details{
+    /* border:solid red 1px; */
+    display: flex;
+    flex-direction: column;
+}
+
+.button-set {
+    display: flex;
+    flex-direction: column;
+    width:50%;
+}
+
+.button-set button {
+    width: 100px;
+}
