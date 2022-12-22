@@ -1,12 +1,29 @@
-import React from "react";
+import React, {useState} from "react";
+import { useDispatch } from "react-redux";
 
 const ReminderShareForm = () => {
+    const dispatch = useDispatch();
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const data = { uploader, item, title, date, repeat };
-        dispatch(createReminder(data));
-        setShowModal(false);
+        const data = { phone, email};
+        // dispatch(createReminder(data));
+        // setShowModal(false);
+        // setItem(false);
+    };
+
+    function useInput(initialValue) {
+        const [value, setValue] = useState(initialValue);
+        const onChange = (e) => setValue(e.target.value);
+        return [value, onChange];
+    }
+    
+    const [email, onEmailChange] = useInput();
+    const [phone, onPhoneChange] = useInput();
+
+    const closeModal = (e) => {
+        e.preventDefault();
+        // setShowModal(false);
         // setItem(false);
       };
 
@@ -23,6 +40,7 @@ const ReminderShareForm = () => {
         <input
           type="tel"
           value={phone}
+          placeholder="phone"
           onChange={onPhoneChange}
         />
         <button type="submit">Send reminder</button>

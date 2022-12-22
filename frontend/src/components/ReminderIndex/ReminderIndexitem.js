@@ -4,7 +4,7 @@ import moment from "moment";
 import './ReminderIndex.css'
 import { deleteReminder } from "../../store/reminders";
 import { useParams } from "react-router-dom";
-
+import ReminderShareFormModal from "../ReminderShareForm/ReminderShareModal";
 
 const ReminderIndexItem = ({reminder}) => {
     // const itemId = useParams()
@@ -13,11 +13,13 @@ const ReminderIndexItem = ({reminder}) => {
     const [reminding, setReminding] = useState(true);
 
     const handleDelete = (e) => {
-        console.log(reminder, reminder._id)
+
         e.preventDefault();
         dispatch(deleteReminder(reminder._id));
         setReminding(false)
     };
+
+
 
     return(
         <>
@@ -33,7 +35,8 @@ const ReminderIndexItem = ({reminder}) => {
                         </div> 
                     </div>
                     <div className="button-set">
-                        <button>share</button>
+                        {/* <button onClick={handleShare} >share</button> */}
+                        <ReminderShareFormModal/>
                         <button onClick={handleDelete} >delete</button>
                     </div>
                 </div>
