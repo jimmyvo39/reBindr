@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { getCurrentUser } from "./store/session";
 // import InventoryForm from "./components/InventoryCreateFormModal/InventoryCreateForm";
 import InventoryShow from "./components/InventoryShow/InventoryShow";
+import AboutPage from "./components/About";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -42,6 +43,9 @@ function App() {
             </Route>
             <Route exact path={"/signup"}>
               <SignUpForm />
+            </Route>
+            <Route path={"/about"}>
+              <AboutPage />
             </Route>
 
             <Route path={"/test"}>
