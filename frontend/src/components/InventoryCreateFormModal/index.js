@@ -7,9 +7,10 @@ function InventoryFormModal() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} className="signupFormButton">
-        <div className="signupFormButtonText">Add&nbsp;Item</div>
+      <button onClick={() => setShowModal(true)} className="create-form-btn">
+        <div className="create-form-btn-text">Add&nbsp;Item</div>
       </button>
+
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <InventoryForm setShowModal={setShowModal} />
