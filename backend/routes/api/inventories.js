@@ -89,7 +89,10 @@ router.patch('/:id/addConsumable', async (req, res, next) => {
 })
 
 router.delete('/:id', async (req, res, next) => {
+    const reminders = await Reminder.find({item: req.params.id})
+    reminders.map(async reminder => await Reminder.findByIdAndDelete(reminder.id))
     await Inventory.findByIdAndDelete(req.params.id)
+    
     .then(() => {
         return res.redirect('/api/users/reminders')
     })
