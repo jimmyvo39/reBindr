@@ -74,7 +74,7 @@ router.post('/', requireUser, validateReminderInput, async (req, res, next) => {
         const msgBody = 
         `   
             Hey ${req.user.username}!
-            This is a reBindr reminder to ${reminder.title} for your ${item.name}. This is due ${reminder.date}!  
+            This is a reBindr reminder to ${reminder.title} for your ${item.name} is due!  
             ${item.model ? 'Model #: ' + item.model + '.' : ''} 
             ${item.notes ? 'Notes: ' + item.notes + '.' : ''} 
             ${item.user_manual ? 'User Manual: ' + item.user_manual + '.' : ''} 
@@ -144,16 +144,19 @@ router.patch('/:id/addNotification', requireUser, async (req, res, next) => {
     }
     // console.log(emailMsg)
     sendMailer(emailMsg)
+    const textTime = new Date(`${newNotification.date}`).toISOString()
+    // const textTime = new Date('2022/12/22/12:15:00').toISOString()
+    console.log(textTime)
 
     const textMsg = {
         messagingServiceSid: messageSid,
         body: msgBody,
         to: req.user.phone,
         from: '218-522-9665 ',
+        scheduleType: 'fixed',
+        sendAt: textTime
     }
     sendText(textMsg)
-    // scheduleType: 'fixed',
-    // sendAt: new Date(`${newNotification.date}`).toISOString(),
     
     return res.json(reminder)
 })
