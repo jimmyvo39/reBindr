@@ -8,7 +8,7 @@
   margin: 0 auto;
   position: absolute;
   width: 627px;
-  height: 627px;
+  height: 565px;
   left: 406px;
   top: 135px;
   background: #F6FBF9;
@@ -40,6 +40,8 @@
   line-height: 30px;
   text-align: center;
   color: #32403B;
+  margin-bottom: 44px;
+  /* margin-top: 5px; */
 
 }
 
@@ -48,7 +50,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 40px;
+  /* margin-top: 40px; */
 }
 
 
@@ -60,74 +62,69 @@
 }
 
 
-.login-input .email{
-  width: 517px;
-  height: 76px;
+.input-wrapper div input{
+  width: 490px;
+  height: 50px;
   border: 1.5px solid rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   font-family: 'Karla';
   font-style: normal;
   font-weight: 400;
-  font-size: 25px;
+  font-size: 20px;
   line-height: 20px;
-}
-
-.password-input .password{
-  width: 517px;
-  height: 76px;
-  border: 1.5px solid rgba(0, 0, 0, 0.1);
-  border-radius: 15px;
-  font-family: 'Karla';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 25px;
-  line-height: 20px;
-  margin-top: 20px;
-}
-
-.login-input input{
   text-indent: 50px;
+  /* margin-top: 10px; */
+  /* margin-bottom: 20px; */
 }
 
-.password-input input{
-  text-indent: 50px;
-}
+
+
+
 
 .login-btn{
-  width: 320px;
-  height: 70px;
+  width: 300px;
+  height: 50px;
   background: #84C7AE;
   border-radius: 23px;
   border:none;
   font-family: 'Karla';
   font-style: normal;
   font-weight: 700;
-  font-size: 28px;
+  font-size: 20px;
   line-height: 44px;
   color: white;
-  margin-top:29px;
+  margin-top:10px;
   cursor: pointer;
+}
+
+.login-btn:hover{
+  background: #5A9E85;
 }
 
 .demo-user-btn{
   margin-top:20px;
-  width: 320px;
-  height: 70px;
+  width: 300px;
+  height: 50px;
   background: #84C7AE;
   border-radius: 23px;
   border:none;
   font-family: 'Karla';
   font-style: normal;
   font-weight: 700;
-  font-size: 28px;
+  font-size: 20px;
   line-height: 44px;
   color: white;
   cursor: pointer;
 }
 
-/* .errors {
+.demo-user-btn:hover{
+  background: #5A9E85;
+}
+
+.errors {
   color:#A61A2E;
   text-align: center;
-  padding-top: 20px;
-  font-size: 20px;
-} */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}

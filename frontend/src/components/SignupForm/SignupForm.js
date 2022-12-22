@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./SignUpForm.css";
 import { signup, clearSessionErrors } from "../../store/session";
+import { useHistory } from "react-router-dom";
 
 export default function SignupForm() {
   const [email, setEmail] = useState("");
@@ -10,6 +11,7 @@ export default function SignupForm() {
   const [phone, setPhone] = useState("");
   const errors = useSelector((state) => state.errors.session);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     return () => {
@@ -48,7 +50,18 @@ export default function SignupForm() {
       phone,
     };
 
-    dispatch(signup(user));
+    dispatch(signup(user)).catch(async (res) => {
+      let data;
+      try {
+        data = await res.clone().json();
+      } catch {
+        data = await res.text();
+      }
+      if (data?.errors) return null;
+    }); // if (errors && errors.length) {
+    //   return null;
+    // }
+    history.push("/");
   };
 
   return (
@@ -115,9 +128,15 @@ export default function SignupForm() {
             </div>
 
             <div className="buttons-wrapper">
-              <button type="submit" className="signup-btn">
+              <input
+                type="submit"
+                value="Sign Up"
+                className="signup-btn"
+                disabled={!email || !username || !password || !phone}
+              />
+              {/* <button type="submit" className="signup-btn">
                 Sign up
-              </button>
+              </button> */}
             </div>
           </form>
         </div>
