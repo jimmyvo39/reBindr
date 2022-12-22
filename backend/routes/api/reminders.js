@@ -69,6 +69,7 @@ router.post('/', requireUser, validateReminderInput, async (req, res, next) => {
         
         let reminder = await newReminder.save();
         reminder = await reminder.populate('item', '_id, name');
+        const item = await Inventory.findById(reminder.item)
 
         const sendDate = parseInt(Math.floor(new Date(`${notification.date}`).getTime() / 1000))
         const msgBody = 
