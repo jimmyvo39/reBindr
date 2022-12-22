@@ -47,7 +47,39 @@ const ming = new User ({
 })
 users.push(ming)
 
-//DEMO INVENTORY
+//SEED INVENTORY
+const humidifier = new Inventory ({
+    uploader: demo,
+    name: "humidifier",
+    model: "UFSIU5437",
+    notes: "Hard water makes the filters go fast",
+    user_manual: "https://www.target.com/c/humidifiers-home-appliances/-/N-5xtuj",
+    consumables: []
+})
+humidifier.consumables.push(
+    new Consumable({
+        consumable_name: "filter",
+        link: "https://www.lowes.com/pl/Humidifier-filters-Humidifiers-dehumidifiers-Heating-cooling/4294620972"
+    })
+)
+items.push(humidifier)
+
+const toothbrush = new Inventory ({
+    uploader: demo,
+    name: "toothbrush",
+    models: "green",
+    notes: "soft bristles",
+    user_manual: "https://www.mouthhealthy.org/all-topics-a-z/brushing-your-teeth",
+    consumables: []
+})
+toothbrush.consumables.push(
+    new Consumable({
+        consumable_name: "new toothbrush",
+        link: "https://www.amazon.com/Colgate-Extra-Clean-Toothbrush-Count/dp/B00CC6XSSQ"
+    })
+)
+items.push(toothbrush)
+
 const oven = new Inventory ({
     uploader: justin,
     name: "oven",
@@ -64,6 +96,97 @@ oven.consumables.push(
 )
 items.push(oven)
 
+const vacuum = new Inventory ({
+    uploader: jimmy,
+    name: "vacuum",
+    model: "DJai394qt",
+    notes: "it sucks",
+    user_manual: "https://github.com/jimmyvo39",
+    consumables: []
+})
+vacuum.consumables.push(
+    new Consumable({
+        consumable_name: "vacuum bags",
+        link: "https://www.homedepot.com/b/Appliances-Appliance-Parts-Vacuum-Parts-Vacuum-Bags/N-5yc1vZ2fkon3f"
+    })
+)
+items.push(vacuum)
+
+const car = new Inventory ({
+    uploader: jimmy,
+    name: "jimmy's lemon",
+    model: "pt cruiser",
+    notes: "she gets from a to b...barely.",
+    user_manual: "https://www.carfax.com/Used-Chrysler-PT-Cruiser_w189",
+    consumables: []
+})
+car.consumables.push(
+    new Consumable({
+        consumable_name: "front tires",
+        link: "https://www.goodyear.com/en-US/tires/chrysler/pt-cruiser/2007?cmpid=paidsearch:google:gy:tp-dsa&gclid=Cj0KCQiA-oqdBhDfARIsAO0TrGGxzBpS41XMsLdkXsKAlkJS2oc60DTw1fbwZnESNEfLp-sC-dcBy0caAnluEALw_wcB"
+    })
+)
+car.consumables.push(
+    new Consumable({
+        consumable_name: "back tires",
+        link: "https://www.goodyear.com/en-US/tires/chrysler/pt-cruiser/2007?cmpid=paidsearch:google:gy:tp-dsa&gclid=Cj0KCQiA-oqdBhDfARIsAO0TrGGxzBpS41XMsLdkXsKAlkJS2oc60DTw1fbwZnESNEfLp-sC-dcBy0caAnluEALw_wcB"
+    })
+)
+items.push(car)
+
+const airCon = new Inventory ({
+    uploader: ming,
+    name: "air conditioner",
+    model: "afiu2feuwifj",
+    notes: "in the window",
+    user_manual: "https://www.ac-world.com/manuals/",
+    consumables: []
+})
+airCon.consumables.push(
+    new Consumable({
+        consumable_name: "air conditioner window insulation",
+        link: "https://ny.home.marketplace.nationalgrid.com/single-window-insulation-kit/?gclid=Cj0KCQiA-oqdBhDfARIsAO0TrGGl1sjAHlYrDYOJtC5g08Vs5_f0nmecttSK3QZCPaSCwTFVYQAMMagaAqvHEALw_wcB"
+    })
+)
+items.push(airCon)
+
+const brita = new Inventory ({
+    uploader: ming,
+    name: "brita water filter",
+    model: "brita",
+    notes: "brita",
+    user_manual: "its a brita",
+    consumables: []
+})
+brita.consumables.push(
+    new Consumable({
+        consumable_name: "brita filter",
+        link: "https://www.amazon.com/s?k=brita+filters&gclid=Cj0KCQiA-oqdBhDfARIsAO0TrGEAXA8Dg_9q5MmrNKMByzmKiYDGWi8w-a205XyTnBB8ClBzrjLMAMcaAsFxEALw_wcB&hvadid=616991272283&hvdev=c&hvlocphy=9004358&hvnetw=g&hvqmt=e&hvrand=4439914971239557924&hvtargid=kwd-1683719940&hydadcr=24662_13611802&tag=googhydr-20&ref=pd_sl_af6htpjol_e"
+    })
+)
+items.push(brita)
+
+//SEED REMINDERS
+const humidReminder = new Reminder ({
+    item: humidifier,
+    uploader: demo,
+    title: "Swap out filter",
+    date: new Date('2022/12/23/09:30:00:000'),
+    repeat: '2 months',
+    notifications: []
+})
+reminders.push(humidReminder)
+
+const toothbrushReminder = new Reminder ({
+    item: toothbrush,
+    uploader: demo,
+    title: "Buy a new toothbrush",
+    date: new Date('2023/01/01/00:00:00:001'),
+    repeat: '1 month',
+    notifications: []
+})
+reminders.push(toothbrushReminder)
+
 const ovenReminder = new Reminder ({
     item: oven,
     uploader: justin,
@@ -73,6 +196,46 @@ const ovenReminder = new Reminder ({
     notifications: []
 })
 reminders.push(ovenReminder)
+
+const vacuumReminder = new Reminder ({
+    item: vacuum,
+    uploader: jimmy,
+    title: "swap vacuum bag",
+    date: new Date('2022/12/23/10:00:00:000'),
+    repeat: '3 months',
+    notifications: []
+})
+reminders.push(vacuumReminder)
+
+const carReminder = new Reminder ({
+    item: car,
+    uploader: jimmy,
+    title: "replace those tires",
+    date: new Date('2023/10/31/16:23:12:123'),
+    repeat: '10 years',
+    notifications: []
+})
+reminders.push(carReminder)
+
+const airConReminder = new Reminder ({
+    item: airCon,
+    uploader: ming,
+    title: "get a/c seal before installation",
+    date: new Date('2023/03/15/12:00:00:000'),
+    repeat: '1 year',
+    notifications: []
+})
+reminders.push(airConReminder)
+
+const britaReminder = new Reminder ({
+    item: brita,
+    uploader: ming,
+    title: "replace the brita filter!",
+    date: new Date('2022/12/23/09:45:00:000'),
+    repeat: '1 month',
+    notifications: []
+})
+reminders.push(britaReminder)
 
 //ADDITIONAL USERS
 // for (let i = 1; i < NUM_SEED_USERS; i++) {
@@ -98,10 +261,10 @@ mongoose
         process.exit(1);
     });
 
-const insertSeeds = () => {
+const insertSeeds = async() => {
     console.log("Resetting db and seeding users...");
 
-    User.collection.drop()
+    await User.collection.drop()
                 .then(() => User.insertMany(users))
                 .then(() => {
                     console.log("Done!");
@@ -111,7 +274,7 @@ const insertSeeds = () => {
                     process.exit(1);
                 });
                 console.log("seeding inventory...")
-    Inventory.collection.drop()
+    await Inventory.collection.drop()
                 .then(() => Inventory.insertMany(items))
                 .then(() => {
                     console.log("Done!");
@@ -121,16 +284,17 @@ const insertSeeds = () => {
                     process.exit(1);
                 });
                 console.log("seeding reminder...")
-    Reminder.collection.drop()
+    await Reminder.collection.drop()
                 .then(() => Reminder.insertMany(reminders))
                 .then(() => {
                     console.log("Done!");
-                    mongoose.disconnect();
                 })
                 .catch(err => {
                     console.error(err.stack);
                     process.exit(1);
                 });
+
+    mongoose.disconnect();
 }
 
 //dotenv node seeders/seeds.js         

@@ -55,17 +55,50 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/', requireUser, validateReminderInput, async (req, res, next) => {
     try {
-      const newReminder = new Reminder({
-        title: req.body.title,
-        uploader: req.user._id,
-        item: req.body.item,
-        date: Date.parse(req.body.date),
-        repeat: req.body.repeat,
-      });
-  
-      let reminder = await newReminder.save();
-      reminder = await reminder.populate('item', '_id, name');
-      return res.json(reminder);
+        const newReminder = new Reminder({
+            title: req.body.title,
+            uploader: req.user._id,
+            item: req.body.item,
+            date: Date.parse(req.body.date),
+            repeat: req.body.repeat,
+        });
+        const notification = new Notification ({
+            date: newReminder.date
+        })
+        newReminder.notifications.push(notification)
+        
+        let reminder = await newReminder.save();
+        reminder = await reminder.populate('item', '_id, name');
+
+        const sendDate = parseInt(Math.floor(new Date(`${notification.date}`).getTime() / 1000))
+        const msgBody = 
+        `   
+            Hey ${req.user.username}!
+            This is a reBindr reminder to ${reminder.title} for your ${item.name} is due!  
+            ${item.model ? 'Model #: ' + item.model + '.' : ''} 
+            ${item.notes ? 'Notes: ' + item.notes + '.' : ''} 
+            ${item.user_manual ? 'User Manual: ' + item.user_manual + '.' : ''} 
+            ${item.consumables.map(consumable => consumable.consumable_name + ': ' + consumable.link)} 
+        }`
+        
+        const emailMsg = {
+            to: req.user.email, // Change to your recipient
+            from: 'reBindr.emails@gmail.com', // Change to your verified sender
+            subject: reminder.title,
+            text: msgBody,
+            send_at: sendDate
+        }
+        sendMailer(emailMsg)
+
+        const textMsg = {
+            messagingServiceSid: messageSid,
+            body: msgBody,
+            to: req.user.phone,
+            from: '218-522-9665 ',
+        }
+        sendText(textMsg)
+
+        return res.json(reminder);
     }
     catch(err) {
       next(err);
@@ -90,7 +123,6 @@ router.patch('/:id/addNotification', requireUser, async (req, res, next) => {
     const newNotification = new Notification({ date: req.body.date })
     reminder.notifications.push(newNotification)
     reminder.save()
-    
 
     const sendDate = parseInt(Math.floor(new Date(`${newNotification.date}`).getTime() / 1000))
     const msgBody = 
@@ -110,23 +142,28 @@ router.patch('/:id/addNotification', requireUser, async (req, res, next) => {
         text: msgBody,
         send_at: sendDate
     }
-    console.log(emailMsg)
+    // console.log(emailMsg)
     sendMailer(emailMsg)
+    const textTime = new Date(`${newNotification.date}`).toISOString()
+    // const textTime = new Date('2022/12/22/12:15:00').toISOString()
+    console.log(textTime)
 
     const textMsg = {
         messagingServiceSid: messageSid,
         body: msgBody,
         to: req.user.phone,
         from: '218-522-9665 ',
+        scheduleType: 'fixed',
+        sendAt: textTime
     }
-    // scheduleType: 'fixed',
-    // sendAt: new Date(`${newNotification.date}`).toISOString(),
+    sendText(textMsg)
     
     return res.json(reminder)
 })
 
-router.delete('/:id/notifications/:notification_id', async (req, res, next) => {
+router.delete('/:id/notifications/:notification_id', requireUser, async (req, res, next) => {
     const reminder = await Reminder.findById(req.params.id)
+
     if (!reminder) return res.json(null)
     reminder.notifications.forEach(notification => {
         if (notification._id.toString() === req.params.notification_id) {
@@ -135,6 +172,47 @@ router.delete('/:id/notifications/:notification_id', async (req, res, next) => {
     })
     reminder.save()
     return res.json(reminder)
+})
+
+router.post('/:id/shareReminder', async (req, res, next) => {
+    const reminder = await Reminder.findById(req.params.id)
+    let item = await Inventory.findById(reminder.item)
+
+    if (!reminder || !item) return res.json(null)
+
+    const shareEmail = req.body.email
+    const shareText = req.body.text
+
+    const sendDate = parseInt(Math.floor(new Date(`${reminder.date}`).getTime() / 1000))
+    const msgBody = 
+    `   
+        Hey ${req.user.username}!
+        This is a reBindr reminder to ${reminder.title} for your ${item.name}. This is due ${reminder.date}!  
+        ${item.model ? 'Model #: ' + item.model + '.' : ''} 
+        ${item.notes ? 'Notes: ' + item.notes + '.' : ''} 
+        ${item.user_manual ? 'User Manual: ' + item.user_manual + '.' : ''} 
+        ${item.consumables.map(consumable => consumable.consumable_name + ': ' + consumable.link)} 
+    }`
+    if (shareEmail) {
+        const emailMsg = {
+            to: shareEmail, // Change to your recipient
+            from: 'reBindr.emails@gmail.com', // Change to your verified sender
+            subject: reminder.title,
+            text: msgBody,
+            send_at: sendDate
+        }      
+        sendMailer(emailMsg)    
+    }
+    
+    if (shareText) {
+        const textMsg = {
+            messagingServiceSid: messageSid,
+            body: msgBody,
+            to: shareText,
+            from: '218-522-9665 ',
+        }
+        sendText(textMsg)
+    }
 })
 
 router.delete('/:id', async (req, res, next) => {

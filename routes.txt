@@ -19,3 +19,4 @@ Edit reminder: 'PATCH', /api/reminders/:id
 Add notification: 'PATCH', /api/reminders/:id/addNotification
 Delete reminder: 'DELETE', /api/reminders/:id
 Delete reminder's notification: 'DELETE', /api/reminders/:id/notifications/:notification_id
+Share reminder: 'POST', /api/reminders/:id/shareReminder
