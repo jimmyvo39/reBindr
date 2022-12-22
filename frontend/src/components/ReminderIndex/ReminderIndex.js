@@ -2,27 +2,23 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useHistory, useParams } from "react-router-dom";
 import ReminderIndexItem from "./ReminderIndexitem";
-import { getCurrentUser } from "../../store/session";
-import { fetchReminders, getReminders} from "../../store/reminders";
+import { fetchItemReminders, getReminders} from "../../store/reminders";
 
 function ReminderIndex () {
     const dispatch = useDispatch()
-    const reminders = useSelector(getReminders)
-
+    const _id = useParams()
+    
     useEffect(()=>{
-        dispatch(fetchReminders())
-    },[])
-
-
-
-
+        dispatch(fetchItemReminders(_id))
+    },[_id])
+    
+    const reminders = useSelector(getReminders)
 
     const ReminderIndexItems = reminders.map((reminder) => {
         return <ReminderIndexItem reminder={reminder} key={reminder._id} />;
     });
-
 
     return(
     <>

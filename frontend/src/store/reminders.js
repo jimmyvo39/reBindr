@@ -21,8 +21,11 @@ export const fetchReminders= () => async (dispatch) => {
 }
 
 export const fetchItemReminders= (itemId) => async (dispatch) => {
-    const res = await jwtFetch(`/api/inventories/${itemId}/reminders`);
+    
+    const res = await jwtFetch(`/api/inventories/${itemId.id}/reminders`);
+
     const data = await res.json();
+
     dispatch(receiveReminders(data))
 }
 
@@ -54,12 +57,12 @@ export const updateReminder = (reminder) => async (dispatch) => {
 }
 
 export const deleteReminder= (reminderId) => async (dispatch) => {
-    debugger
+    
     await jwtFetch(`/api/reminders/${reminderId}`,{
         method: "DELETE"
     });
+    await dispatch(removeReminder(reminderId));
 
-    dispatch(removeReminder(reminderId))
 }
 
 
@@ -69,7 +72,7 @@ const remindersReducer = (state={},action)=>{
 
     switch(action.type){
         case RECEIVE_REMINDERS:
-            return {...newState,...action.reminders};
+            return {...action.reminders};
         case RECEIVE_REMINDER:
             // newState[action.reminder.id] = action.reminder;
             // return newState;
