@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
 import ReminderShareForm from "./ReminderShareForm";
 
-function ReminderShareFormModal() {
+function ReminderShareFormModal(props) {
   const [showModal, setShowModal] = useState(false);
+  const reminderId = props.reminderId
 
   return (
     <>
@@ -12,7 +13,7 @@ function ReminderShareFormModal() {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <ReminderShareForm setShowModal={setShowModal} />
+          <ReminderShareForm reminderId={reminderId} setShowModal={setShowModal} />
         </Modal>
       )}
     </>

@@ -3,15 +3,16 @@ import React, {useState} from "react";
 import { useParams } from "react-router-dom";
 import jwtFetch from "../../store/jwt";
 
-const ReminderShareForm = () => {
-    const {id} = useParams();
+const ReminderShareForm = (props) => {
+    // const {id} = useParams();
+    const reminderId = props.reminderId
 
     const onSubmit = (e) => {
         e.preventDefault();
         console.log(phone,email)
-        jwtFetch(`/api/reminders/${id}/shareReminder`,{
+        jwtFetch(`/api/reminders/${reminderId}/shareReminder`,{
             method: "POST",
-            body: JSON.stringify({email, phone})
+            body: JSON.stringify({email: email, phone: phone})
         })
     };
 

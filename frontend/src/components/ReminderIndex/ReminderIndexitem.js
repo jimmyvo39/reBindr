@@ -36,7 +36,7 @@ const ReminderIndexItem = ({reminder}) => {
                     </div>
                     <div className="button-set">
                         {/* <button onClick={handleShare} >share</button> */}
-                        <ReminderShareFormModal/>
+                        <ReminderShareFormModal reminderId={reminder._id} />
                         <button onClick={handleDelete} >delete</button>
                     </div>
                 </div>

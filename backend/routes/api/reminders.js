@@ -177,13 +177,14 @@ router.delete('/:id/notifications/:notification_id', async (req, res, next) => {
 
 router.post('/:id/shareReminder', requireUser, async (req, res, next) => {
     const reminder = await Reminder.findById(req.params.id)
-    reminder = await reminder.populate('item', '_id, name');
+    // reminder = await reminder.populate('item', '_id, name');
+    console.log(req.body)
     let item = await Inventory.findById(reminder.item)
     
     if (!reminder || !item) return res.json(null)
 
     const shareEmail = req.body.email
-    const shareText = req.body.text
+    const shareText = req.body.phone
 
     const sendDate = parseInt(Math.floor(new Date(`${reminder.date}`).getTime() / 1000))
     const msgBody = 
@@ -205,7 +206,7 @@ router.post('/:id/shareReminder', requireUser, async (req, res, next) => {
         // send_at: sendDate
         sendMailer(emailMsg)    
     }
-    
+    console.log(shareText)
     if (shareText) {
         const textMsg = {
             messagingServiceSid: messageSid,
