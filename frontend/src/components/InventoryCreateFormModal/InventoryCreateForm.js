@@ -25,7 +25,10 @@ function InventoryForm(props) {
   const [name, onNameChange] = useInput("");
   const [model, onModelChange] = useInput("");
   const [notes, onNotesChange] = useInput("");
-  const [user_manual, onUsermanualChange] = useInput("");
+
+  const [user_manual, onUserManualChange] = useInput("");
+
+
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -55,7 +58,7 @@ function InventoryForm(props) {
         </button>
       </div>
       <h1>inventory form</h1>
-      <form form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit}>
         <input
           type="text"
           placeholder="item name"
@@ -73,7 +76,8 @@ function InventoryForm(props) {
           type="text"
           placeholder="user manual link"
           value={user_manual}
-          onChange={onUsermanualChange}
+          onChange={onUserManualChange}
+
         />
         <button type="submit">Add item</button>
       </form>

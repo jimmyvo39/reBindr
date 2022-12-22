@@ -42,13 +42,12 @@ const InventoryIndex = () => {
           onClose={() => setModalOpen(false)}
         />
       ) : null}
-
-      <div className="inventory-container">
-        <InventoryFormModal />
+      <div className="index-wrapper">
         <h1>INVENTORY</h1>
-
-        <ul className="index-list">{InventoriesIndexItems}</ul>
-        <h1>Bottom</h1>
+        <InventoryFormModal />
+        <div className="inventory-container">
+          <ul className="index-list">{InventoriesIndexItems}</ul>
+        </div>
       </div>
     </>
   );
