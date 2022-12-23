@@ -9,7 +9,7 @@ function ReminderShareFormModal(props) {
   return (
     <>
       <button onClick={() => setShowModal(true)} className="signupFormButton">
-        Share
+        <i class="fa-solid fa-paper-plane"></i>
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

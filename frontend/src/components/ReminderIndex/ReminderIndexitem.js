@@ -24,22 +24,24 @@ const ReminderIndexItem = ({reminder}) => {
     return(
         <>
         {reminding && (
-            <li>
-                <div className="reminder-container" >
-                    <div className="reminder-details" >
-                        <div>
-                            {reminder.title}
-                        </div>
-                        <div>
-                            {moment(reminder.date).format('MMMM Do YYYY, h:mm a')}
-                        </div> 
-                    </div>
-                    <div className="button-set">
-                        {/* <button onClick={handleShare} >share</button> */}
-                        <ReminderShareFormModal reminderId={reminder._id} />
-                        <button onClick={handleDelete} >delete</button>
-                    </div>
+            <li className="reminder-container">
+              
+                    
+                <div>
+                    <h4 id="remind-title">
+                        {reminder.title}
+                    </h4>
+                    <h5 id="remind-date">
+                        {moment(reminder.date).format('MMMM Do YYYY, h:mm a')}
+                    </h5> 
                 </div>
+
+                <div className="button-set">
+                    <ReminderShareFormModal reminderId={reminder._id} />
+                    <button onClick={handleDelete} ><i class="fa-solid fa-trash"></i></button>
+                </div>
+                    
+                
                 
             </li>
         )}

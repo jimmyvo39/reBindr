@@ -1,10 +1,30 @@
 .item-show-page {
     display: flex;
     justify-content: space-around;
+    background-color: #F6FBF9;
+    width: 1284px;
+    height: 622px;
+    border-radius: 49px;
+    margin:0 auto;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    margin-top: 63px;
+    justify-content: center;
+    align-items: center;
+}
+
+#item-name-header {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+h1.item-show-details {
+    font-size: 30px;
+    margin-bottom: 10px;
 }
 .inventory-show-containers {
-    
-    width: 500px;
-    height: 700px;
-    border: red 1px solid
+    padding: 20px;
+    height: 395px;  
+    width: 525px;
+    /* overflow: scroll; */
+    /* margin-top: 30px; */
 }
+
