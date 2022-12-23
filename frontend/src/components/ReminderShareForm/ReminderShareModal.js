@@ -4,16 +4,19 @@ import ReminderShareForm from "./ReminderShareForm";
 
 function ReminderShareFormModal(props) {
   const [showModal, setShowModal] = useState(false);
-  const reminderId = props.reminderId
+  const reminderId = props.reminderId;
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} className="signupFormButton">
-        <i class="fa-solid fa-paper-plane"></i>
+      <button onClick={() => setShowModal(true)} className="reminder-share-btn">
+        <i class="fa-solid fa-paper-plane fa-2x"></i>
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <ReminderShareForm reminderId={reminderId} setShowModal={setShowModal} />
+          <ReminderShareForm
+            reminderId={reminderId}
+            setShowModal={setShowModal}
+          />
         </Modal>
       )}
     </>
