@@ -4,7 +4,7 @@ import jwtFetch from "../../store/jwt";
 import { useHistory } from "react-router-dom";
 import { addInventory, receiveInventory } from "../../store/inventories";
 import receiveErrors from "../../store/errors";
-// import { getCurrentUser } from "../../store/session";
+import './InventoryCreateForm.css'
 
 function InventoryForm(props) {
   const dispatch = useDispatch();
@@ -52,35 +52,38 @@ function InventoryForm(props) {
   }
   return (
     <>
-      <div className="buttonBox">
-        <button onClick={closeModal} className="xButton">
-          <i className="fa-solid fa-x"></i>
-        </button>
-      </div>
-      <h1>inventory form</h1>
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          placeholder="item name"
-          value={name}
-          onChange={onNameChange}
-        />
-        <input
-          type="text"
-          placeholder="model"
-          value={model}
-          onChange={onModelChange}
-        />
-        <textarea placeholder="notes" value={notes} onChange={onNotesChange} />
-        <input
-          type="text"
-          placeholder="user manual link"
-          value={user_manual}
-          onChange={onUserManualChange}
+      <div className="form-container">
 
-        />
-        <button type="submit">Add item</button>
-      </form>
+        <div className="buttonBox">
+          <button onClick={closeModal} className="xButton">
+            <i className="fa-solid fa-x"></i>
+          </button>
+        </div>
+        <h1>Add to Inventory</h1>
+        <form onSubmit={onSubmit} className="reminder-form">
+          <input
+            type="text"
+            placeholder="item name"
+            value={name}
+            onChange={onNameChange}
+          />
+          <input
+            type="text"
+            placeholder="model"
+            value={model}
+            onChange={onModelChange}
+          />
+          <textarea placeholder="notes" value={notes} onChange={onNotesChange} />
+          <input
+            type="url"
+            placeholder="user manual link"
+            value={user_manual}
+            onChange={onUserManualChange}
+
+          />
+          <button type="submit" className= "create-form-btn">Add item</button>
+        </form>
+      </div>
     </>
   );
 }
