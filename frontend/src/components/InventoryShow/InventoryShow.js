@@ -30,10 +30,10 @@ const InventoryShow = (props) => {
                         </div>
                     </div>
                     <div className="inventory-show-containers">
-                        <h1>{item ? item.name : ""} details</h1>
-                        <h1>{item ? item.model : ""}</h1>
-                        <h1>{item ? item.notes : ""}</h1>
-                        <h1>{item ? item.user_manual : ""}</h1>
+                        <h1 id="item-name-header">{item ? item.name : ""} details</h1>
+                        <h1 className="item-show-details">model:{item ? item.model : ""}</h1>
+                        <h1 className="item-show-details">notes:{item ? item.notes : ""}</h1>
+                        <a href={item ? item.user_manual : ""} target="_blank"  rel="noreferrer"> User Manuel</a>
                     </div>
                 </div>
             </>
