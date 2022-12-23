@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Karla:wght@400;500;700&display=swap');
+
+.form-container {
+    font-family: "Karla";
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    /* margin: 20px; */
+}
+
+.form-container h1{
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+.reminder-form{
+ display: flex;
+ flex-direction: column;
+}
+
+.reminder-form *{
+    margin: 20px auto;
+}
+
+
+#modal-content {
+    /* border:red 1px solid; */
+    border-radius: 15px;
+    /* box-shadow: 0px 0px 3px 10px rgb(116, 247, 247,5%); */
+    box-shadow: 0px 4px 60px rgba(132, 199, 174, 0.25);
+}
+
+.create-form-btn{
+    width: 96px;
+    height: 35px;
+    background: rgb(132, 199, 174);
+    border-radius: 15px;
+    border:none;
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 10px;
+    color: #F6FBF9;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15)
+}
+
+input {
+    font-family: "Karla";
+    width: 100%
+}
+
+form input[type=text]{
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+form input[type=datetime-local]{
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 27.7px;
+}
