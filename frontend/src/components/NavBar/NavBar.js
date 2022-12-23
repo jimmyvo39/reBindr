@@ -1,6 +1,7 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { logout } from "../../store/session";
+import { getCurrentUser, logout } from "../../store/session";
 import "./NavBar.css";
 
 export default function NavBar() {
@@ -37,7 +38,9 @@ export default function NavBar() {
                 </option>
               </select>
             </li> */}
-
+            {/* <li>
+              <h1>Hey there {username}!</h1>
+            </li> */}
             <li>
               <button className="logout-btn" onClick={logoutUser}>
                 Logout
