@@ -26,6 +26,18 @@ nav ul li a {
   font-family: 'Inter';
   font-weight: 600;
   font-size: 20px;
+  color: #000000;
+  display: block;
+  line-height: 3em;
+  padding: 8px 48px;
+  text-decoration: none;
+  
+}
+
+nav ul li h1 {
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 20px;
   color: #8394EA;
   display: block;
   line-height: 3em;
@@ -33,13 +45,14 @@ nav ul li a {
   text-decoration: none;
   
 }
+
 nav ul li:first-child {
   margin-right: auto;
 }
 
 
 nav ul li a:hover {
-  color: #151826;
+  color: #8394EA;
 }
 
 
@@ -49,7 +62,7 @@ nav ul li a:hover {
   font-family: 'Inter';
   font-weight: 600;
   font-size: 20px;
-  color: #8394EA;
+  color: #000000;
   display: block;
   line-height: 3em;
   padding: 8px 48px;
@@ -57,7 +70,7 @@ nav ul li a:hover {
 }
 
 .logout-btn:hover{
-  color: #151826
+  color: #8394EA
 }
 
 nav ul .drop-down{
