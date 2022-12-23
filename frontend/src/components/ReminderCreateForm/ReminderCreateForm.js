@@ -71,7 +71,7 @@ function ReminderCreateForm(props) {
           value={date}
           onChange={onDateChange}
         />
-        <button type="submit">Add reminder</button>
+        <button type="submit" >Add reminder</button>
       </form>
     </>
   );

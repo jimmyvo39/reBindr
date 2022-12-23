@@ -7,7 +7,7 @@ function ReminderCreateFormModal() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} >
+      <button onClick={() => setShowModal(true)} className="create-form-btn" id="add-reminder-button">
         Add Reminder
       </button>
       {showModal && (
