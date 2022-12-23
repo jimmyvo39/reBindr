@@ -29,7 +29,11 @@ function App() {
       </>
     );
   } else {
-    SessionLinks = <LoginForm />;
+    SessionLinks = (
+      <div className="session-form container">
+        <LoginForm />
+      </div>
+      )
   }
 
   return (
