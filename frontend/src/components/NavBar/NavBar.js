@@ -24,7 +24,7 @@ export default function NavBar() {
                 <img src="../logo.png" alt="logo" />
               </Link>
             </li>
-            <li className="drop-down">
+            {/* <li className="drop-down">
               <select
                 name="upcoming-reminders"
                 id="upcoming-reminders"
@@ -36,7 +36,7 @@ export default function NavBar() {
                   Upcoming Reminders
                 </option>
               </select>
-            </li>
+            </li> */}
 
             <li>
               <button className="logout-btn" onClick={logoutUser}>
