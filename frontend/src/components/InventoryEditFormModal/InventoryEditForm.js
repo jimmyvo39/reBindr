@@ -114,7 +114,6 @@ function InventoryEditForm(props) {
           onChange={onUserManualChange}
         />
         <button type="submit">Update item</button>
-        <button onClick={handleDelete}>temp delete button</button>
       </form>
     </>
   );

@@ -31,7 +31,9 @@ const InventoryIndexItem = ({ inventory }) => {
 
           <InventoryEditFormModal inventory={inventory} />
 
-          <button onClick={handleDelete}>temp delete button</button>
+          <button onClick={handleDelete} className="delete-btn">
+            <i class="fa-solid fa-trash fa-2x"></i>
+          </button>
         </li>
       )}
     </>

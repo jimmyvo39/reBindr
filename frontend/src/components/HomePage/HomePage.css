@@ -1,6 +1,62 @@
+.rbc-calendar {
+    font-family: 'Karla';
+  }
+
+  .rbc-toolbar{
+    flex-wrap:nowrap;
+  }
+
+
+.rbc-toolbar button {
+    padding: 0.375rem 0.6rem;
+}
+
+.rbc-toolbar .rbc-toolbar-label{
+    font-size: 24px;
+    font-weight: 600;    
+}
+
+.rbc-toolbar button.rbc-active {
+    background-color: #84C7AE;
+}
+
+button.rbc-active{
+    color:#F6FBF9;
+}
+
+
+.rbc-toolbar button.rbc-active:hover, .rbc-toolbar button.rbc-active:focus {
+    color: #F6FBF9;
+    background-color: #84C7AE;
+    border-color: #8c8c8c;
+}
+
+.rbc-month-view{
+    border-radius: 15px;
+}
+
+.rbc-time-view {
+    border-radius: 15px; 
+}
+
+
+
+.rbc-today {
+    background-color:#dbe1fa
+}
+
+.rbc-event{
+    background-color: #9fafff;
+}
+
+.rbc-event.rbc-selected, .rbc-day-slot .rbc-selected.rbc-background-event {
+    background-color: #7387e8;
+}
+
 .home-page {
     display: flex;
-    justify-content: space-around;
+    column-gap: 20px;
+    justify-content: space-between;
     background-color: #F6FBF9;
     width: 1284px;
     height: 622px;
@@ -15,7 +71,7 @@
 .inventory-container {
     height: 395px;  
     width: 525px;
-    overflow: scroll;
+    overflow: auto;
     margin-top: 30px;
     /* border: red solid 1px; */
     
@@ -25,12 +81,14 @@
 
 ::-webkit-scrollbar {
     -webkit-appearance: none;
-    width: 9px;
+    width: 10px;
+    
   }
   
   ::-webkit-scrollbar-thumb {
     border-radius: 6px;
-    background-color: #a8a8a8;
+    background-color: #c8c8c8;
+    /* background-clip: content-box; */
     /* box-shadow: 0 0 1px rgba(255, 255, 255, .5); */
   }
 
@@ -61,14 +119,58 @@
 }
 
 .edit-form-btn{
-    width:30px;
-    height:30px;
     float: right;
-    margin-top: -55px;
-    margin-right:20px;
-    border:none;
+    margin-top: -68px;
+    margin-right:26px;
+    /* border:none; */
     cursor: pointer;
-    background:none;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background-color:#F6FBF9;
+    border-radius: 50%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15)
+}
+
+.edit-form-btn:active {
+    box-shadow: none;
+  }
+
+.delete-btn{
+    float: right;
+    margin-top: -68px;
+    margin-right:78px;
+    /* border:none; */
+    cursor: pointer;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background-color:#F6FBF9;
+    border-radius: 50%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15)
+}
+
+.delete-btn:active {
+    box-shadow: none;
+  }
+
+
+.fa-pen-to-square{
+    color: #84C7AE;
+}
+
+.fa-pen-to-square:hover {
+    color: #5A9E85;
+}
+
+.fa-trash{
+    color:#84C7AE;
+}
+
+.fa-trash:hover {
+    color: #5A9E85;
 }
 
 .edit-icon-btn{
@@ -79,7 +181,7 @@
 .item-button{
     width: 234px;
     height: 90px;
-    background: #8394EA;
+    background: #9fafff;
     border-radius: 15px;
     border:none;
     color: #F6FBF9;
@@ -87,12 +189,21 @@
     font-family: 'Karla';
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 23px;
     line-height: 30px;
-    padding-left: 10px;
+    padding-left: 12px;
     padding-top: 10px;
     text-align: left;
     margin-bottom: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15)
+}
+
+.item-button:hover{
+    background:#8394EA;
+}
+
+.item-button:active{
+    box-shadow: none;
 }
 
 .create-form-btn{
@@ -109,5 +220,15 @@
     color: #F6FBF9;
     cursor: pointer;
     margin-top: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15)
 }
+
+.create-form-btn:hover{
+    background: #5A9E85;
+}
+
+.create-form-btn:active {
+    box-shadow: none;
+  }
+
 
