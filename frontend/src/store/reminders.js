@@ -74,11 +74,11 @@ const remindersReducer = (state={},action)=>{
         case RECEIVE_REMINDERS:
             return {...action.reminders};
         case RECEIVE_REMINDER:
-            // newState[action.reminder.id] = action.reminder;
-            // return newState;
-            return{
-                ...state,[action.reminder.id]: action.reminder
-            }
+            newState[action.reminder._id] = action.reminder;
+            return newState;
+            // return{
+            //     ...state,[action.reminder.id]: action.reminder
+            // }
         case REMOVE_REMINDER:
             delete newState[action.reminderId];
             return newState;
