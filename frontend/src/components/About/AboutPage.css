@@ -38,8 +38,11 @@
     height: 250px;
     border-radius: 50%;
     overflow: hidden;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    margin-bottom: 10px;
 }
+
+
 
 .aboutPictureContainer > img {
     width: auto;
@@ -76,6 +79,10 @@
 }
 
 .aboutLinksContainer > a > i{
+    color: #9fafff;
+}
+
+.aboutLinksContainer > a > i:hover{
     color: #8394EA;
 }
 
