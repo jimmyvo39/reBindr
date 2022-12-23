@@ -6,6 +6,7 @@ import receiveErrors from "../../store/errors";
 import { useParams } from "react-router-dom";
 import { getInventory } from "../../store/inventories";
 // import { getCurrentUser } from "../../store/session";
+import './ReminderCreateForm.css'
 
 function ReminderCreateForm(props) {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ function ReminderCreateForm(props) {
   }
 
   const [title, onTitleChange] = useInput("");
-  const [date, onDateChange] = useInput(new Date()+960);
+  const [date, onDateChange] = useInput(new Date());
   const [repeat, onRepeatChange] = useInput("");
 
 
@@ -52,27 +53,30 @@ function ReminderCreateForm(props) {
 
   return (
     <>
-      <div className="buttonBox">
-        <button onClick={closeModal} className="xButton">
-          {/* <i className="fa-solid fa-x"></i> */}
-          x
-        </button>
+      <div className="form-container">
+        <div className="buttonBox">
+          <button onClick={closeModal} className="xButton">
+            {/* <i className="fa-solid fa-x"></i> */}
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <h1>Create a reminder</h1>
+        <form className="reminder-form" form onSubmit={onSubmit}>
+          <input
+            type="text"
+            placeholder="title"
+            value={title}
+            onChange={onTitleChange}
+          />
+          <input
+            type="datetime-local"
+            value={date}
+            onChange={onDateChange}
+          />
+          <button type="submit"  className="create-form-btn">Add reminder</button>
+        </form>
+
       </div>
-      <h1>Reminder form</h1>
-      <form form onSubmit={onSubmit}>
-        <input
-          type="text"
-          placeholder="title"
-          value={title}
-          onChange={onTitleChange}
-        />
-        <input
-          type="datetime-local"
-          value={date}
-          onChange={onDateChange}
-        />
-        <button type="submit" >Add reminder</button>
-      </form>
     </>
   );
 }

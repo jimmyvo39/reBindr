@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Karla:wght@400;500;700&display=swap');
 
-
 .item-show-page {
     font-family: 'Karla';
     display: flex;
@@ -17,12 +16,15 @@
 }
 
 #item-name-header {
+    font-family: "Karla";
     font-size: 40px;
     margin-bottom: 10px;
 }
 h1.item-show-details {
+    font-family: "Karla";
     font-size: 30px;
     margin-bottom: 10px;
+    padding-left: 10px;
 }
 .inventory-show-containers {
     padding: 20px;
@@ -32,3 +34,19 @@ h1.item-show-details {
     /* margin-top: 30px; */
 }
 
+.inventory-show-containers a {
+    padding-left: 10px ;
+}
+
+#notes-div {
+    font-family: "Karla";
+    min-height: 100px;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 24px hsla(0,0%,0%,0.05), 0 20px 48px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.1);
+}
+
+#notes-div i {
+ margin-bottom: 20px;
+}

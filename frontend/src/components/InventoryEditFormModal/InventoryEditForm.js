@@ -8,6 +8,7 @@ import {
   receiveInventory,
   updateInventory,
 } from "../../store/inventories";
+import '../InventoryCreateFormModal/InventoryCreateForm.css'
 import receiveErrors from "../../store/errors";
 // import { getCurrentUser } from "../../store/session";
 
@@ -83,38 +84,41 @@ function InventoryEditForm(props) {
   }
   return (
     <>
-      <div className="buttonBox">
-        <button onClick={closeModal} className="xButton">
-          <i className="fa-solid fa-x"></i>
-        </button>
+      <div className="form-container">
+
+        <div className="buttonBox">
+          <button onClick={closeModal} className="xButton">
+            <i className="fa-solid fa-x"></i>
+          </button>
+        </div>
+        <h1>Update Inventory</h1>
+        <form onSubmit={onSubmit} className="reminder-form">
+          <input
+            type="text"
+            placeholder="item name"
+            value={currentName}
+            onChange={onNameChange}
+          />
+          <input
+            type="text"
+            placeholder="model"
+            value={currentModel}
+            onChange={onModelChange}
+          />
+          <textarea
+            placeholder="notes"
+            value={currentNotes}
+            onChange={onNotesChange}
+          />
+          <input
+            type="text"
+            placeholder="user manual link"
+            value={currentUserManual}
+            onChange={onUserManualChange}
+          />
+          <button type="submit" className="create-form-btn">Update item</button>
+        </form>
       </div>
-      <h1>inventory form</h1>
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          placeholder="item name"
-          value={currentName}
-          onChange={onNameChange}
-        />
-        <input
-          type="text"
-          placeholder="model"
-          value={currentModel}
-          onChange={onModelChange}
-        />
-        <textarea
-          placeholder="notes"
-          value={currentNotes}
-          onChange={onNotesChange}
-        />
-        <input
-          type="text"
-          placeholder="user manual link"
-          value={currentUserManual}
-          onChange={onUserManualChange}
-        />
-        <button type="submit">Update item</button>
-      </form>
     </>
   );
 }
