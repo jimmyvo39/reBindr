@@ -50,18 +50,20 @@ export default function SignupForm() {
       phone,
     };
 
-    dispatch(signup(user)).catch(async (res) => {
-      let data;
-      try {
-        data = await res.clone().json();
-      } catch {
-        data = await res.text();
-      }
-      if (data?.errors) return null;
-    }); // if (errors && errors.length) {
+    dispatch(signup(user));
+    // .catch(async (res) => {
+    //   let data;
+    //   try {
+    //     data = await res.clone().json();
+    //   } catch {
+    //     data = await res.text();
+    //   }
+    //   if (data?.errors) return null;
+    // });
+    // if (errors && errors.length) {
     //   return null;
     // }
-    history.push("/");
+    // history.push("/");
   };
 
   return (
