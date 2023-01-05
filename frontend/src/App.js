@@ -53,7 +53,7 @@ function App() {
             path="/inventories/:id"
             component={InventoryShow}
           />
-          <ProtectedRoute exact path="/about" component={AboutPage} />
+          <AuthRoute exact path="/about" component={AboutPage} />
           {/* <Route exact path={"/"}>
             {SessionLinks}
           </Route>
