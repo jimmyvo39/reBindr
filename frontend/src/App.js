@@ -10,6 +10,7 @@ import { getCurrentUser } from "./store/session";
 // import InventoryForm from "./components/InventoryCreateFormModal/InventoryCreateForm";
 import InventoryShow from "./components/InventoryShow/InventoryShow";
 import AboutPage from "./components/About";
+import { AuthRoute, ProtectedRoute } from "./components/Routes/Routes";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -19,54 +20,64 @@ function App() {
   }, [dispatch]);
   // debugger
 
-  const sessionUser = useSelector((state) => !!state.session.user);
+  const loggedIn = useSelector((state) => !!state.session.user);
 
-  let SessionLinks;
-  if (sessionUser) {
-    SessionLinks = (
-      <>
-        <HomePage />
-      </>
-    );
-  } else {
-    SessionLinks = (
-      <div className="session-form container">
-        <LoginForm />
-      </div>
-      )
-  }
+  // let SessionLinks;
+  // if (loggedIn) {
+  //   SessionLinks = (
+  //     <>
+  //       <HomePage />
+  //     </>
+  //   );
+  // } else {
+  //   SessionLinks = (
+  //     <div className="session-form container">
+  //       <LoginForm />
+  //     </div>
+  //   );
+  // }
 
   return (
     loaded && (
-      <BrowserRouter>
-        <div className="App">
-          <NavBar />
-          <Switch>
-            <Route exact path={"/"}>
-              {SessionLinks}
-            </Route>
-            <Route exact path={"/signup"}>
-              <SignUpForm />
-            </Route>
-            <Route path={"/about"}>
-              <AboutPage />
-            </Route>
+      // <BrowserRouter>
+      <div className="App">
+        <NavBar />
 
-            <Route path={"/test"}>
-              <>
-                <h1>test page</h1>
-                
-              </>
-            </Route>
+        <Switch>
+          <AuthRoute exact path="/login" component={LoginForm} />
+          <AuthRoute exact path="/signup" component={SignUpForm} />
 
-            <Route path={"/inventories/:id"}>
-              <>
-                <InventoryShow />
-              </>
-            </Route>
-          </Switch>
-        </div>
-      </BrowserRouter>
+          <ProtectedRoute exact path="/" component={HomePage} />
+          <ProtectedRoute
+            exact
+            path="/inventories/:id"
+            component={InventoryShow}
+          />
+          <AuthRoute exact path="/about" component={AboutPage} />
+          {/* <Route exact path={"/"}>
+            {SessionLinks}
+          </Route>
+          <Route exact path={"/signup"}>
+            <SignUpForm />
+          </Route>
+          <Route path={"/about"}>
+            <AboutPage />
+          </Route>
+
+          <Route path={"/test"}>
+            <>
+              <h1>test page</h1>
+            </>
+          </Route>
+
+          <Route path={"/inventories/:id"}>
+            <>
+              <InventoryShow />
+            </>
+          </Route> */}
+        </Switch>
+      </div>
+      // </BrowserRouter>
     )
   );
 }
