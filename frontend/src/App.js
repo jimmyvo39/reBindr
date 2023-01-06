@@ -54,6 +54,7 @@ function App() {
             component={InventoryShow}
           />
           <AuthRoute exact path="/about" component={AboutPage} />
+          <ProtectedRoute exact path="/about" component={AboutPage} />
           {/* <Route exact path={"/"}>
             {SessionLinks}
           </Route>
