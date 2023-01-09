@@ -26,7 +26,6 @@
 
 ![shareReminder](https://github.com/jimmyvo39/reBindr/blob/main/frontend/public/shareReminder.gif)
 
-
 ### Splash page with tutorial
 
 * GIF of Ming's Intro before login
@@ -35,7 +34,7 @@
 
 ### Sharing a reminder notification via email and/or text
 
-`js
+```js
 router.post('/:id/shareReminder', requireUser, async (req, res, next) => {
     const reminder = await Reminder.findById(req.params.id)
     // reminder = await reminder.populate('item', '_id, name');
@@ -79,4 +78,4 @@ router.post('/:id/shareReminder', requireUser, async (req, res, next) => {
     }
     return res.json(reminder)
 })
-`
+```
