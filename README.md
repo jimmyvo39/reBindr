@@ -24,7 +24,9 @@
 
 ### Seamless Email/Text scheduling upon creating a reminder notification or sharing a reminder
 
-![shareReminder](./frontend/public/shareReminder.gif)
+![shareReminder](https://media0.giphy.com/media/QeFvFZbst41pQbmsfU/giphy.gif?cid=790b7611f1c03a035ee70ae964ff012e689415b1df56b157&rid=giphy.gif&ct=g)
+
+
 
 ### Splash page with tutorial
 
