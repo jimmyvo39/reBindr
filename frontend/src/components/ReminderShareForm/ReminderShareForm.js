@@ -8,31 +8,45 @@ const ReminderShareForm = (props) => {
     // const {id} = useParams();
     const reminderId = props.reminderId
 
-    const onSubmit = (e) => {
-        e.preventDefault();
-        console.log(phone,email)
-        jwtFetch(`/api/reminders/${reminderId}/shareReminder`,{
-            method: "POST",
-            body: JSON.stringify({email: email, phone: phone})
-        })
-    };
-
-    function useInput(initialValue) {
-        const [value, setValue] = useState(initialValue);
-        const onChange = (e) => setValue(e.target.value);
-        return [value, onChange];
-    }
+    // function useInput(initialValue) {
+    //     const [value, setValue] = useState(initialValue);
+    //     const onChange = (e) => setValue(e.target.value);
+    //     return [value, onChange];
+    // }
     
-    const [email, onEmailChange] = useInput();
-    const [phone, onPhoneChange] = useInput();
-    const [item, setItem] = useState(true);
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [errors, setErrors] = useState("");
     const setShowModal = props.setShowModal;
 
     const closeModal = (e) => {
         e.preventDefault();
         setShowModal(false);
-        setItem(false);
-      };
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if (email && phone) {
+            jwtFetch(`/api/reminders/${reminderId}/shareReminder`,{
+                method: "POST",
+                body: JSON.stringify({email: email, phone: phone})
+            })
+        } else if (email) {
+            jwtFetch(`/api/reminders/${reminderId}/shareReminder`,{
+                method: "POST",
+                body: JSON.stringify({email: email})
+            })
+        } else if (phone) {
+            jwtFetch(`/api/reminders/${reminderId}/shareReminder`,{
+                method: "POST",
+                body: JSON.stringify({phone: phone})
+            })
+        } else {
+            setErrors("Email or Phone number required")
+            return 
+        }
+        setShowModal(false)
+    };
 
     return (
         <>
@@ -43,21 +57,23 @@ const ReminderShareForm = (props) => {
                 </button>
             </div>
             <h1>Send Reminder</h1>
-            <form onSubmit={onSubmit} className="reminder-form">
-            <input
-            type="email"
-            placeholder="email"
-            value={email}
-            onChange={onEmailChange}
-            />
-            <input
-            type="tel"
-            value={phone}
-            placeholder="Phone"
-            onChange={onPhoneChange}
-            />
-            <button type="submit" className="create-form-btn">Send reminder</button>
-
+            <form onSubmit={(e) => handleSubmit(e)} className="reminder-form">
+                <input
+                type="email"
+                placeholder="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                type="tel"
+                value={phone}
+                placeholder="Phone"
+                onChange={(e) => setPhone(e.target.value)}
+                />
+                {errors &&
+                    <p>{errors}</p>
+                }
+                <button className="create-form-btn">Send reminder</button>
             </form>
         </div>
         </>
