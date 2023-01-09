@@ -102,6 +102,9 @@ const AboutPage = () => {
           </li>
         ))}
       </ul>
+      <div className="githubLink">
+        <a href="https://github.com/jimmyvo39/reBindr">Github Repo</a>
+      </div>
     </div>
   );
 };
