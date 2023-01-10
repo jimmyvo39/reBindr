@@ -48,9 +48,9 @@ function IntroPage() {
 
   return (
     <section className="intro_page">
-      <div className="hero_wrapper">
-        <section className="hero flex-row justify-center align-center">
-          <div className="hero_title flex-col justify-center">
+      <div className="intro_wrapper">
+        <section className="intro">
+          <div className="intro_title">
             <h1>Create and organize your own own daily reminder events.</h1>
             <p>
               Create, update, and set your reminders through text or email all
@@ -58,7 +58,7 @@ function IntroPage() {
             </p>
             {introButtons()}
           </div>
-          <img src="CalenderIMG1.svg" alt=""></img>
+          <img src="CalendarIMG1.png" alt=""></img>
         </section>
       </div>
     </section>

@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Karla:wght@300;400;500;700&display=swap');
+
+/* .intro_wrapper{
+  padding: 0 10vw;
+  width: 100vw;
+} */
+
+section .intro {
+  margin-top: 63px;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+section .intro .intro_title{
+  margin: auto 0;
+  width: 675px;
+  height: 270px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+h1{
+  font-family: 'Karla';
+  font-size: 47px;
+  line-height:52px;
+  font-weight: 700;
+}
+
+.intro_wrapper .intro .intro_title p {
+  margin: 2vh 0 5vh;
+}
+
+p {
+  font-family: 'Karla';
+  width:496px;
+  height:54px;
+  font-size: 19px;
+  font-weight: 300;
+}
+
+section .intro img{
+  width: 50%;
+}
