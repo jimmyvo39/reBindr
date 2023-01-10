@@ -14,21 +14,17 @@ function IntroPage() {
   const introButtons = () => {
     if (loggedIn) {
       return (
-        <div className="hero_button flex-row justify-start">
+        <div className="intro_button">
           <Link to={"/home"}>
-            <button
-              onClick={demoLogin}
-              className="demo-btn"
-              id="demo-user-button"
-            >
-              DEMO
+            <button className="demo-btn" id="demo-user-button">
+              Home
             </button>
           </Link>
         </div>
       );
     } else {
       return (
-        <div className="hero_button flex-row justify-start">
+        <div className="intro_button">
           <Link to={"/login"}>
             <button className="border-btn">Log in</button>
           </Link>
@@ -38,7 +34,7 @@ function IntroPage() {
 
           <Link to={"/home"}>
             <button className="demo-btn" onClick={demoLogin}>
-              DEMO
+              Demo
             </button>
           </Link>
         </div>
@@ -51,7 +47,7 @@ function IntroPage() {
       <div className="intro_wrapper">
         <section className="intro">
           <div className="intro_title">
-            <h1>Create and organize your own own daily reminder events.</h1>
+            <h1>Create and plan out your own daily reminders.</h1>
             <p>
               Create, update, and set your reminders through text or email all
               in one app.

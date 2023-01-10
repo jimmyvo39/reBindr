@@ -8,15 +8,9 @@ export const AuthRoute = ({ component: Component, path, exact }) => {
     <Route
       path={path}
       exact={exact}
-      render={(props) => (
-        //   !loggedIn ? (
-        //     <Component {...props} />
-        //   ) : (
-        //     <Redirect to="/events" />
-        //   )
-        // )} />
-        <Component {...props} />
-      )}
+      render={(props) =>
+        !loggedIn ? <Component {...props} /> : <Redirect to="/" />
+      }
     />
   );
 };
@@ -27,13 +21,8 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={
-        (props) => <Component {...props} />
-        // loggedIn ? (
-        //   <Component {...props} />
-        // ) : (
-        //   <Redirect to="/login" />
-        // )
+      render={(props) =>
+        loggedIn ? <Component {...props} /> : <Redirect to="/home" />
       }
     />
   );

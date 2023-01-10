@@ -51,19 +51,6 @@ export default function SignupForm() {
     };
 
     dispatch(signup(user));
-    // .catch(async (res) => {
-    //   let data;
-    //   try {
-    //     data = await res.clone().json();
-    //   } catch {
-    //     data = await res.text();
-    //   }
-    //   if (data?.errors) return null;
-    // });
-    // if (errors && errors.length) {
-    //   return null;
-    // }
-    // history.push("/");
   };
 
   return (
@@ -136,9 +123,6 @@ export default function SignupForm() {
                 className="signup-btn"
                 disabled={!email || !username || !password || !phone}
               />
-              {/* <button type="submit" className="signup-btn">
-                Sign up
-              </button> */}
             </div>
           </form>
         </div>
