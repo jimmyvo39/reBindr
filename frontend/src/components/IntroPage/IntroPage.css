@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Karla:wght@300;400;500;700&display=swap');
+
+/* .intro_wrapper{
+  padding: 0 5vw;
+  width: 100vw;
+} */
+
+section .intro {
+  margin-top: 80px;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+section .intro .intro_title{
+  margin: auto 0;
+  width: 675px;
+  height: 270px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top:40px;
+
+}
+
+.intro_button{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+
+}
+
+.intro_button button{
+  margin-right: .9vw;
+}
+.intro_button .border-btn{
+  width: 160px;
+    height: 59px;
+    border: 3px solid #8394EA;
+    background-color: transparent;
+    border-radius: 20px;
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 44px;
+    color: #8394EA;
+    margin-top:10px;
+    cursor: pointer;
+}
+
+.intro_button .demo-btn{
+  width: 160px;
+    height: 59px;
+    /* border: 3px solid #8394EA; */
+    border:none;
+    background-color: #9fafff;
+    border-radius: 20px;
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 44px;
+    color: #F6FBF9;
+    margin-top:10px;
+    cursor: pointer;
+}
+
+.intro_button .border-btn:hover{
+  background-color:#9fafff;
+  color:#F6FBF9;
+  border: none;
+}
+
+.intro_button .demo-btn:hover{
+    background:#8394EA;
+}
+
+h1{
+  font-family: 'Karla';
+  font-size: 47px;
+  line-height:52px;
+  font-weight: 700;
+}
+
+.intro_wrapper .intro .intro_title p {
+  margin: 2.5vh 0 3vh;
+}
+
+p {
+  font-family: 'Karla';
+  width:675px;
+  height:54px;
+  font-size: 19px;
+  font-weight: 300;
+  line-height: 30px;
+}
+
+section .intro img{
+  width: 430px;
+  height:430px;
+}
