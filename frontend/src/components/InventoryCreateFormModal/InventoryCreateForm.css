@@ -44,7 +44,8 @@
     color: #F6FBF9;
     cursor: pointer;
     margin-top: 20px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15)
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
 }
 
 input {
@@ -75,6 +76,18 @@ form input[type=datetime-local]{
 }
 
 form input[type=url]{
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 27.7px;
+}
+form input[type=email]{
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 27.7px;
+}
+form input[type=tel]{
     font-family: 'Karla';
     font-style: normal;
     font-weight: 700;

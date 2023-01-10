@@ -32,13 +32,17 @@ function App() {
           <AuthRoute exact path="/login" component={LoginForm} />
           <AuthRoute exact path="/signup" component={SignUpForm} />
 
+
           <ProtectedRoute exact path="/home" component={HomePage} />
+
           <ProtectedRoute
             exact
             path="/inventories/:id"
             component={InventoryShow}
           />
-          <ProtectedRoute exact path="/about" component={AboutPage} />
+          {/* <AuthRoute path="/about" component={AboutPage} /> */}
+          {/* <ProtectedRoute exact path="/about" component={AboutPage} /> */}
+          <Route path="/about" component={AboutPage}/>
           {/* <Route exact path={"/"}>
             {SessionLinks}
           </Route>

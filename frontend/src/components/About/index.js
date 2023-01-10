@@ -13,6 +13,7 @@ const AboutPage = () => {
       javascript: "https://jimmyvo39.github.io/Breath-First-Search/",
       jsname: "Breath First Search",
       picture: "jimmy.png",
+      wellfound: "https://angel.co/u/jimmy-vo-11"
     },
     {
       name: "Justin Kilburn",
@@ -25,6 +26,7 @@ const AboutPage = () => {
       javascript: "https://thatmoonman.github.io/FENCES/",
       jsname: "FENCES",
       picture: "justin.png",
+      wellfound: "https://angel.co/u/justin-kilburn"
     },
     {
       name: "Ming Zhang",
@@ -37,6 +39,7 @@ const AboutPage = () => {
       javascript: "https://mingzmk2.github.io/Operation-Helix/",
       jsname: "Operation Helix",
       picture: "ming.png",
+      wellfound: "/"
     },
   ];
 
@@ -64,10 +67,13 @@ const AboutPage = () => {
             </div>
             <div className="aboutLinksContainer">
               <a href={developer.github} target="_blank">
-                <i class="fa-brands fa-github"></i>
+                <i className="fa-brands fa-github"></i>
               </a>
               <a href={developer.linkedIn} target="_blank">
-                <i class="fa-brands fa-linkedin"></i>
+                <i className="fa-brands fa-linkedin"></i>
+              </a>
+              <a href={developer.wellfound} target="_blank">
+              <i className="fa-brands fa-angellist"></i>
               </a>
             </div>
             <ul className="aboutProjectsContainer">
@@ -96,6 +102,9 @@ const AboutPage = () => {
           </li>
         ))}
       </ul>
+      <div className="githubLink">
+        <a href="https://github.com/jimmyvo39/reBindr">Github Repo</a>
+      </div>
     </div>
   );
 };
