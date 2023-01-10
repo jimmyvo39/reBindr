@@ -41,7 +41,7 @@ export default function SignupForm() {
     return (e) => setState(e.currentTarget.value);
   };
 
-  const usernameSubmit = (e) => {
+  const userSubmit = (e) => {
     e.preventDefault();
     const user = {
       email,
@@ -51,6 +51,7 @@ export default function SignupForm() {
     };
 
     dispatch(signup(user));
+    history.push("/home");
   };
 
   return (
@@ -61,7 +62,7 @@ export default function SignupForm() {
           <span className="signup-description">
             Create an account to start setting up your reminders now!
           </span>
-          <form onSubmit={usernameSubmit}>
+          <form onSubmit={userSubmit}>
             <div className="input-wrapper">
               <div className="username-input">
                 <input

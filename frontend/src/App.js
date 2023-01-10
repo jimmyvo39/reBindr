@@ -7,7 +7,6 @@ import SignUpForm from "./components/SignupForm/SignupForm";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getCurrentUser } from "./store/session";
-// import InventoryForm from "./components/InventoryCreateFormModal/InventoryCreateForm";
 import InventoryShow from "./components/InventoryShow/InventoryShow";
 import AboutPage from "./components/About";
 import { AuthRoute, ProtectedRoute } from "./components/Routes/Routes";
@@ -31,7 +30,9 @@ function App() {
           <AuthRoute exact path="/" component={IntroPage} />
           <AuthRoute exact path="/login" component={LoginForm} />
           <AuthRoute exact path="/signup" component={SignUpForm} />
+          <AuthRoute exact path="/about" component={AboutPage} />
 
+          <ProtectedRoute exact path="/" component={IntroPage} />
 
           <ProtectedRoute exact path="/home" component={HomePage} />
 
@@ -40,6 +41,9 @@ function App() {
             path="/inventories/:id"
             component={InventoryShow}
           />
+
+          <ProtectedRoute exact path="/about" component={AboutPage} />
+
           {/* <AuthRoute path="/about" component={AboutPage} /> */}
           {/* <ProtectedRoute exact path="/about" component={AboutPage} /> */}
           <Route path="/about" component={AboutPage}/>
@@ -64,9 +68,9 @@ function App() {
               <InventoryShow />
             </>
           </Route> */}
+
         </Switch>
       </div>
-      // </BrowserRouter>
     )
   );
 }
