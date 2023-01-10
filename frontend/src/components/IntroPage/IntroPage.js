@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { login, clearSessionErrors } from "../../store/session";
@@ -7,8 +7,10 @@ import "./IntroPage.css";
 function IntroPage() {
   const dispatch = useDispatch();
   const loggedIn = useSelector((state) => !!state.session.user);
+  const history = useHistory();
   const demoLogin = () => {
     dispatch(login({ email: "demo@user.io", password: "password" }));
+    history.push("/home");
   };
 
   const introButtons = () => {
