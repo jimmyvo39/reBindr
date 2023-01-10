@@ -11,6 +11,7 @@ import { getCurrentUser } from "./store/session";
 import InventoryShow from "./components/InventoryShow/InventoryShow";
 import AboutPage from "./components/About";
 import { AuthRoute, ProtectedRoute } from "./components/Routes/Routes";
+import IntroPage from "./components/IntroPage/IntroPage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -18,36 +19,20 @@ function App() {
   useEffect(() => {
     dispatch(getCurrentUser()).then(() => setLoaded(true));
   }, [dispatch]);
-  // debugger
 
   const loggedIn = useSelector((state) => !!state.session.user);
 
-  // let SessionLinks;
-  // if (loggedIn) {
-  //   SessionLinks = (
-  //     <>
-  //       <HomePage />
-  //     </>
-  //   );
-  // } else {
-  //   SessionLinks = (
-  //     <div className="session-form container">
-  //       <LoginForm />
-  //     </div>
-  //   );
-  // }
-
   return (
     loaded && (
-      // <BrowserRouter>
       <div className="App">
         <NavBar />
 
         <Switch>
+          <AuthRoute exact path="/" component={IntroPage} />
           <AuthRoute exact path="/login" component={LoginForm} />
           <AuthRoute exact path="/signup" component={SignUpForm} />
 
-          <ProtectedRoute exact path="/" component={HomePage} />
+          <ProtectedRoute exact path="/home" component={HomePage} />
           <ProtectedRoute
             exact
             path="/inventories/:id"

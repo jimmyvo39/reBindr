@@ -65,7 +65,7 @@ export default function NavBar() {
               </Link>
             </li>
             <li>
-              <Link to="/">Log In</Link>
+              <Link to="login">Log In</Link>
             </li>
             <li>
               <Link to="/signup">Sign Up</Link>
