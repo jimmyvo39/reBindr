@@ -30,7 +30,8 @@ h1.item-show-details {
     padding: 20px;
     height: 395px;  
     width: 525px;
-    /* overflow: scroll; */
+    overflow: scroll;
+    
     /* margin-top: 30px; */
 }
 

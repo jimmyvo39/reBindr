@@ -33,13 +33,42 @@ function App() {
           <AuthRoute exact path="/about" component={AboutPage} />
 
           <ProtectedRoute exact path="/" component={IntroPage} />
+
           <ProtectedRoute exact path="/home" component={HomePage} />
+
           <ProtectedRoute
             exact
             path="/inventories/:id"
             component={InventoryShow}
           />
+
           <ProtectedRoute exact path="/about" component={AboutPage} />
+
+          {/* <AuthRoute path="/about" component={AboutPage} /> */}
+          {/* <ProtectedRoute exact path="/about" component={AboutPage} /> */}
+          <Route path="/about" component={AboutPage}/>
+          {/* <Route exact path={"/"}>
+            {SessionLinks}
+          </Route>
+          <Route exact path={"/signup"}>
+            <SignUpForm />
+          </Route>
+          <Route path={"/about"}>
+            <AboutPage />
+          </Route>
+
+          <Route path={"/test"}>
+            <>
+              <h1>test page</h1>
+            </>
+          </Route>
+
+          <Route path={"/inventories/:id"}>
+            <>
+              <InventoryShow />
+            </>
+          </Route> */}
+
         </Switch>
       </div>
     )

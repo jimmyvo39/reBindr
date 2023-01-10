@@ -71,7 +71,7 @@ router.post('/', requireUser, validateReminderInput, async (req, res, next) => {
         reminder = await reminder.populate('item', '_id, name');
         const item = await Inventory.findById(reminder.item)
 
-        const sendDate = parseInt(Math.floor(new Date(`${notification.date}`).getTime() / 1000))
+        const sendDate = parseInt(Math.floor(new Date(`${notification.date}`).getTime() / 1000))        
         const msgBody = 
         `   
             Hey ${req.user.username}!
@@ -206,7 +206,7 @@ router.post('/:id/shareReminder', requireUser, async (req, res, next) => {
         // send_at: sendDate
         sendMailer(emailMsg)    
     }
-    console.log(shareText)
+    
     if (shareText) {
         const textMsg = {
             messagingServiceSid: messageSid,
