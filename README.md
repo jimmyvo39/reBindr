@@ -34,11 +34,11 @@
 
 ### Sharing a reminder notification via email and/or text
 
+When the `/api/reminders/${reminderId}/shareReminder` request gets sent to the backend, a message will be crafted using the specific reminder's information in the database. Then, depeneding on whether an email address, phone number, or both, have been included in the request body, the message will be sent to the input destination using the appropriate API.
+
 ```js
 router.post('/:id/shareReminder', requireUser, async (req, res, next) => {
     const reminder = await Reminder.findById(req.params.id)
-    // reminder = await reminder.populate('item', '_id, name');
-    console.log(req.body)
     let item = await Inventory.findById(reminder.item)
 
     if (!reminder || !item) return res.json(null)
@@ -58,12 +58,11 @@ router.post('/:id/shareReminder', requireUser, async (req, res, next) => {
     }`
     if (shareEmail) {
         const emailMsg = {
-            to: shareEmail, // Change to your recipient
-            from: 'reBindr.emails@gmail.com', // Change to your verified sender
+            to: shareEmail, 
+            from: 'reBindr.emails@gmail.com',
             subject: reminder.title,
             text: msgBody,
         }      
-        // send_at: sendDate
         sendMailer(emailMsg)    
     }
     
