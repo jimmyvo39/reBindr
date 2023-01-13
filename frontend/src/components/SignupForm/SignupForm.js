@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./SignUpForm.css";
 import { signup, clearSessionErrors } from "../../store/session";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 
 export default function SignupForm() {
   const [email, setEmail] = useState("");
@@ -12,6 +12,7 @@ export default function SignupForm() {
   const errors = useSelector((state) => state.errors.session);
   const dispatch = useDispatch();
   const history = useHistory();
+  const createdUser = useSelector((state) => !!state.session.user);
 
   useEffect(() => {
     return () => {
@@ -51,8 +52,10 @@ export default function SignupForm() {
     };
 
     dispatch(signup(user));
-    history.push("/home");
+    // history.push("/home");
   };
+
+  if (createdUser) return <Redirect to="/home" />;
 
   return (
     <>
