@@ -29,6 +29,11 @@ export default function NavBar() {
             <li>
               <Link to="/home">Home</Link>
             </li>
+            <li>
+              <button className="logout-btn" onClick={logoutUser}>
+                Logout
+              </button>
+            </li>
 
             <li>
               <Link to="/about">About</Link>
