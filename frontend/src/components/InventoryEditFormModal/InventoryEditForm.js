@@ -49,7 +49,6 @@ function InventoryEditForm(props) {
     setNewUserManual(newUserManual);
   };
 
-  console.log(inventory);
   const onSubmit = (e) => {
     e.preventDefault();
 

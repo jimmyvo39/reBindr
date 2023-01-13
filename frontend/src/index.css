@@ -153,3 +153,11 @@ table {
     width: 100%;
     overflow: hidden;
 }
+
+.rbc-ellipsis:hover , .rbc-show-more:hover , .rbc-row-segment:hover  .rbc-event-content:hover , .rbc-event-label:hover { 
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+

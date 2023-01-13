@@ -22,6 +22,7 @@ function App() {
   const loggedIn = useSelector((state) => !!state.session.user);
 
   return (
+    
     loaded && (
       <div className="App">
         <NavBar />

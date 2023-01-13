@@ -14,6 +14,7 @@ export default function NavBar() {
     dispatch(logout());
     history.push("/");
   };
+  console.log("For your curiosity, here are some easter eggs")
 
   if (loggedIn) {
     return (

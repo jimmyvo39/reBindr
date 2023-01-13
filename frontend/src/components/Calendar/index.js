@@ -6,6 +6,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import { fetchReminders, getReminders} from "../../store/reminders";
 import { useDispatch, useSelector } from "react-redux";
 
+
 const localizer = momentLocalizer(moment);
 
 // const allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k]);
@@ -23,7 +24,6 @@ const BigCalendar = () => {
           } ;
     });
 
-    console.log(remindersFormatted)
 
     useEffect(()=>{
         dispatch(fetchReminders())
