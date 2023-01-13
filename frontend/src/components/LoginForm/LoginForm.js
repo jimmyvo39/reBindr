@@ -4,7 +4,7 @@ import "./LoginForm.css";
 
 import { login, clearSessionErrors } from "../../store/session";
 import DemoUser from "./DemoUser";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 // import { Redirect } from "react-router-dom";
 
 export default function LoginForm() {
@@ -14,6 +14,7 @@ export default function LoginForm() {
 
   const dispatch = useDispatch();
   const history = useHistory();
+  const loggedIn = useSelector((state) => !!state.session.user);
 
   useEffect(() => {
     return () => {
@@ -29,10 +30,11 @@ export default function LoginForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login({ email, password }));
-    history.push("/home");
+
+    // history.push("/home");
   };
 
-  // if (currentUser) return <Redirect to="/" />;
+  if (loggedIn) return <Redirect to="/home" />;
 
   return (
     <>
