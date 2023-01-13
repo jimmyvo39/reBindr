@@ -26,9 +26,9 @@
 
 ![shareReminder](https://github.com/jimmyvo39/reBindr/blob/main/frontend/public/shareReminder.gif)
 
-### Splash page with tutorial
+### Calendar shows user's reminders and updates upon creating a new reminder
 
-* GIF of Ming's Intro before login
+![calendarUpdate]()
 
 ## Code Snippets
 
@@ -139,7 +139,6 @@ const BigCalendar = () => {
 
     const styling = {height: "500px",  
                     width: "600px",
-                    // fontSize: "50%"
                     };
 
     return (
