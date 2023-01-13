@@ -22,7 +22,7 @@ nav ul li img{
   height: auto;
 }
 
-nav ul li a {
+nav ul li {
   font-family: 'Inter';
   font-weight: 600;
   font-size: 20px;
@@ -51,15 +51,15 @@ nav ul li a:hover {
   font-family: 'Inter';
   font-weight: 600;
   font-size: 20px;
-  color: #000000;
+  color: #8394EA;
   display: block;
   line-height: 3em;
-  padding: 8px 48px;
+  /* padding: 2px 43px; */
   text-decoration: none;
 }
 
 .logout-btn:hover{
-  color: #8394EA
+  color: #414A75;
 }
 
 nav ul .drop-down{
