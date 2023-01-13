@@ -81,7 +81,7 @@ toothbrush.consumables.push(
 items.push(toothbrush)
 
 const oven = new Inventory ({
-    uploader: justin,
+    uploader: demo,
     name: "oven",
     model: "843rqy38fqur",
     notes: "oven light is on the right",
@@ -97,7 +97,7 @@ oven.consumables.push(
 items.push(oven)
 
 const vacuum = new Inventory ({
-    uploader: jimmy,
+    uploader: demo,
     name: "vacuum",
     model: "DJai394qt",
     notes: "it sucks",
@@ -113,7 +113,7 @@ vacuum.consumables.push(
 items.push(vacuum)
 
 const car = new Inventory ({
-    uploader: jimmy,
+    uploader: demo,
     name: "jimmy's lemon",
     model: "pt cruiser",
     notes: "she gets from a to b...barely.",
@@ -135,7 +135,7 @@ car.consumables.push(
 items.push(car)
 
 const airCon = new Inventory ({
-    uploader: ming,
+    uploader: demo,
     name: "air conditioner",
     model: "afiu2feuwifj",
     notes: "in the window",
@@ -151,7 +151,7 @@ airCon.consumables.push(
 items.push(airCon)
 
 const brita = new Inventory ({
-    uploader: ming,
+    uploader: demo,
     name: "brita water filter",
     model: "brita",
     notes: "brita",
@@ -171,7 +171,7 @@ const humidReminder = new Reminder ({
     item: humidifier,
     uploader: demo,
     title: "Swap out filter",
-    date: new Date('2022/12/23/09:30:00:000'),
+    date: new Date('2022/01/23/09:30:00:000'),
     repeat: '2 months',
     notifications: []
 })
@@ -189,9 +189,9 @@ reminders.push(toothbrushReminder)
 
 const ovenReminder = new Reminder ({
     item: oven,
-    uploader: justin,
+    uploader: demo,
     title: "replace oven light",
-    date: new Date('2023/06/06/15:30:00:000'),
+    date: new Date('2023/02/06/15:30:00:000'),
     repeat: '1 year',
     notifications: []
 })
@@ -199,9 +199,9 @@ reminders.push(ovenReminder)
 
 const vacuumReminder = new Reminder ({
     item: vacuum,
-    uploader: jimmy,
+    uploader: demo,
     title: "swap vacuum bag",
-    date: new Date('2022/12/23/10:00:00:000'),
+    date: new Date('2022/02/23/10:00:00:000'),
     repeat: '3 months',
     notifications: []
 })
@@ -209,9 +209,9 @@ reminders.push(vacuumReminder)
 
 const carReminder = new Reminder ({
     item: car,
-    uploader: jimmy,
+    uploader: demo,
     title: "replace those tires",
-    date: new Date('2023/10/31/16:23:12:123'),
+    date: new Date('2023/01/11/16:23:12:123'),
     repeat: '10 years',
     notifications: []
 })
@@ -219,9 +219,9 @@ reminders.push(carReminder)
 
 const airConReminder = new Reminder ({
     item: airCon,
-    uploader: ming,
+    uploader: demo,
     title: "get a/c seal before installation",
-    date: new Date('2023/03/15/12:00:00:000'),
+    date: new Date('2023/02/15/12:00:00:000'),
     repeat: '1 year',
     notifications: []
 })
@@ -229,9 +229,9 @@ reminders.push(airConReminder)
 
 const britaReminder = new Reminder ({
     item: brita,
-    uploader: ming,
+    uploader: demo,
     title: "replace the brita filter!",
-    date: new Date('2022/12/23/09:45:00:000'),
+    date: new Date('2022/02/05/09:45:00:000'),
     repeat: '1 month',
     notifications: []
 })
