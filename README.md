@@ -28,7 +28,7 @@
 
 ### Calendar shows user's reminders and updates upon creating a new reminder
 
-![calendarUpdate](https://github.com/jimmyvo39/reBindr/blob/main/frontend/public/calendarupdate.gif?raw=true)
+![calendarUpdate]()
 
 ## Code Snippets
 
