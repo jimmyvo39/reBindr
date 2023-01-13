@@ -171,7 +171,7 @@ const humidReminder = new Reminder ({
     item: humidifier,
     uploader: demo,
     title: "Swap out filter",
-    date: new Date('2022/01/23/09:30:00:000'),
+    date: new Date('2023/01/23/09:30:00:000'),
     repeat: '2 months',
     notifications: []
 })
@@ -201,7 +201,7 @@ const vacuumReminder = new Reminder ({
     item: vacuum,
     uploader: demo,
     title: "swap vacuum bag",
-    date: new Date('2022/02/23/10:00:00:000'),
+    date: new Date('2023/02/23/10:00:00:000'),
     repeat: '3 months',
     notifications: []
 })
@@ -231,7 +231,7 @@ const britaReminder = new Reminder ({
     item: brita,
     uploader: demo,
     title: "replace the brita filter!",
-    date: new Date('2022/02/05/09:45:00:000'),
+    date: new Date('2023/02/05/09:45:00:000'),
     repeat: '1 month',
     notifications: []
 })
