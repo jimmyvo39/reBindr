@@ -79,7 +79,7 @@ const AboutPage = () => {
             <ul className="aboutProjectsContainer">
               <li className="projects">PROJECTS:</li>
               <li>
-                Fullstack <i class="fa-regular fa-hand-point-right"></i>{" "}
+                Fullstack <i className="fa-regular fa-hand-point-right"></i>{" "}
                 <a
                   className="projectLinks"
                   href={developer.fullstack}
@@ -89,7 +89,7 @@ const AboutPage = () => {
                 </a>
               </li>
               <li>
-                Javascript <i class="fa-regular fa-hand-point-right"></i>{" "}
+                Javascript <i className="fa-regular fa-hand-point-right"></i>{" "}
                 <a
                   className="projectLinks"
                   href={developer.javascript}

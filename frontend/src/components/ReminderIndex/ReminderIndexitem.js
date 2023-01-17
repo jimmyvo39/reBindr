@@ -33,7 +33,7 @@ const ReminderIndexItem = ({ reminder }) => {
             <ReminderShareFormModal reminderId={reminder._id} />
 
             <button className="delete-reminder-btn" onClick={handleDelete}>
-              <i class="fa-solid fa-trash fa-2x"></i>
+              <i className="fa-solid fa-trash fa-2x"></i>
             </button>
           </div>
         </li>

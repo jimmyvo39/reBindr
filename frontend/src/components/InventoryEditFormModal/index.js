@@ -9,7 +9,7 @@ function InventoryEditFormModal(props) {
   return (
     <>
       <button onClick={() => setShowModal(true)} className="edit-form-btn">
-        <i class="fa-solid fa-pen-to-square fa-2x"></i>
+        <i className="fa-solid fa-pen-to-square fa-2x"></i>
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

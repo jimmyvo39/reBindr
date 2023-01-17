@@ -57,7 +57,7 @@ function ReminderCreateForm(props) {
         <div className="buttonBox">
           <button onClick={closeModal} className="xButton">
             {/* <i className="fa-solid fa-x"></i> */}
-            <i class="fa-solid fa-xmark"></i>
+            <i className="fa-solid fa-xmark"></i>
           </button>
         </div>
         <h1>Create a reminder</h1>
