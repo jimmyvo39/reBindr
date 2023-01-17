@@ -29,6 +29,9 @@ function InventoryEditForm(props) {
   const [currentNotes, setNewNotes] = useState(inventory.notes);
   const [currentUserManual, setNewUserManual] = useState(inventory.user_manual);
 
+  const [showNameError, setShowNameError] = useState(false)
+  const nameError = 'Name must be between 3 and 30 characters'
+
   const onNameChange = (e) => {
     let newName = e.target.value;
     setNewName(newName);
@@ -60,6 +63,12 @@ function InventoryEditForm(props) {
       notes: currentNotes,
       user_manual: currentUserManual,
     };
+    console.log(currentName)
+    if (currentName.length < 3 || currentName.length > 30) {
+      setShowNameError(true)
+      return
+    }
+
     dispatch(updateInventory(data));
     setShowModal(false);
     setItem(false);
@@ -98,6 +107,9 @@ function InventoryEditForm(props) {
             value={currentName}
             onChange={onNameChange}
           />
+          {showNameError && 
+              <div  className="errors">{nameError}</div>
+            }
           <input
             type="text"
             placeholder="model"

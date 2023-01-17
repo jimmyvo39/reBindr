@@ -71,7 +71,7 @@ const ReminderShareForm = (props) => {
                 onChange={(e) => setPhone(e.target.value)}
                 />
                 {errors &&
-                    <p>{errors}</p>
+                    <div className="errors">{errors}</div>
                 }
                 <button className="create-form-btn">Send reminder</button>
             </form>

@@ -132,9 +132,9 @@ export const updateInventory = (inventory) => async (dispatch) => {
     body: JSON.stringify(inventory),
     method: "PATCH",
   });
-  const data = await res.json();
+  // const data = await res.json();
   // console.log(inventory);
-  dispatch(receiveInventory(data));
+  dispatch(fetchUserInventories());
 };
 
 const inventoriesReducer = (state = {}, action) => {

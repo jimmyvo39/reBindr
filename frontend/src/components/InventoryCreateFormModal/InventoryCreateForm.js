@@ -28,11 +28,16 @@ function InventoryForm(props) {
 
   const [user_manual, onUserManualChange] = useInput("");
 
-
+  const [showNameError, setShowNameError] = useState(false)
+  const nameError = 'Name must be between 3 and 30 characters'
 
   const onSubmit = (e) => {
     e.preventDefault();
     const data = { uploader, name, model, notes, user_manual };
+    if (name.length < 3 || name.length > 30) {
+      setShowNameError(true)
+      return
+    }
     dispatch(addInventory(data));
     setShowModal(false);
     setItem(false);
@@ -43,6 +48,7 @@ function InventoryForm(props) {
 
   const closeModal = (e) => {
     e.preventDefault();
+
     setShowModal(false);
     setItem(false);
   };
@@ -67,6 +73,9 @@ function InventoryForm(props) {
             value={name}
             onChange={onNameChange}
           />
+           {showNameError && 
+              <div  className="errors">{nameError}</div>
+            }
           <input
             type="text"
             placeholder="model"
