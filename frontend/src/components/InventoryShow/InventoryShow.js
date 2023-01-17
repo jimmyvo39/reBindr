@@ -33,9 +33,9 @@ const InventoryShow = (props) => {
                         <h1 id="item-name-header">{item ? item.name : ""} details</h1>
                         <h1 className="item-show-details">Model:{item ? item.model : ""}</h1>
                         <div id='notes-div'>
-                            <i class="fa-solid fa-clipboard"></i>
+                            <i className="fa-solid fa-clipboard"></i>
                             <h2 className="item-show-details">{item ? item.notes : ""}</h2>
-                        </div><i class="fa-solid fa-link"></i>
+                        </div><i className="fa-solid fa-link"></i>
                         <a href={item ? item.user_manual : ""} target="_blank"  rel="noreferrer"> User Manuel</a>
                     </div>
                 </div>
