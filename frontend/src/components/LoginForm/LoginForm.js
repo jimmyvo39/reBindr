@@ -51,7 +51,7 @@ export default function LoginForm() {
           <span className="login-description">
             Already have an account? Get in to set your reminders now!
           </span>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} noValidate>
             <div className="input-wrapper">
               <div className="email-input">
                 <input

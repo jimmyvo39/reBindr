@@ -97,7 +97,7 @@ export default function SignupForm() {
           <span className="signup-description">
             Create an account to start setting up your reminders now!
           </span>
-          <form onSubmit={userSubmit}>
+          <form onSubmit={userSubmit} novalidate>
             <div className="input-wrapper">
               <div className="username-input">
                 <input

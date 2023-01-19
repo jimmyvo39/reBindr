@@ -57,7 +57,7 @@ const ReminderShareForm = (props) => {
                 </button>
             </div>
             <h1>Send Reminder</h1>
-            <form onSubmit={(e) => handleSubmit(e)} className="reminder-form">
+            <form onSubmit={(e) => handleSubmit(e)} className="reminder-form" novalidate>
                 <input
                 type="email"
                 placeholder="email"
