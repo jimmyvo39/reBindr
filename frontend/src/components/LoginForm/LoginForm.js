@@ -10,11 +10,17 @@ import { Redirect, useHistory } from "react-router-dom";
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
   const errors = useSelector((state) => state.errors.session);
+  const [showErrorMessage, setShowErrorMessage] = useState(false)
+  const errorMessage = 'Invalid Credentials'
+
+
 
   const dispatch = useDispatch();
   const history = useHistory();
   const loggedIn = useSelector((state) => !!state.session.user);
+  
 
   useEffect(() => {
     return () => {
@@ -29,6 +35,7 @@ export default function LoginForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!email || !password || errors) return setShowErrorMessage(true)
     dispatch(login({ email, password }));
 
     // history.push("/home");
@@ -57,7 +64,8 @@ export default function LoginForm() {
                   className="email"
                 />
               </div>
-              <div className="errors">{errors?.email}</div>
+              <br></br>
+              {/* <div className="errors">{errors?.email}</div> */}
 
               <div className="password-input">
                 <input
@@ -70,15 +78,16 @@ export default function LoginForm() {
                   className="password"
                 />
               </div>
-              <div className="errors">{errors?.password}</div>
+              <div></div>
+              {/* <div className="errors">{errors?.password}</div> */}
             </div>
-
+            {showErrorMessage ? <div className="errors">{errorMessage}</div> : <><br></br><br></br></>}
             <div className="buttons-wrapper">
               <input
                 type="submit"
                 className="login-btn"
                 value="Log in"
-                disabled={!email || !password}
+                // disabled={!email || !password}
               />
 
               <DemoUser />

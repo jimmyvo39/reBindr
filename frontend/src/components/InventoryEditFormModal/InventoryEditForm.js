@@ -63,7 +63,7 @@ function InventoryEditForm(props) {
       notes: currentNotes,
       user_manual: currentUserManual,
     };
-    console.log(currentName)
+    // console.log(currentName)
     if (currentName.length < 3 || currentName.length > 30) {
       setShowNameError(true)
       return

@@ -14,6 +14,11 @@ export default function SignupForm() {
   const history = useHistory();
   const createdUser = useSelector((state) => !!state.session.user);
 
+  const [usernameBlank, setUsernameBlank] = useState(false)
+  const [emailBlank, setEmailBlank] = useState(false)
+  const [passwordBlank, setPasswordBlank] = useState(false)
+  const [phoneBlank, setPhoneBlank] = useState(false)
+
   useEffect(() => {
     return () => {
       dispatch(clearSessionErrors());
@@ -50,7 +55,34 @@ export default function SignupForm() {
       password,
       phone,
     };
-
+    
+    let blankErrors = false
+    for (let field in user) {
+      if (!user[field]) {
+        switch (field) {
+          case 'username':
+            setUsernameBlank(true)
+            blankErrors = true
+            break
+          case 'email':
+            setEmailBlank(true)
+            blankErrors = true
+            break
+          case 'password':
+            setPasswordBlank(true)
+            blankErrors = true
+            break
+          case 'phone':
+            setPhoneBlank(true)
+            blankErrors = true
+            break
+          default:
+            break
+        }
+      }
+    }
+  
+    // if (blankErrors) return    
     dispatch(signup(user));
     // history.push("/home");
   };
@@ -79,6 +111,7 @@ export default function SignupForm() {
                 />
               </div>
               <div className="errors">{errors?.username}</div>
+              {usernameBlank &&  <div className="errors">username can't be blank</div>}
 
               <div className="email-input">
                 <input
@@ -92,6 +125,7 @@ export default function SignupForm() {
                 />
               </div>
               <div className="errors">{errors?.email}</div>
+              {emailBlank && <div className="errors">email can't be blank</div>}
 
               <div className="password-input">
                 <input
@@ -105,6 +139,7 @@ export default function SignupForm() {
                 />
               </div>
               <div className="errors">{errors?.password}</div>
+              {passwordBlank && <div className="errors">password can't be blank</div>}
 
               <div className="phone-input">
                 <input
@@ -118,6 +153,7 @@ export default function SignupForm() {
                 />
               </div>
               <div className="errors">{errors?.phone}</div>
+              {phoneBlank && <div className="errors">phone can't be blank</div>}
             </div>
 
             <div className="buttons-wrapper">
@@ -125,7 +161,7 @@ export default function SignupForm() {
                 type="submit"
                 value="Sign Up"
                 className="signup-btn"
-                disabled={!email || !username || !password || !phone}
+                // disabled={!email || !username || !password || !phone}
               />
             </div>
           </form>
