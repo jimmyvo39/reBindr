@@ -13,7 +13,7 @@ const AboutPage = () => {
       javascript: "https://jimmyvo39.github.io/Breath-First-Search/",
       jsname: "Breath First Search",
       picture: "jimmy.png",
-      wellfound: "https://angel.co/u/jimmy-vo-11"
+      wellfound: "https://angel.co/u/jimmy-vo-11",
     },
     {
       name: "Justin Kilburn",
@@ -26,7 +26,7 @@ const AboutPage = () => {
       javascript: "https://thatmoonman.github.io/FENCES/",
       jsname: "FENCES",
       picture: "justin.png",
-      wellfound: "https://angel.co/u/justin-kilburn"
+      wellfound: "https://angel.co/u/justin-kilburn",
     },
     {
       name: "Ming Zhang",
@@ -39,7 +39,7 @@ const AboutPage = () => {
       javascript: "https://mingzmk2.github.io/Operation-Helix/",
       jsname: "Operation Helix",
       picture: "ming.png",
-      wellfound: "/"
+      wellfound: "https://angel.co/u/ming-zhang-18",
     },
   ];
 
@@ -73,7 +73,7 @@ const AboutPage = () => {
                 <i className="fa-brands fa-linkedin"></i>
               </a>
               <a href={developer.wellfound} target="_blank">
-              <i className="fa-brands fa-angellist"></i>
+                <i className="fa-brands fa-angellist"></i>
               </a>
             </div>
             <ul className="aboutProjectsContainer">

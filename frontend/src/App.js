@@ -22,7 +22,6 @@ function App() {
   const loggedIn = useSelector((state) => !!state.session.user);
 
   return (
-    
     loaded && (
       <div className="App">
         <NavBar />
@@ -45,31 +44,7 @@ function App() {
 
           <ProtectedRoute exact path="/about" component={AboutPage} />
 
-          {/* <AuthRoute path="/about" component={AboutPage} /> */}
-          {/* <ProtectedRoute exact path="/about" component={AboutPage} /> */}
-          <Route path="/about" component={AboutPage}/>
-          {/* <Route exact path={"/"}>
-            {SessionLinks}
-          </Route>
-          <Route exact path={"/signup"}>
-            <SignUpForm />
-          </Route>
-          <Route path={"/about"}>
-            <AboutPage />
-          </Route>
-
-          <Route path={"/test"}>
-            <>
-              <h1>test page</h1>
-            </>
-          </Route>
-
-          <Route path={"/inventories/:id"}>
-            <>
-              <InventoryShow />
-            </>
-          </Route> */}
-
+          <Route path="/about" component={AboutPage} />
         </Switch>
       </div>
     )
