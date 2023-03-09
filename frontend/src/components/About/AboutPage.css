@@ -38,8 +38,11 @@
     height: 250px;
     border-radius: 50%;
     overflow: hidden;
-    /* border: 1px solid black; */
     margin-bottom: 10px;
+}
+
+.aboutPictureContainer:hover {
+    box-shadow: rgb(0 0 0 / 45%) 0px 2px 10px;
 }
 
 
