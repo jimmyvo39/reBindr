@@ -13,7 +13,8 @@ const AboutPage = () => {
       javascript: "https://jimmyvo39.github.io/Breath-First-Search/",
       jsname: "Breath First Search",
       picture: "jimmy.png",
-      wellfound: "https://angel.co/u/jimmy-vo-11"
+      wellfound: "https://angel.co/u/jimmy-vo-11",
+      portfolio: "https://jimmyvocodes.com"
     },
     {
       name: "Justin Kilburn",
@@ -26,7 +27,8 @@ const AboutPage = () => {
       javascript: "https://thatmoonman.github.io/FENCES/",
       jsname: "FENCES",
       picture: "justin.png",
-      wellfound: "https://angel.co/u/justin-kilburn"
+      wellfound: "https://angel.co/u/justin-kilburn",
+      portfolio: "https://justinkilburn.com/"
     },
     {
       name: "Ming Zhang",
@@ -39,7 +41,8 @@ const AboutPage = () => {
       javascript: "https://mingzmk2.github.io/Operation-Helix/",
       jsname: "Operation Helix",
       picture: "ming.png",
-      wellfound: "/"
+      wellfound: "https://angel.co/u/ming-zhang-18",
+      portfolio: "https://www.heyitsming.com"
     },
   ];
 
@@ -58,21 +61,21 @@ const AboutPage = () => {
       <ul className="aboutUsContainer">
         {info.map((developer) => (
           <li key={developer.name} className="aboutCard">
-            <div className="aboutPictureContainer">
+            <a href={developer.portfolio} target="_blank" rel="noreferrer" className="aboutPictureContainer">
               <img src={developer.picture} alt="" />
-            </div>
+            </a>
             <div className="aboutDetailsContainer">
               <h2>{developer.name}</h2>
               <h3>{developer.role}</h3>
             </div>
             <div className="aboutLinksContainer">
-              <a href={developer.github} target="_blank">
+              <a href={developer.github} target="_blank" rel="noreferrer">
                 <i className="fa-brands fa-github"></i>
               </a>
-              <a href={developer.linkedIn} target="_blank">
+              <a href={developer.linkedIn} target="_blank" rel="noreferrer">
                 <i className="fa-brands fa-linkedin"></i>
               </a>
-              <a href={developer.wellfound} target="_blank">
+              <a href={developer.wellfound} target="_blank" rel="noreferrer">
               <i className="fa-brands fa-angellist"></i>
               </a>
             </div>
@@ -83,7 +86,8 @@ const AboutPage = () => {
                 <a
                   className="projectLinks"
                   href={developer.fullstack}
-                  target="_blank"
+                  target="_blank" 
+                  rel="noreferrer"
                 >
                   {developer.fsName}
                 </a>
@@ -93,7 +97,8 @@ const AboutPage = () => {
                 <a
                   className="projectLinks"
                   href={developer.javascript}
-                  target="_blank"
+                  target="_blank" 
+                  rel="noreferrer"
                 >
                   {developer.jsname}
                 </a>

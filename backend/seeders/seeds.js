@@ -167,11 +167,16 @@ brita.consumables.push(
 items.push(brita)
 
 //SEED REMINDERS
+const currentDate = new Date()
+const currentMonth = currentDate.getMonth() + 1
+const currentYear = currentDate.getFullYear()
+const randomDay = () => { return Math.floor(Math.random() * 28 + 1) }
+
 const humidReminder = new Reminder ({
     item: humidifier,
     uploader: demo,
     title: "Swap out filter",
-    date: new Date('2023/01/23/09:30:00:000'),
+    date: new Date(`${currentYear}/${currentMonth}/${randomDay()}/09:30:00:000`),
     repeat: '2 months',
     notifications: []
 })
@@ -181,7 +186,7 @@ const toothbrushReminder = new Reminder ({
     item: toothbrush,
     uploader: demo,
     title: "Buy a new toothbrush",
-    date: new Date('2023/01/01/00:00:00:001'),
+    date: new Date(`${currentYear}/${currentMonth}/${randomDay()}/00:00:00:001`),
     repeat: '1 month',
     notifications: []
 })
@@ -191,7 +196,7 @@ const ovenReminder = new Reminder ({
     item: oven,
     uploader: demo,
     title: "replace oven light",
-    date: new Date('2023/02/06/15:30:00:000'),
+    date: new Date(`${currentYear}/${currentMonth}/${randomDay()}/15:30:00:000`),
     repeat: '1 year',
     notifications: []
 })
@@ -201,7 +206,7 @@ const vacuumReminder = new Reminder ({
     item: vacuum,
     uploader: demo,
     title: "swap vacuum bag",
-    date: new Date('2023/02/23/10:00:00:000'),
+    date: new Date(`${currentYear}/${currentMonth}/${randomDay()}/10:00:00:000`),
     repeat: '3 months',
     notifications: []
 })
@@ -211,7 +216,7 @@ const carReminder = new Reminder ({
     item: car,
     uploader: demo,
     title: "replace those tires",
-    date: new Date('2023/01/11/16:23:12:123'),
+    date: new Date(`${currentYear}/${currentMonth}/${randomDay()}/16:23:12:123`),
     repeat: '10 years',
     notifications: []
 })
@@ -221,7 +226,7 @@ const airConReminder = new Reminder ({
     item: airCon,
     uploader: demo,
     title: "get a/c seal before installation",
-    date: new Date('2023/02/15/12:00:00:000'),
+    date: new Date(`${currentYear}/${currentMonth}/${randomDay()}/12:00:00:000`),
     repeat: '1 year',
     notifications: []
 })
@@ -231,7 +236,7 @@ const britaReminder = new Reminder ({
     item: brita,
     uploader: demo,
     title: "replace the brita filter!",
-    date: new Date('2023/02/05/09:45:00:000'),
+    date: new Date(`${currentYear}/${currentMonth}/${randomDay()}/09:45:00:000`),
     repeat: '1 month',
     notifications: []
 })
