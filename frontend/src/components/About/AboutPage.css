@@ -41,8 +41,21 @@
     margin-bottom: 10px;
 }
 
+@keyframes picture-jiggle {
+	0% { transform: translateX(0);}
+	25% {transform: translateX(25px);}
+	/* 50% {transform: translateX(0);} */
+	75% { transform: translateX(-25px);}
+	100% { transform: translateX(0);}
+}
+
+@keyframes picture-spin {
+	from {transform: rotateY(0deg);}
+	to {transform: rotateY(360deg);}
+}
+
 .aboutPictureContainer:hover {
-    box-shadow: rgb(0 0 0 / 45%) 0px 2px 10px;
+    animation: picture-spin infinite 3s ease-in;
 }
 
 
