@@ -18,7 +18,7 @@ const reminders = [];
 const demo = new User ({
     username: 'demouser',
     email: 'demo@user.io',
-    phone: '0000000000',
+    phone: '0000100000',
     hashedPassword: bcrypt.hashSync('password', 10)
 })
 users.push(demo)
