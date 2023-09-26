@@ -51,8 +51,9 @@ function ReminderCreateForm(props) {
     }
     const data = { uploader, item, title, date: date ? date : newTwentyMinutesLater, repeat };
     
-    const now = moment(new Date()).format("MMMM Do YYYY, h:mm a")
-    const inputDate = moment(date).format("MMMM Do YYYY, h:mm a")
+    const now = moment(new Date()).format()
+    const inputDate = moment(date).format()
+    
     setShowTitleError(false)
     setShowDateError(false)
     
@@ -64,6 +65,7 @@ function ReminderCreateForm(props) {
       setShowTitleError(true)
       return
     } else if (date && inputDate < now) {
+      console.log(now, inputDate, inputDate < now, now < inputDate)
       setShowDateError(true)
       return
     }
